@@ -6,6 +6,8 @@
 using std::string;
 
 class Player {
+private:
+
 public:
     /**
      * Gets the description of the player
