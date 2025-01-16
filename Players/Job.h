@@ -30,6 +30,9 @@ class Job {
 };
 class Archer : public Job {
     public:
+    unsigned int getStartCoins()const override {
+        return 20; ///as menthoned archer gets 20 coins in beggining.
+    }
 
 };
 
