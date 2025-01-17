@@ -1,12 +1,23 @@
 
+
 #pragma once
 
 #include <string>
-
+#include <memory>
+#include "Character.h"
+#include "Job.h"
+#include <cassert>
 using std::string;
 
 class Player {
 private:
+ string name;
+ const int MaxLevel=10;
+ unsigned int level=1;
+ unsigned int force = 5;
+ unsigned int combatPower = force * level;
+ unsigned int coins = 10;
+ std::shared_ptr<Job> job;
 
 public:
  Player()=default;
@@ -33,6 +44,10 @@ public:
      * @return - level of the player
     */
     int getLevel() const;
+
+ ///functions to get job
+  std::shared_ptr<Job> getJob() const { return job; }
+
 
     /**
      * Gets the of force the player has
