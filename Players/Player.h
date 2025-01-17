@@ -9,6 +9,10 @@ class Player {
 private:
 
 public:
+ Player()=default;
+ /*we also should have a real ctor that takes job and chatechter*/
+ //TODO: add the c'tor after writhing the headers!
+
     /**
      * Gets the description of the player
      *
@@ -50,4 +54,12 @@ public:
      * @return - coins of the player
     */
     int getCoins() const;
+
+ ///mehtods that we need currently:
+ ///1.function to chech if the player is knocked out
+ bool isKnockedOut() const;
+ ///2.function to enable the player to gain loot:
+ void gainLoot();
+ ///3.function to level up the player
+ void raisLevel();
 };
