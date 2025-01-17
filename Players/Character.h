@@ -1,0 +1,25 @@
+//
+// Created by anwar on 1/18/2025.
+//
+#pragma once
+
+#include <string>
+#include <memory>
+#include "Job.h"
+
+using std::string;
+#ifndef CHARACTER_H
+#define CHARACTER_H
+
+
+
+class Character {
+    public:
+    ///we have to add function for special event sence each charechter acts with it deffrintly
+    virtual string getCharacterName() const = 0;
+
+};
+
+
+
+#endif //CHARACTER_H
