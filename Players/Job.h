@@ -29,12 +29,17 @@ class Job {
 
 };
 class Archer : public Job {
-    public:
+public:
+    Archer()=default;
     unsigned int getStartCoins()const override {
         return 20; ///as menthoned archer gets 20 coins in beggining.
     }
-
 };
+class Magician : public Job {};
+class Warrior : public Job {};
+
+
+
 
 
 
