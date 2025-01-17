@@ -19,6 +19,15 @@ class Character {
     virtual string getCharacterName() const = 0;
 
 };
+class Responsiple : public Character {
+    public:
+    string getCharacterName() const override;
+
+};
+class RiskTaking : public Character {
+    public:
+    string getCharacterName() const override;
+};
 
 
 
