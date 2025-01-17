@@ -4,7 +4,7 @@
 #ifndef JOB_H
 #define JOB_H
 using std::string;
-
+///need methods for compactpower and special events also get job string for the factory
 
 
 class Job {
@@ -26,17 +26,33 @@ class Job {
     virtual unsigned int getStartCoins() const {
         return 10;
     }
+    ///function to get the string for job, we will use that in the factory :)
+    virtual string getJobName()const=0;
 
 };
 class Archer : public Job {
 public:
     Archer()=default;
+    string getJobName() const override;
     unsigned int getStartCoins()const override {
         return 20; ///as menthoned archer gets 20 coins in beggining.
     }
 };
-class Magician : public Job {};
-class Warrior : public Job {};
+class Magician : public Job {
+private:
+    public:
+    Magician()=default;
+    string getJobName() const override;
+};
+class Warrior : public Job {
+private:
+    public:
+    Warrior()=default;
+    string getJobName() const override;
+    unsigned int getMaxHP() const override {
+        return 150;
+    }
+};
 
 
 
