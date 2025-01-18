@@ -10,13 +10,22 @@
 using std::string;
 
 class Player {
+
 private:
- string name;
- const int MaxLevel=10;
- unsigned int level=1;
- unsigned int force = 5;
- unsigned int combatPower = force * level;
- unsigned int coins = 10;
+ struct PlayerData {
+  string name;
+  const int MaxLevel=10;
+  unsigned int level=1;
+  unsigned int force = 5;
+  unsigned int combatPower = force * level;
+  unsigned int coins = 10;
+  unsigned int currentHP = 100;
+  bool isKnockedOut = false;
+
+ };
+///do the charecter factory and then add a shwred ptr to it
+///keep it private!!
+
  std::shared_ptr<Job> job;
 
 public:
@@ -72,7 +81,7 @@ public:
 
  ///mehtods that we need currently:
  ///1.function to chech if the player is knocked out
- bool isKnockedOut() const;
+ bool isPlayerKnockedOut() const;
  ///2.function to enable the player to gain loot:
  void gainLoot();
  ///3.function to level up the player
