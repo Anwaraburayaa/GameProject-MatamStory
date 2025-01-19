@@ -23,10 +23,13 @@ private:
   bool isKnockedOut = false;
 
  };
+ PlayerData data;
+
 ///do the charecter factory and then add a shwred ptr to it
 ///keep it private!!
 
  std::shared_ptr<Job> job;
+ std::shared_ptr<Character> character;
 
 public:
  Player()=default;
