@@ -28,8 +28,9 @@ private:
 
     std::shared_ptr<Job> job;
     std::shared_ptr<Character> character;
-    void setCompactPower();
+
 public:
+
     Player() = default;
 
     /*we also should have a real ctor that takes job and chatechter*/
@@ -43,7 +44,9 @@ public:
         data.level = job->getStartLevel();
         job->setCompactPower(data);
     }
-
+ ///TO SOLVE THE PROBLEM OF THE DATA BEING NOT ACESSABLE
+ PlayerData& getPlayerData() { return data; }
+ const PlayerData& getPlayerData() const { return data; }
     /**
      * Gets the description of the player
      *
