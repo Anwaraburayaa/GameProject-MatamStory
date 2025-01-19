@@ -36,6 +36,17 @@ protected:
 
 };
 
+class Monster: public Encounter {
+    public:
+    Monster()=default;
+    Monster(const Monster& monster)=default;
+    ///todo add implementation later
+    Monster(const string &monsterName,
+          const unsigned int &combatPower,
+          const unsigned int &loot,
+          const unsigned int &damage);
+}
+
 
 
 #endif //ENCOUNTER_H
