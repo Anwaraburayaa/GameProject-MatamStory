@@ -45,7 +45,14 @@ class Monster: public Encounter {
           const unsigned int &combatPower,
           const unsigned int &loot,
           const unsigned int &damage);
-}
+};
+///todo add fields tommowrow
+class snail: public Monster {};
+class Slime: public Monster {};
+class Balrog : public Monster {};
+///in pack sence we have more that one monster we will use vector of encounters
+class Pack : public Encounter {};
+
 
 
 
