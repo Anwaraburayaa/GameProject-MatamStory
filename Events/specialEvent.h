@@ -13,16 +13,16 @@ public:
 
 class SolarEclips : public SpecialEvent {
 public:
-    SolarEclips();
-    void applyEvent(Character& character) override;
+
+    void applyEvent(Player& player) override;
     string getDescription() const override;
 };
 
 
 class PotionsMerchant : public SpecialEvent {
 public:
-    PotionsMerchant();
-    void applyEvent(Character& character) override;
+
+    void applyEvent(Player& player) override;
     string getDescription() const override;
 };
 
