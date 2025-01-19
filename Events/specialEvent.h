@@ -2,22 +2,12 @@
 #define SPECIALEVENT_H
 
 #include <string>
-#include "Character.h"
+#include "Event.h"
 
-enum class EventType {
-    SolarEclips,
-    PotionsMerchant
-};
 
-class SpecialEvent {
+class SpecialEvent : public Event {
 public:
-    virtual ~SpecialEvent() = default;
-    virtual void applyEvent(Character& character) = 0;
-    virtual std::string getEventInfo() const = 0;
-    EventType getType() const { return type; }
-
-protected:
-    EventType type;
+    SpecialEvent() = default;
 };
 
 
