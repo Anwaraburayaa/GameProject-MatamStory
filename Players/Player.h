@@ -1,5 +1,3 @@
-
-
 #pragma once
 
 #include <string>
@@ -8,33 +6,43 @@
 #include "Job.h"
 #include <cassert>
 using std::string;
-
+///forward declaration to the class job
+class Job;
 class Player {
-
 private:
- struct PlayerData {
-  string name;
-  const int MaxLevel=10;
-  unsigned int level=1;
-  unsigned int force = 5;
-  unsigned int combatPower = force * level;
-  unsigned int coins = 10;
-  unsigned int currentHP = 100;
-  bool isKnockedOut = false;
+    struct PlayerData {
+        string name;
+        const int MaxLevel = 10;
+        unsigned int level = 1;
+        unsigned int force = 5;
+        unsigned int combatPower = force * level;
+        unsigned int coins = 10;
+        unsigned int currentHP = 100;
+        bool isKnockedOut = false;
+    };
 
- };
- PlayerData data;
+    PlayerData data;
 
-///do the charecter factory and then add a shwred ptr to it
-///keep it private!!
+    ///do the charecter factory and then add a shwred ptr to it
+    ///keep it private!!
 
- std::shared_ptr<Job> job;
- std::shared_ptr<Character> character;
-
+    std::shared_ptr<Job> job;
+    std::shared_ptr<Character> character;
+    void setCompactPower();
 public:
- Player()=default;
- /*we also should have a real ctor that takes job and chatechter*/
- //TODO: add the c'tor after writhing the headers!
+    Player() = default;
+
+    /*we also should have a real ctor that takes job and chatechter*/
+    Player(const string &name, const std::shared_ptr<Job> &job,
+           const std::shared_ptr<Character> &character) {
+        this->data.name = name;
+        this->job = job;
+        this->character = character;
+        data.coins = job->getStartCoins();
+        data.force = job->getStartForce();
+        data.level = job->getStartLevel();
+        job->setCompactPower(data);
+    }
 
     /**
      * Gets the description of the player
@@ -48,17 +56,19 @@ public:
      *
      * @return - name of the player
     */
-    string getName() const;
+    string getName() const; ///done
 
     /**
      * Gets the current level of the player
      *
      * @return - level of the player
     */
-    int getLevel() const;
+    int getLevel() const; ///done
 
- ///functions to get job
-  std::shared_ptr<Job> getJob() const { return job; }
+    ///function to get job
+    std::shared_ptr<Job> getJob() const { return job; }
+    ///function to get job charachter
+    std::shared_ptr<Character> getCharacter() const { return character; }
 
 
     /**
@@ -66,27 +76,29 @@ public:
      *
      * @return - force points of the player
     */
-    int getForce() const;
+    int getForce() const; ///done
 
     /**
      * Gets the amount of health points the player currently has
      *
      * @return - health points of the player
     */
-    int getHealthPoints() const;
+    int getHealthPoints() const; ///done
 
     /**
      * Gets the amount of coins the player has
      *
      * @return - coins of the player
     */
-    int getCoins() const;
+    unsigned int getCoins() const; ///done
 
- ///mehtods that we need currently:
- ///1.function to chech if the player is knocked out
- bool isPlayerKnockedOut() const;
- ///2.function to enable the player to gain loot:
- void gainLoot();
- ///3.function to level up the player
- void raisLevel();
+    ///mehtods that we need currently:
+    ///1.function to chech if the player is knocked out
+    bool isPlayerKnockedOut() const;
+
+    ///2.function to enable the player to gain loot:
+    void gainLoot();
+
+    ///3.function to level up the player
+    void raisLevel();
 };
