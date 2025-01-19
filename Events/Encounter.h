@@ -22,6 +22,10 @@ protected:
         unsigned int damage;
     };
     void applyEvent(Player &player) override;
+    /*
+     * this function checks if anything magical happens at the event
+     */
+    virtual void isMagical();
     ///here we should add the other methods that monster and pack should inherit
     public:
     Encounter()=default;
@@ -29,6 +33,7 @@ protected:
     unsigned int getCombatPower() const;
     unsigned int getLoot() const;
     unsigned int getDamage() const;
+
 };
 
 
