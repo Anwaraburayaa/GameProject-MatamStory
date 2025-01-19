@@ -14,6 +14,10 @@ int Player::getForce() const {
 int Player::getLevel() const {
     return data.level;
 }
+int Player::getHealthPoints() const {
+    return data.currentHP;
+}
+
 
 
 
