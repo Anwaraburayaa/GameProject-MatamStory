@@ -5,6 +5,15 @@
 string Player::getName() const {
     return data.name;
 }
-int Player::getCoins() const {
+unsigned int Player::getCoins() const {
     return data.coins;
 }
+int Player::getForce() const {
+    return data.force;
+}
+int Player::getLevel() const {
+    return data.level;
+}
+
+
+
