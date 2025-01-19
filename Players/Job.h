@@ -5,9 +5,10 @@
 #define JOB_H
 using std::string;
 ///need methods for compactpower and special events also get job string for the factory
-
+class Player;
 
 class Job {
+   // class Player;
 protected:
     ///we will fill that later
 public:
@@ -32,6 +33,10 @@ public:
 
     ///function to get the string for job, we will use that in the factory :)
     virtual string getJobName() const =0;
+
+
+   void caculateCompactPower(Player& player);
+
 };
 
 class Archer : public Job {

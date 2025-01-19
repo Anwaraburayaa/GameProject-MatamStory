@@ -22,12 +22,9 @@ private:
     };
 
     PlayerData data;
-
-    ///do the charecter factory and then add a shwred ptr to it
-    ///keep it private!!
-
     std::shared_ptr<Job> job;
     std::shared_ptr<Character> character;
+    void caculateCompactPower();
 
 public:
 
@@ -42,7 +39,8 @@ public:
         data.coins = job->getStartCoins();
         data.force = job->getStartForce();
         data.level = job->getStartLevel();
-        job->setCompactPower(data);
+     data.combatPower = job->caculateCompactPower();;
+
     }
  ///TO SOLVE THE PROBLEM OF THE DATA BEING NOT ACESSABLE
  PlayerData& getPlayerData() { return data; }
