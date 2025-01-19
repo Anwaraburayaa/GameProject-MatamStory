@@ -39,7 +39,9 @@ public:
         data.coins = job->getStartCoins();
         data.force = job->getStartForce();
         data.level = job->getStartLevel();
-     data.combatPower = job->caculateCompactPower();;
+        data.currentHP = job->getMaxHP();
+        job->caculateCompactPower(*this);
+
 
     }
  ///TO SOLVE THE PROBLEM OF THE DATA BEING NOT ACESSABLE

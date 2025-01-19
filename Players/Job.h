@@ -35,7 +35,7 @@ public:
     virtual string getJobName() const =0;
 
 
-   void caculateCompactPower(Player& player);
+  virtual void caculateCompactPower(Player& player);
 
 };
 
