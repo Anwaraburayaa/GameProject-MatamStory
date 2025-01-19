@@ -15,7 +15,7 @@ class SolarEclips : public SpecialEvent {
 public:
     SolarEclips();
     void applyEvent(Character& character) override;
-    std::string getEventInfon() const override;
+    string getDescription() const override;
 };
 
 
@@ -23,7 +23,7 @@ class PotionsMerchant : public SpecialEvent {
 public:
     PotionsMerchant();
     void applyEvent(Character& character) override;
-    std::string getEventInfon() const override;
+    string getDescription() const override;
 };
 
 #endif
