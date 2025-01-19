@@ -14,8 +14,17 @@
 #define RESPONSIBLE "Responsible"
 #define RISKTAKING "RiskTaking"
 
+
+
 class CharachterFactory {
-    private:
+
+    std::map<std::string, std::shared_ptr<Character>> mapCharacters =
+           {{RESPONSIBLE, std::make_shared<Responsiple>()},
+            {RISKTAKING,  std::make_shared<RiskTaking>()},
+           };
+
+public:
+    std::shared_ptr<Character> Create(const std::string &characterName) const;
 
 };
 
