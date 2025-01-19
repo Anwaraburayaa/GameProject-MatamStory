@@ -12,16 +12,12 @@ public:
 
 
 class SolarEclips : public SpecialEvent {
-public:
-
     void applyEvent(Player& player) override;
     string getDescription() const override;
 };
 
 
 class PotionsMerchant : public SpecialEvent {
-public:
-
     void applyEvent(Player& player) override;
     string getDescription() const override;
 };
