@@ -21,10 +21,14 @@ protected:
         unsigned int loot;
         unsigned int damage;
     };
+    void applyEvent(Player &player) override;
     ///here we should add the other methods that monster and pack should inherit
     public:
     Encounter()=default;
     ///getters to the date & virtual functions if needed
+    unsigned int getCombatPower() const;
+    unsigned int getLoot() const;
+    unsigned int getDamage() const;
 };
 
 
