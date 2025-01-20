@@ -67,5 +67,9 @@ bool Player::operator<(const Player &other) const {
 
     return data.name > other.getName();
 }
+void Player::gainLoot(const unsigned int loot) {
+    data.coins+=loot;
+}
+
 
 //**//
