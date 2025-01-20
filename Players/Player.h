@@ -25,7 +25,7 @@ private:
     std::shared_ptr<Job> job;
     std::shared_ptr<Character> character;
  ///to update the compact power after raising the level
-    void caculateCompactPower();
+    void caculateCompactPower();//done
 
 public:
 
@@ -53,7 +53,7 @@ public:
      *
      * @return - description of the player
     */
-    string getDescription() const;
+    string getDescription() const;//done
 
     /**
      * Gets the name of the player
@@ -98,16 +98,16 @@ public:
 
     ///mehtods that we need currently:
     ///1.function to chech if the player is knocked out
-    void isPlayerKnockedOut();
+    void isPlayerKnockedOut(); //done
 
     ///2.function to enable the player to gain loot:
-    void gainLoot();
+    void gainLoot(const unsigned int loot);
 
     ///3.function to level up the player
-    void raisLevel();
+    void raisLevel();//done
  ///operators overload for player :
- bool operator<(const Player &other) const;
+ bool operator<(const Player &other) const;//done
 
- Player &operator=(const Player &other);
+ Player &operator=(const Player &other);//done
 
 };
