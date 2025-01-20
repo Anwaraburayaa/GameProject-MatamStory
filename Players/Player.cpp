@@ -17,6 +17,13 @@ int Player::getLevel() const {
 int Player::getHealthPoints() const {
     return data.currentHP;
 }
+void Player::raisLevel() {
+    if(data.level< PlayerData::MaxLevel) {
+        data.level=+1;
+        caculateCompactPower();
+    }
+}
+
 
 
 
