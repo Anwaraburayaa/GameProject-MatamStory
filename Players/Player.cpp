@@ -2,29 +2,40 @@
 // Created by anwar on 1/19/2025.
 //
 #include "Player.h"
+
 string Player::getName() const {
     return data.name;
 }
+
 unsigned int Player::getCoins() const {
     return data.coins;
 }
+
 int Player::getForce() const {
     return data.force;
 }
+
 int Player::getLevel() const {
     return data.level;
 }
+
 int Player::getHealthPoints() const {
     return data.currentHP;
 }
+
 void Player::raisLevel() {
-    if(data.level< PlayerData::MaxLevel) {
-        data.level=+1;
+    if (data.level < PlayerData::MaxLevel) {
+        data.level = +1;
         caculateCompactPower();
     }
 }
 
+void Player::isPlayerKnockedOut() {
+    this->data.isKnockedOut = true;
+}
 
-
-
-
+string Player::getDescription() const {
+    return getName() + ", " + this->getJob()->getJobName() + "with" + getCharacter()->getCharacterName() +
+           "character (level" + std::to_string(getLevel())+"force" + std::to_string(getForce())+ ")";
+}
+//**//
