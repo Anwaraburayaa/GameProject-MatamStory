@@ -53,5 +53,19 @@ Player &Player::operator=(const Player &other) {
     return *this;
 }
 
+bool Player::operator<(const Player &other) const {
+    if(data.level < other.getLevel()) {
+        return true;
+    }
+    if(data.level > other.getLevel()) {
+        return false;
+    }
+    if (data.coins < other.getCoins())
+        return true;
+    if (data.coins > other.getCoins())
+        return false;
+
+    return data.name > other.getName();
 }
+
 //**//
