@@ -12,7 +12,7 @@ class Player {
 private:
     struct PlayerData {
         string name;
-        const int MaxLevel = 10;
+      static const int MaxLevel = 10;
         unsigned int level = 1;
         unsigned int force = 5;
         unsigned int combatPower = force * level;
@@ -24,6 +24,7 @@ private:
     PlayerData data;
     std::shared_ptr<Job> job;
     std::shared_ptr<Character> character;
+ ///to update the compact power after raising the level
     void caculateCompactPower();
 
 public:
@@ -97,7 +98,7 @@ public:
 
     ///mehtods that we need currently:
     ///1.function to chech if the player is knocked out
-    bool isPlayerKnockedOut() const;
+    void isPlayerKnockedOut();
 
     ///2.function to enable the player to gain loot:
     void gainLoot();
