@@ -36,6 +36,22 @@ void Player::isPlayerKnockedOut() {
 
 string Player::getDescription() const {
     return getName() + ", " + this->getJob()->getJobName() + "with" + getCharacter()->getCharacterName() +
-           "character (level" + std::to_string(getLevel())+"force" + std::to_string(getForce())+ ")";
+           "character (level" + std::to_string(getLevel()) + "force" + std::to_string(getForce()) + ")";
+}
+
+///how  to do this?
+void Player::caculateCompactPower() {
+}
+
+Player &Player::operator=(const Player &other) {
+    if (this == &other) {
+        return *this;
+    }
+    data = other.data;
+    job = other.job;
+    character = other.character;
+    return *this;
+}
+
 }
 //**//
