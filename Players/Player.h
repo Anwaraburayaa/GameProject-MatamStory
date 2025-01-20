@@ -105,4 +105,9 @@ public:
 
     ///3.function to level up the player
     void raisLevel();
+ ///operators overload for player :
+ bool operator<(const Player &other) const;
+
+ Player &operator=(const Player &other);
+
 };
