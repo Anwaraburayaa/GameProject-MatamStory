@@ -1,5 +1,7 @@
 #pragma once
 #include <string>
+
+#include "Encounter.h"
 #include "Player.h"
 #ifndef JOB_H
 #define JOB_H
@@ -8,9 +10,16 @@ using std::string;
 class Player;
 
 class Job {
-   // class Player;
+
 protected:
-    ///we will fill that later
+    virtual void caculateCompactPower(Player& player);
+    ///this function we add to see the behavior of each job under this special event
+    virtual int solarEclipseEvent(Player& player);
+    ///this function we add for the encounter when faces a player
+    virtual void fight(Player &player, const Encounter &encounter);
+    virtual void takeDamage(Player& player, const unsigned int &damage);
+
+
 public:
     friend class Player;
     ///methods that is common for each job:
@@ -35,7 +44,6 @@ public:
     virtual string getJobName() const =0;
 
 
-  virtual void caculateCompactPower(Player& player);
 
 };
 
@@ -52,6 +60,7 @@ public:
 
 class Magician : public Job {
 private:
+    int solarEclipseEvent(Player &player) override;
 public:
     Magician() = default;
 
@@ -60,8 +69,14 @@ public:
 
 class Warrior : public Job {
 private:
+    void fight(Player &player,  const Encounter &encounter) override;
+
+    void caculateCompactPower(Player &player) override;
+
 public:
     Warrior() = default;
+
+    static const int DAMAGE_FIGHT= 10;
 
     string getJobName() const override;
 
