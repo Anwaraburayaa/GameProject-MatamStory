@@ -21,4 +21,15 @@ int Job::solarEclipseEvent(Player &player) {
     }
     return 0;
 }
+string Archer::getJobName() const {
+    return "Archer";
+}
+string Magician::getJobName() const {
+    return "Magician";
+}
+
+
+
+string Warrior::getJobName() const {
+    return "Warrior";
 }
