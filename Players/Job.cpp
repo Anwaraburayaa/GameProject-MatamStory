@@ -40,3 +40,6 @@ string Warrior::getJobName() const {
 void Warrior::caculateCompactPower(Player& player) {
     player.getPlayerData().combatPower=2*player.getPlayerData().force+player.getPlayerData().level;
 }
+void Warrior::fight(Player &player, const Encounter &encounter) {
+    takeDamage(player, DAMAGE_FIGHT);
+}
