@@ -27,9 +27,16 @@ string Archer::getJobName() const {
 string Magician::getJobName() const {
     return "Magician";
 }
+int Magician::solarEclipseEvent(Player &player) {
+    player.getPlayerData().force += 1;
+    return 1;
+}
 
 
 
 string Warrior::getJobName() const {
     return "Warrior";
+}
+void Warrior::caculateCompactPower(Player& player) {
+    player.getPlayerData().combatPower=2*player.getPlayerData().force+player.getPlayerData().level;
 }
