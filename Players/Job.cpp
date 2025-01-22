@@ -11,8 +11,6 @@ void Job::takeDamage(Player &player, const unsigned int &damage) {
     }
 
 
-// virtual void calculateCombatPower(Player& player) const {
-//     // Access PlayerData through Player
-//     Player::PlayerData& data = player.getPlayerData();
-//     data.combatPower = data.force * data.level;  // Example combat power formula
-// }
+ void Job::caculateCompactPower(Player& player){
+    player.getPlayerData().combatPower = player.getPlayerData().force + player.getPlayerData().level;
+}
