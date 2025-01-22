@@ -16,6 +16,7 @@ using std::string;
 class Character {
     public:
     ///we have to add function for special event sence each charechter acts with it deffrintly
+    virtual int potionMerchantEvent(Player &player,const std::shared_ptr<Job> &job) = 0;
     virtual string getCharacterName() const = 0;
 
 };
@@ -27,6 +28,7 @@ class Responsiple : public Character {
 class RiskTaking : public Character {
     public:
     string getCharacterName() const override;
+
 };
 
 
