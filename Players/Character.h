@@ -22,11 +22,13 @@ class Character {
 };
 class Responsiple : public Character {
     public:
+    int potionMerchantEvent(Player &player,const std::shared_ptr<Job> &job) override;
     string getCharacterName() const override;
 
 };
 class RiskTaking : public Character {
     public:
+    int potionMerchantEvent(Player &player,const std::shared_ptr<Job> &job) override;
     string getCharacterName() const override;
 
 };
