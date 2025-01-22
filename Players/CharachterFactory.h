@@ -24,7 +24,7 @@ class CharachterFactory {
            };
 
 public:
-    std::shared_ptr<Character> Create(const std::string &characterName) const;
+    std::shared_ptr<Character> CreateCharachter(const std::string &characterName) const;
 
 };
 
