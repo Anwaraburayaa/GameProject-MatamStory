@@ -63,6 +63,8 @@ public:
  ///getters for the PlayerData
  PlayerData& getPlayerData() { return data; }
  const PlayerData& getPlayerData() const { return data; }
+ ///in case if losing to an encounter we need this function to take the damege
+ void takeDamege();
     /**
      * Gets the description of the player
      *
