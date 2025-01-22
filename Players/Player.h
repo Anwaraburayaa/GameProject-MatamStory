@@ -4,6 +4,7 @@
 #include <memory>
 #include "Character.h"
 #include "Job.h"
+#include "Encounter.h"
 #include <cassert>
 using std::string;
 ///forward declaration to the class job
@@ -26,6 +27,20 @@ private:
     std::shared_ptr<Character> character;
  ///to update the compact power after raising the level
     void caculateCompactPower();//done
+   bool aplayEvent(const Encounter &encounter);
+ ///method to use during the SolarEclipse-Event
+ int solarEclipseEvent();
+
+ ///method to use during the PotionMerchant-Event
+ int potionMerchantEvent();
+
+ ///we have to friend theses classes to access its fields
+ friend class Encounter;
+
+ friend class SolarEclipse;
+
+ friend class PotionMerchant;
+
 
 public:
 
@@ -45,7 +60,7 @@ public:
 
 
     }
- ///TO SOLVE THE PROBLEM OF THE DATA BEING NOT ACESSABLE
+ ///getters for the PlayerData
  PlayerData& getPlayerData() { return data; }
  const PlayerData& getPlayerData() const { return data; }
     /**
