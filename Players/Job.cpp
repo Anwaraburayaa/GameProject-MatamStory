@@ -14,3 +14,11 @@ void Job::takeDamage(Player &player, const unsigned int &damage) {
  void Job::caculateCompactPower(Player& player){
     player.getPlayerData().combatPower = player.getPlayerData().force + player.getPlayerData().level;
 }
+int Job::solarEclipseEvent(Player &player) {
+    if(player.getPlayerData().force > 0) {
+        player.getPlayerData().force +=-1;
+        return -1;
+    }
+    return 0;
+}
+}
