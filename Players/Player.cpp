@@ -70,6 +70,23 @@ bool Player::operator<(const Player &other) const {
 void Player::gainLoot(const unsigned int loot) {
     data.coins+=loot;
 }
+////todo fix this
+bool Player::aplayEvent(const Encounter &encounter) {
+    ///if wining
+    if(getPlayerData().combatPower>encounter.getEncounterData().combatPower) {
+        job->fight(getPlayerData(),encounter.getEncounterData());
+        gainLoot(encounter.getEncounterData().loot);
+        raisLevel();
+        return true;
+        ///if losing
+    } else {
+        takeDamege(encounter.getEncounterData().damage);
+        return false;
+
+
+
+}
+
 
 
 //**//
