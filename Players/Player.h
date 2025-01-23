@@ -6,53 +6,52 @@
 #include "Job.h"
 #include "Events/Encounter.h"
 #include <cassert>
-#include <memory>
 using std::string;
-///forward declaration to the class job
-//class Job;
 class Character;
 class Encounter;
-//class Job;
+
 
 class Player {
 private:
     struct PlayerData {
         string name;
-      static const int MaxLevel = 10;
+        static const int MaxLevel = 10;
         unsigned int level = 1;
         unsigned int force = 5;
         unsigned int combatPower = force * level;
         unsigned int coins = 10;
         unsigned int currentHP = 100;
         bool isKnockedOut = false;
+
+        ///function for the player when choosing to buy potion to change his data
         void drinkPotion();
     };
 
     PlayerData data;
     std::shared_ptr<Job> job;
     std::shared_ptr<Character> character;
- ///to update the compact power after raising the level
-    void caculateCompactPower();//done
+
+    ///to update the compact power after raising the level
+    void caculateCompactPower();
+
     bool applyEvent(const Encounter &encounter);
- ///method to use during the SolarEclipse-Event
- int solarEclipseEvent();
 
- ///method to use during the PotionMerchant-Event
- int potionMerchantEvent();
+    ///method to use during the SolarEclipse-Event
+    int solarEclipseEvent();
 
- ///we have to friend theses classes to access its fields
- friend class Encounter;
+    ///method to use during the PotionMerchant-Event
+    int potionMerchantEvent();
 
- friend class SolarEclipse;
+    ///we have to friend these classes to access their fields
+    friend class Encounter;
 
- friend class PotionMerchant;
+    friend class SolarEclipse;
 
+    friend class PotionMerchant;
 
 public:
-
     Player() = default;
 
-    /*we also should have a real ctor that takes job and chatechter*/
     Player(const string &name, const std::shared_ptr<Job> &job,
            const std::shared_ptr<Character> &character) {
         this->data.name = name;
@@ -63,42 +62,40 @@ public:
         data.level = job->getStartLevel();
         data.currentHP = job->getMaxHP();
         job->caculateCompactPower(*this);
-
-
     }
- ///getters for the PlayerData
- PlayerData& getPlayerData() { return data; }
- const PlayerData& getPlayerData() const { return data; }
- ///function for the player when choosing to buy potion to change his data
+
+    ///getters for the PlayerData
+    PlayerData &getPlayerData() { return data; }
+    const PlayerData &getPlayerData() const { return data; }
 
 
+    ///in case if losing to an encounter we need this function to take the damage
+    void claculateDamage(const unsigned int &damage);
 
- ///in case if losing to an encounter we need this function to take the damege
- void claculateDamage(const unsigned int &damage);
     /**
      * Gets the description of the player
      *
      * @return - description of the player
     */
-    string getDescription() const;//done
+    string getDescription() const;
 
     /**
      * Gets the name of the player
      *
      * @return - name of the player
     */
-    string getName() const; ///done
+    string getName() const;
 
     /**
      * Gets the current level of the player
      *
      * @return - level of the player
     */
-    int getLevel() const; ///done
+    int getLevel() const;
 
     ///function to get job
     std::shared_ptr<Job> getJob() const { return job; }
-    ///function to get job charachter
+    ///function to get job character
     std::shared_ptr<Character> getCharacter() const { return character; }
 
 
@@ -107,34 +104,35 @@ public:
      *
      * @return - force points of the player
     */
-    int getForce() const; ///done
+    int getForce() const;
 
     /**
      * Gets the amount of health points the player currently has
      *
      * @return - health points of the player
     */
-    int getHealthPoints() const; ///done
+    int getHealthPoints() const;
 
     /**
      * Gets the amount of coins the player has
      *
      * @return - coins of the player
     */
-    unsigned int getCoins() const; ///done
+    unsigned int getCoins() const;
 
-    ///mehtods that we need currently:
-    ///1.function to chech if the player is knocked out
-    void isPlayerKnockedOut(); //done
 
-    ///2.function to enable the player to gain loot:
+    ///function to check if the player is knocked out
+    void isPlayerKnockedOut();
+
+    ///function to enable the player to gain loot:
     void gainLoot(const unsigned int loot);
 
-    ///3.function to level up the player
-    void raisLevel();//done
- ///operators overload for player :
- bool operator<(const Player &other) const;//done
+    ///function to level up the player
+    void raisLevel();
 
- Player &operator=(const Player &other);//done
+
+    ///operators overload for player :
+    bool operator<(const Player &other) const;
+    Player &operator=(const Player &other);
 
 };
