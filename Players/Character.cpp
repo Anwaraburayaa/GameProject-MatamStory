@@ -3,3 +3,7 @@
 //
 
 #include "Character.h"
+string Responsiple::getCharacterName() const {
+    return "Responsiple";
+}
+
