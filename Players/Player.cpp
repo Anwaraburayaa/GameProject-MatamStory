@@ -7,6 +7,7 @@ string Player::getName() const {
     return data.name;
 }
 
+
 unsigned int Player::getCoins() const {
     return data.coins;
 }
@@ -55,10 +56,10 @@ Player &Player::operator=(const Player &other) {
 }
 
 bool Player::operator<(const Player &other) const {
-    if(data.level < other.getLevel()) {
+    if (data.level < other.getLevel()) {
         return true;
     }
-    if(data.level > other.getLevel()) {
+    if (data.level > other.getLevel()) {
         return false;
     }
     if (data.coins < other.getCoins())
@@ -68,13 +69,14 @@ bool Player::operator<(const Player &other) const {
 
     return data.name > other.getName();
 }
+
 void Player::gainLoot(const unsigned int loot) {
-    data.coins+=loot;
+    data.coins += loot;
 }
 
 bool Player::applyEvent(const Encounter &encounter) {
     ///if wining
-    if(getPlayerData().combatPower>encounter.getEncounterData().combatPower) {
+    if (this->getPlayerData().combatPower > encounter.getEncounterData().combatPower) {
         job->fight(*this, encounter);
         gainLoot(encounter.getEncounterData().loot);
         raisLevel();
@@ -85,26 +87,22 @@ bool Player::applyEvent(const Encounter &encounter) {
         return false;
     }
 }
+
 void Player::PlayerData::drinkPotion() {
     assert(this->coins >= 5);
     this->coins -= 5;
     this->currentHP += 10;
 }
-void Player:: claculateDamage(const unsigned int &damage) {
-    int currentHPTotal = this->getPlayerData().currentHP;
-    if(currentHPTotal <= damage) {
-        isPlayerKnockedOut();
 
+void Player::claculateDamage(const unsigned int &damage) {
+    int currentHPTotal = this->getPlayerData().currentHP;
+    if (currentHPTotal <= damage) {
+        isPlayerKnockedOut();
     }
-    job->calculateDamage(*this,damage);
+    job->calculateDamage(*this, damage);
 }
 
 ///todo implement the rest of the functions!!!!
-
-
-
-
-
 
 
 //**//
