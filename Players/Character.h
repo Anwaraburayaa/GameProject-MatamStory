@@ -6,14 +6,16 @@
 #include <string>
 #include <memory>
 #include "Job.h"
+#include "Player.h"
 
 using std::string;
 #ifndef CHARACTER_H
 #define CHARACTER_H
 
-
-
+class Player;
+//class Job;
 class Character {
+
     public:
     ///we have to add function for special event sence each charechter acts with it deffrintly
     virtual int potionMerchantEvent(Player &player,const std::shared_ptr<Job> &job) = 0;
