@@ -15,8 +15,8 @@ class JobFactory {
 private:
     std::map<std::string, std::shared_ptr<Job> > jobsMap =
     {
-        {WARRIOR, std::shared_ptr<Warrior>()},
-        {MAGICIAN, std::shared_ptr<Magician>()},
+        {WARRIOR, std::make_shared<Warrior>()},
+        {MAGICIAN, std::make_shared<Magician>()},
         {ARCHER, std::make_shared<Archer>()},
     };
     public:
