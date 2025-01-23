@@ -3,7 +3,8 @@
 //
 
 #include "Job.h"
-void Job::takeDamage(Player &player, const unsigned int &damage) {
+#include "Player.h"
+void Job::calculateDamage(Player &player, const unsigned int &damage) {
     if(player.getPlayerData().currentHP <= damage) {
         return;
     }
@@ -41,5 +42,5 @@ void Warrior::caculateCompactPower(Player& player) {
     player.getPlayerData().combatPower=2*player.getPlayerData().force+player.getPlayerData().level;
 }
 void Warrior::fight(Player &player, const Encounter &encounter) {
-    takeDamage(player, DAMAGE_FIGHT);
+    calculateDamage(player, DAMAGE_FIGHT);
 }

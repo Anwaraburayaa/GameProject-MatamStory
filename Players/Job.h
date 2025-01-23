@@ -1,12 +1,14 @@
 #pragma once
 #include <string>
 
-#include "Encounter.h"
-#include "Player.h"
+//#include "Events/Encounter.h"
+//#include "Player.h"
 #ifndef JOB_H
 #define JOB_H
 using std::string;
 ///need methods for compactpower and special events also get job string for the factory
+
+class Encounter;
 class Player;
 
 class Job {
@@ -16,11 +18,13 @@ protected:
     ///this function we add to see the behavior of each job under this special event
     virtual int solarEclipseEvent(Player& player);
     ///this function we add for the encounter when faces a player
-    virtual void fight(Player &player, const Encounter &encounter);
-    virtual void takeDamage(Player& player, const unsigned int &damage);
+    virtual void fight(Player &player, const Encounter &encounter){}
+    virtual void calculateDamage(Player& player, const unsigned int &damage);
 
 
 public:
+    virtual ~Job() = default;
+
     friend class Player;
     ///methods that is common for each job:
     ///getters for the default values

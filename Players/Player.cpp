@@ -90,6 +90,14 @@ void Player::PlayerData::drinkPotion() {
     this->coins -= 5;
     this->currentHP += 10;
 }
+void Player:: claculateDamage(const unsigned int &damage) {
+    int currentHPTotal = this->getPlayerData().currentHP;
+    if(currentHPTotal <= damage) {
+        isPlayerKnockedOut();
+
+    }
+    job->calculateDamage(*this,damage);
+}
 
 ///todo implement the rest of the functions!!!!
 
