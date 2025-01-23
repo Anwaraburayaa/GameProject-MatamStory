@@ -22,3 +22,7 @@ int Responsiple::potionMerchantEvent(Player &player, const std::shared_ptr<Job> 
     }
     return counter;
 }
+
+string RiskTaking::getCharacterName() const {
+    return "RiskTaking";
+}
