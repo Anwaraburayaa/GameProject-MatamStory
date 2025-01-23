@@ -7,6 +7,14 @@
 string Responsiple::getCharacterName() const {
     return "Responsiple";
 }
+///helper function to prevent code duplication
+void checkIfHPisMax(Player &player, const std::shared_ptr<Job> &job) {
+    if (player.getPlayerData().currentHP > job->getMaxHP()) {
+        player.getPlayerData().currentHP = job->getMaxHP();
+    }
+    else return;
+
+}
 
 int Responsiple::potionMerchantEvent(Player &player, const std::shared_ptr<Job> &job) {
     int counter = 0;
@@ -14,9 +22,7 @@ int Responsiple::potionMerchantEvent(Player &player, const std::shared_ptr<Job> 
         if (player.getPlayerData().coins >= 5) {
             player.getPlayerData().drinkPotion();
             //check if curr health points got the max or above
-            if (player.getPlayerData().currentHP > job->getMaxHP()) {
-                player.getPlayerData().currentHP = job->getMaxHP();
-            }
+           checkIfHPisMax(player, job);
         }
         counter++;
     }
