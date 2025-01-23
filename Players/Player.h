@@ -63,8 +63,12 @@ public:
  ///getters for the PlayerData
  PlayerData& getPlayerData() { return data; }
  const PlayerData& getPlayerData() const { return data; }
+ ///function for the player when choosing to buy potion to change his data
+ void drinkPotion();
+
+
  ///in case if losing to an encounter we need this function to take the damege
- void takeDamege();
+ void takeDamege(const unsigned int &damage);
     /**
      * Gets the description of the player
      *
