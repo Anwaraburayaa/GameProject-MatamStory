@@ -1,4 +1,7 @@
-#pragma once
+///in this file we will have a class monster
+///and we will have pack class
+///and monsters classes if needed(depending on if they are changeable or not, we might create only for part of them not all
+///the class encounter should inherit from event, also it should have a protected struct containing the data of encounter
 
 #include "Event.h"
 #include <vector>
@@ -7,13 +10,8 @@ using std::vector;
 
 #ifndef ENCOUNTER_H
 #define ENCOUNTER_H
-///in this file we will have a class monster
-///and we will have pack class
-///and monsters classes if needed(depending on if they are changeable or not, we might create only for part of them not all
-///the class encounter should inherit from event, also it should have a protected struct containing the data of encounter
 
-
-class Encounter: public Event{
+class Encounter : public Event {
 protected:
     struct EncounterData {
         string monsterName;
@@ -21,39 +19,80 @@ protected:
         unsigned int loot;
         unsigned int damage;
     };
+
     void applyEvent(Player &player) override;
-    /*
-     * this function checks if anything magical happens at the event
-     */
     virtual void isMagical();
-    ///here we should add the other methods that monster and pack should inherit
-    public:
-    Encounter()=default;
-    ///getters to the date & virtual functions if needed
-    unsigned int getCombatPower() const;
-    unsigned int getLoot() const;
-    unsigned int getDamage() const;
 
+public:
+    Encounter() = default;
+
+
+    virtual unsigned int calculate(const string &property) const = 0;
+
+    unsigned int getCombatPower() const { return calculate("combatPower"); }
+    unsigned int getLoot() const { return calculate("loot"); }
+    unsigned int getDamage() const { return calculate("damage"); }
 };
 
-class Monster: public Encounter {
-    public:
-    Monster()=default;
-    Monster(const Monster& monster)=default;
-    ///todo add implementation later
+class Monster : public Encounter {
+protected:
+    string monsterName;
+    unsigned int combatPower;
+    unsigned int loot;
+    unsigned int damage;
+
+public:
+    Monster() = default;
+    Monster(const Monster &monster) = default;
+
     Monster(const string &monsterName,
-          const unsigned int &combatPower,
-          const unsigned int &loot,
-          const unsigned int &damage);
+            const unsigned int &combatPower,
+            const unsigned int &loot,
+            const unsigned int &damage)
+        : monsterName(monsterName), combatPower(combatPower), loot(loot), damage(damage) {}
+
+    unsigned int calculate(const string &property) const override {
+        if (property == "combatPower") return combatPower;
+        if (property == "loot") return loot;
+        if (property == "damage") return damage;
+        return 0;
+    }
 };
-///todo add fields tommowrow
-class snail: public Monster {};
-class Slime: public Monster {};
-class Balrog : public Monster {};
-///in pack sence we have more that one monster we will use vector of encounters
-class Pack : public Encounter {};
 
+class Snail : public Monster {
+public:
+    Snail() : Monster("Snail", 5, 2, 10) {}
+};
 
+class Slime : public Monster {
+public:
+    Slime() : Monster("Slime", 12, 5, 25) {}
+};
 
+class Balrog : public Monster {
+public:
+    Balrog() : Monster("Balrog", 15, 100, 9001) {}
 
-#endif //ENCOUNTER_H
+    unsigned int calculate(const string &property) const override {
+        if (property == "combatPower") return Monster::calculate(property) + 2;
+        return Monster::calculate(property);
+    }
+};
+
+class Pack : public Encounter {
+private:
+    vector<Encounter*> members;
+
+public:
+    Pack(const vector<Encounter*> &members) : members(members) {}
+
+    unsigned int calculate(const string &property) const override {
+        unsigned int total = 0;
+        for (const auto& member : members) {
+            total += member->calculate(property);
+        }
+        return total;
+    }
+};
+
+#endif
