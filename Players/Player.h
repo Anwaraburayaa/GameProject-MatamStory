@@ -20,6 +20,7 @@ private:
         unsigned int coins = 10;
         unsigned int currentHP = 100;
         bool isKnockedOut = false;
+        void drinkPotion();
     };
 
     PlayerData data;
@@ -64,7 +65,7 @@ public:
  PlayerData& getPlayerData() { return data; }
  const PlayerData& getPlayerData() const { return data; }
  ///function for the player when choosing to buy potion to change his data
- void drinkPotion();
+
 
 
  ///in case if losing to an encounter we need this function to take the damege
