@@ -39,8 +39,9 @@ string Player::getDescription() const {
            "character (level" + std::to_string(getLevel()) + "force" + std::to_string(getForce()) + ")";
 }
 
-///how  to do this?
+
 void Player::caculateCompactPower() {
+    job->caculateCompactPower(*this);
 }
 
 Player &Player::operator=(const Player &other) {
@@ -70,7 +71,7 @@ bool Player::operator<(const Player &other) const {
 void Player::gainLoot(const unsigned int loot) {
     data.coins+=loot;
 }
-////todo fix this
+
 bool Player::applyEvent(const Encounter &encounter) {
     ///if wining
     if(getPlayerData().combatPower>encounter.getEncounterData().combatPower) {
