@@ -4,11 +4,16 @@
 #include <memory>
 #include "Character.h"
 #include "Job.h"
-#include "Encounter.h"
+#include "Events/Encounter.h"
 #include <cassert>
+#include <memory>
 using std::string;
 ///forward declaration to the class job
-class Job;
+//class Job;
+class Character;
+class Encounter;
+//class Job;
+
 class Player {
 private:
     struct PlayerData {
@@ -28,7 +33,7 @@ private:
     std::shared_ptr<Character> character;
  ///to update the compact power after raising the level
     void caculateCompactPower();//done
-   bool applyEvent(const Encounter &encounter);
+    bool applyEvent(const Encounter &encounter);
  ///method to use during the SolarEclipse-Event
  int solarEclipseEvent();
 
@@ -69,7 +74,7 @@ public:
 
 
  ///in case if losing to an encounter we need this function to take the damege
- void takeDamege(const unsigned int &damage);
+ void claculateDamage(const unsigned int &damage);
     /**
      * Gets the description of the player
      *

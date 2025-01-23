@@ -80,7 +80,7 @@ bool Player::applyEvent(const Encounter &encounter) {
         return true;
         ///if losing
     } else {
-        takeDamege(encounter.getEncounterData().damage);
+        claculateDamage(encounter.getEncounterData().damage);
         return false;
     }
 }
@@ -90,7 +90,7 @@ void Player::PlayerData::drinkPotion() {
     this->currentHP += 10;
 }
 
-
+///todo implement the rest of the functions!!!!
 
 
 
