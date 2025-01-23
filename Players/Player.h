@@ -122,7 +122,7 @@ public:
 
 
     ///function to check if the player is knocked out
-    void isPlayerKnockedOut();
+    void PlayerKnockOut();
 
     ///function to enable the player to gain loot:
     void gainLoot(const unsigned int loot);

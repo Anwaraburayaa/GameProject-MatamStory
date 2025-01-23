@@ -31,7 +31,7 @@ void Player::raisLevel() {
     }
 }
 
-void Player::isPlayerKnockedOut() {
+void Player::PlayerKnockOut() {
     this->data.isKnockedOut = true;
 }
 
@@ -95,9 +95,10 @@ void Player::PlayerData::drinkPotion() {
 }
 
 void Player::claculateDamage(const unsigned int &damage) {
-    int currentHPTotal = this->getPlayerData().currentHP;
+    int currentHPTotal = data.currentHP;
     if (currentHPTotal <= damage) {
-        isPlayerKnockedOut();
+        data.currentHP =0;
+        PlayerKnockOut();
     }
     job->calculateDamage(*this, damage);
 }
