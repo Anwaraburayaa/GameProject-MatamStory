@@ -26,7 +26,7 @@ int Player::getHealthPoints() const {
 
 void Player::raisLevel() {
     if (data.level < PlayerData::MaxLevel) {
-        data.level = +1;
+        data.level += 1;
         caculateCompactPower();
     }
 }
@@ -102,7 +102,7 @@ void Player::claculateDamage(const unsigned int &damage) {
     job->calculateDamage(*this, damage);
 }
 
-///todo implement the rest of the functions!!!!
 
 
-//**//
+
+
