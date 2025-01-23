@@ -82,10 +82,19 @@ bool Player::aplayEvent(const Encounter &encounter) {
     } else {
         takeDamege(encounter.getEncounterData().damage);
         return false;
-
-
-
+    }
 }
+void Player::PlayerData::drinkPotion() {
+    assert(this->coins >= 5);
+    this->coins -= 5;
+    this->currentHP += 10;
+}
+
+
+
+
+
+
 
 
 
