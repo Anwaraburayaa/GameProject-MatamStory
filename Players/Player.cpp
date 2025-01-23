@@ -71,10 +71,10 @@ void Player::gainLoot(const unsigned int loot) {
     data.coins+=loot;
 }
 ////todo fix this
-bool Player::aplayEvent(const Encounter &encounter) {
+bool Player::applyEvent(const Encounter &encounter) {
     ///if wining
     if(getPlayerData().combatPower>encounter.getEncounterData().combatPower) {
-        job->fight(getPlayerData(),encounter.getEncounterData());
+        job->fight(*this, encounter);
         gainLoot(encounter.getEncounterData().loot);
         raisLevel();
         return true;

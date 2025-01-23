@@ -28,7 +28,7 @@ private:
     std::shared_ptr<Character> character;
  ///to update the compact power after raising the level
     void caculateCompactPower();//done
-   bool aplayEvent(const Encounter &encounter);
+   bool applyEvent(const Encounter &encounter);
  ///method to use during the SolarEclipse-Event
  int solarEclipseEvent();
 
