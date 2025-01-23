@@ -12,15 +12,17 @@ class Encounter;
 class Player;
 
 class Job {
-
 protected:
-    virtual void caculateCompactPower(Player& player);
-    ///this function we add to see the behavior of each job under this special event
-    virtual int solarEclipseEvent(Player& player);
-    ///this function we add for the encounter when faces a player
-    virtual void fight(Player &player, const Encounter &encounter){}
-    virtual void calculateDamage(Player& player, const unsigned int &damage);
+    virtual void caculateCompactPower(Player &player);
 
+    ///this function we add to see the behavior of each job under this special event
+    virtual int solarEclipseEvent(Player &player);
+
+    ///this function we add for the encounter when faces a player
+    virtual void fight(Player &player, const Encounter &encounter) {
+    }
+
+    virtual void calculateDamage(Player &player, const unsigned int &damage);
 
 public:
     virtual ~Job() = default;
@@ -46,9 +48,6 @@ public:
 
     ///function to get the string for job, we will use that in the factory :)
     virtual string getJobName() const =0;
-
-
-
 };
 
 class Archer : public Job {
@@ -65,6 +64,7 @@ public:
 class Magician : public Job {
 private:
     int solarEclipseEvent(Player &player) override;
+
 public:
     Magician() = default;
 
@@ -73,14 +73,14 @@ public:
 
 class Warrior : public Job {
 private:
-    void fight(Player &player,  const Encounter &encounter) override;
+    void fight(Player &player, const Encounter &encounter) override;
 
     void caculateCompactPower(Player &player) override;
 
 public:
     Warrior() = default;
 
-    static const int DAMAGE_FIGHT= 10;
+    static const int DAMAGE_FIGHT = 10;
 
     string getJobName() const override;
 

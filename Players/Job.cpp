@@ -1,6 +1,3 @@
-//
-// Created by anwar on 1/15/2025.
-//
 
 #include "Job.h"
 #include "Player.h"
@@ -33,13 +30,11 @@ int Magician::solarEclipseEvent(Player &player) {
     return 1;
 }
 
-
-
 string Warrior::getJobName() const {
     return "Warrior";
 }
 void Warrior::caculateCompactPower(Player& player) {
-    player.getPlayerData().combatPower=2*player.getPlayerData().force+player.getPlayerData().level;
+    player.getPlayerData().combatPower=2*(player.getPlayerData().force)+(player.getPlayerData().level);
 }
 void Warrior::fight(Player &player, const Encounter &encounter) {
     calculateDamage(player, DAMAGE_FIGHT);
