@@ -25,7 +25,7 @@ protected:
     };
 
     void applyEvent(Player &player) override;
-    virtual void isMagical();
+    virtual bool isSpecial();
 
 public:
     Encounter() = default;

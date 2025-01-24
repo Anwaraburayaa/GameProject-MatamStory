@@ -27,9 +27,17 @@ unsigned int Pack::calculate(const string &property) const {
 }
 
 void Encounter::applyEvent(Player &player) {
+    if (isSpecial()) {
+        SpecialEvent* specialEvent = dynamic_cast<SpecialEvent*>(this);
+        if (specialEvent) {
+            specialEvent->applyEvent(player);
+        }
+        return;
+    }
+
+
     unsigned int monsterCombatPower = getCombatPower();
     unsigned int playerCombatPower = player.getForce() + player.getLevel();
-
 
     if (playerCombatPower > monsterCombatPower) {
         player.raisLevel();
@@ -40,10 +48,12 @@ void Encounter::applyEvent(Player &player) {
     } else {
         player.claculateDamage(getDamage());
     }
-
-    result = (playerCombatPower > monsterCombatPower) ? "Player wins" : "Player loses";
 }
 
 
-void Encounter::isSpecial() {
+bool Encounter::isSpecial() {
+
+    SpecialEvent* specialEvent = dynamic_cast<SpecialEvent*>(currentEvent);
+
+    return specialEvent != nullptr;
 }
