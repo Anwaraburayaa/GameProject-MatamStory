@@ -1,5 +1,7 @@
 
 #include "Player.h"
+#include "../Events/Encounter.h"
+class Job;
 
 string Player::getName() const {
     return playerData.name;
@@ -29,13 +31,13 @@ void Player::raisLevel() {
     }
 }
 
-void Player::PlayerKnockOut() {
-    this->playerData.isKnockedOut = true;
+bool Player::PlayerKnockOut() {
+   return this->playerData.isKnockedOut = true;
 }
 
 string Player::getDescription() const {
-    return getName() + ", " + this->getJob()->getJobName() + "with" + getCharacter()->getCharacterName() +
-           "character (level" + std::to_string(getLevel()) + "force" + std::to_string(getForce()) + ")";
+    return getName() + ", " + this->getJob()->getJobName() + " with " + getCharacter()->getCharacterName()
+           + " character (level " + std::to_string(getLevel()) + ", force " + std::to_string(getForce()) + ")";
 }
 
 
@@ -110,6 +112,18 @@ std::ostream &operator<<(std::ostream &out, const Player::PlayerData &playerData
   out << "Is KO'ed: " << playerData.isKnockedOut;
   return out;
  }
+
+int Player::solarEclipseEvent() {
+    int solarEclipseEffect;
+    solarEclipseEffect = job->solarEclipseEvent(*this);
+    caculateCompactPower();
+    return solarEclipseEffect;
+}
+
+int Player::potionMerchantEvent() {
+    return character->potionMerchantEvent(*this, job);
+}
+
 
 
 
