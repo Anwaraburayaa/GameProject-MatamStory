@@ -31,7 +31,7 @@ protected:
 public:
     Encounter() = default;
     ///this function is made to be used at the end of the applyEvent for barlog esspicially
-    virtual void SpecialEffect() {}
+    virtual void makeSpecialEffect() {}
 
 
     ///adding getters for encounter data
@@ -80,7 +80,7 @@ public:
         encounterData.damage = 9001;
     }
     ///after every event the compact power of balrog duplicates
-    void SpecialEffect() override;
+    void makeSpecialEffect() override;
 };
 
 class Pack : public Encounter {
@@ -103,9 +103,9 @@ public:
            encounterData.damage += encounter->getDamage();
         }
     }
-    void sync();
+    void updateStatus();
 
-    void SpecialEffect() override;
+    void makeSpecialEffect() override;
 
     string getDescription() const override;
 

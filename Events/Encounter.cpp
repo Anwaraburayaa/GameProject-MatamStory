@@ -25,7 +25,7 @@ void Encounter::applyEvent(Player &player) {
     else {
         result = getEncounterLostMessage(player, encounterData.damage);
     }
-    SpecialEffect();
+    makeSpecialEffect();
 }
 std::string Monster::getDescription() const {
     return encounterData.monsterName +
@@ -41,3 +41,14 @@ std :: string Pack::getDescription() const {
           std::to_string(encounterData.damage) + ")";
 }
 
+void Balrog::makeSpecialEffect() {
+    encounterData.combatPower += 2;
+}
+///it iterates through the monsters in the pack and if they are balrogs it updates their compactPower
+///then updates the pack status
+void Pack::makeSpecialEffect() {
+    for (const std::unique_ptr<Encounter> &encounter: encounters) {
+        encounter->makeSpecialEffect();
+    }
+    updateStatus();
+}
