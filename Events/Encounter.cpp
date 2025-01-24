@@ -7,11 +7,18 @@ void Encounter::applyEvent(Player &player) {
     ///if player won
     ///using player applyEvent here
     if (player.applyEvent(*this)) {
-        result = getEncounterWonMessage(player, data.loot);
+        result = getEncounterWonMessage(player, encounterData.loot);
     }
     ///if the player lost
     else {
-        result = getEncounterLostMessage(player, data.damage);
+        result = getEncounterLostMessage(player, encounterData.damage);
     }
     SpecialEffect();
 }
+std::string Monster::getDescription() const {
+    return encounterData.monsterName +
+         " (power " + std::to_string(encounterData.combatPower) + ", loot " +
+         std::to_string(encounterData.loot) +
+         ", damage " + std::to_string(encounterData.damage) + ")";
+}
+
