@@ -2,6 +2,18 @@
 #include "Utilities.h"
 #include "Player.h"
 
+unsigned int Encounter::getCombatPower() const {
+    return encounterData.combatPower;
+}
+
+unsigned int Encounter::getLoot() const {
+    return encounterData.loot;
+}
+
+unsigned int Encounter::getDamage() const {
+    return encounterData.damage;
+}
+
 void Encounter::applyEvent(Player &player) {
     ///todo understand this and fix it
     ///if player won
