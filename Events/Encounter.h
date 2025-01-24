@@ -84,14 +84,24 @@ public:
 
 class Pack : public Encounter {
 private:
-    vector<Encounter *> members;
+    vector<std::unique_ptr<Encounter>> encounters;
 
 public:
-    Pack(const vector<Encounter *> &members);
+    Pack() = default;
 
-    unsigned int calculate(const string &property) const override;
+    explicit Pack(vector<std::unique_ptr<Encounter>> &encounters) {
+        this->encounters = std::move(encounters);
+        data.monsterName = "Pack";
+        data.combatPower = 0;
+        data.loot = 0;
+        data.damage = 0;
 
-    std::string getDescription() const override;
+        for (std::unique_ptr<Encounter> &encounter: this->encounters) {
+           data.combatPower += encounter->getCombatPower();
+            data.loot += encounter->getLoot();
+           data.damage += encounter->getDamage();
+        }
+    }
 };
 
 #endif
