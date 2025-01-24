@@ -27,23 +27,25 @@ void Encounter::applyEvent(Player &player) {
     }
     makeSpecialEffect();
 }
+
 std::string Monster::getDescription() const {
     return encounterData.monsterName +
-         " (power " + std::to_string(encounterData.combatPower) + ", loot " +
-         std::to_string(encounterData.loot) +
-         ", damage " + std::to_string(encounterData.damage) + ")";
+           " (power " + std::to_string(encounterData.combatPower) + ", loot " +
+           std::to_string(encounterData.loot) +
+           ", damage " + std::to_string(encounterData.damage) + ")";
 }
 
-std :: string Pack::getDescription() const {
+std::string Pack::getDescription() const {
     return "Pack of " + std::to_string(encounters.size()) + " members (power " +
-          std::to_string(encounterData.combatPower) + ", loot " +
-          std::to_string(encounterData.loot) + ", damage " +
-          std::to_string(encounterData.damage) + ")";
+           std::to_string(encounterData.combatPower) + ", loot " +
+           std::to_string(encounterData.loot) + ", damage " +
+           std::to_string(encounterData.damage) + ")";
 }
 
 void Balrog::makeSpecialEffect() {
     encounterData.combatPower += 2;
 }
+
 ///it iterates through the monsters in the pack and if they are balrogs it updates their compactPower
 ///then updates the pack status
 void Pack::makeSpecialEffect() {
@@ -51,4 +53,16 @@ void Pack::makeSpecialEffect() {
         encounter->makeSpecialEffect();
     }
     updateStatus();
+}
+
+void Pack::updateStatus() {
+    encounterData.combatPower = 0;
+    encounterData.loot = 0;
+    encounterData.damage = 0;
+
+    for (const std::unique_ptr<Encounter> &encounter: encounters) {
+        encounterData.combatPower += encounter->getCombatPower();
+        encounterData.loot += encounter->getLoot();
+        encounterData.damage += encounter->getDamage();
+    }
 }
