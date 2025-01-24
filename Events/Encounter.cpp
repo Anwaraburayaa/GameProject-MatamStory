@@ -1,5 +1,4 @@
 #include "Encounter.h"
-#include <stdexcept>
 
 Monster::Monster(const string &monsterName, const unsigned int &combatPower, const unsigned int &loot, const unsigned int &damage) {
     data = {monsterName, combatPower, loot, damage};
