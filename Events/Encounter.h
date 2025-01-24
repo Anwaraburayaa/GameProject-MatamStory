@@ -31,7 +31,8 @@ protected:
 public:
     Encounter() = default;
     ///this function is made to be used at the end of the applyEvent for barlog esspicially
-    virtual void SpecialEffect(){}
+    virtual void SpecialEffect() {}
+
 
     ///adding getters for encounter data
     EncounterData getEncounterData() const {
@@ -102,6 +103,12 @@ public:
            data.damage += encounter->getDamage();
         }
     }
+    void sync();
+
+    void SpecialEffect() override;
+
+    string getDescription() const override;
+
 };
 
 #endif
