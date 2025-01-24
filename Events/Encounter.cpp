@@ -22,3 +22,10 @@ std::string Monster::getDescription() const {
          ", damage " + std::to_string(encounterData.damage) + ")";
 }
 
+std :: string Pack::getDescription() const {
+    return "Pack of " + std::to_string(encounters.size()) + " members (power " +
+          std::to_string(encounterData.combatPower) + ", loot " +
+          std::to_string(encounterData.loot) + ", damage " +
+          std::to_string(encounterData.damage) + ")";
+}
+
