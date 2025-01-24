@@ -30,12 +30,8 @@ protected:
 
 public:
     Encounter() = default;
-
-    virtual ~Encounter() = default;
-
-    virtual std::string getDescription() const = 0;
-
-    virtual void SpecialEffect();
+    ///this function is made to be used at the end of the applyEvent for barlog esspicially
+    virtual void SpecialEffect(){}
 
     ///adding getters for encounter data
     EncounterData getEncounterData() const {
@@ -62,21 +58,16 @@ public:
         data.loot = loot;
         data.damage = damage;
     }
+    static Monster Snail() {
+        return {"Snail", 5, 2, 10};
+    }
+    static Monster Slime() {
+        return {"Slime", 12, 5, 25};
+    }
     std::string getDescription() const override;
 
 };
 
-class Snail : public Monster {
-public:
-    Snail() : Monster("Snail", 5, 2, 10) {
-    }
-};
-
-class Slime : public Monster {
-public:
-    Slime() : Monster("Slime", 12, 5, 25) {
-    }
-};
 
 class Balrog : public Monster {
 public:
