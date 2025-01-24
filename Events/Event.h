@@ -1,11 +1,13 @@
 
 #pragma once
+#include <string>
+using std::string;
 
 #include "../Players/Player.h"
-//todo add virtual functions that other classes will use
+class Player;
 class Event {
     protected:
-    string result;
+     std::string result;
 public:
    virtual  void applyEvent(Player& player)=0;
     /**
@@ -13,7 +15,7 @@ public:
      *
      * @return - the description of the event
     */
-    virtual string getDescription() const;
+    virtual string getDescription() const=0;
     string getResult() const {
         return result;
     }
