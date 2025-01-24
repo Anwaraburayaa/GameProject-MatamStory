@@ -56,7 +56,12 @@ public:
     Monster() = default;
     Monster(const Monster &other) = default;
     Monster(const string &monsterName, const unsigned int &combatPower, const unsigned int &loot,
-            const unsigned int &damage);
+            const unsigned int &damage) {
+        data.monsterName = monsterName;
+        data.combatPower = combatPower;
+        data.loot = loot;
+        data.damage = damage;
+    }
     std::string getDescription() const override;
 
 };
