@@ -71,13 +71,15 @@ public:
 
 class Balrog : public Monster {
 public:
-    Balrog() : Monster("Balrog", 15, 100, 9001) {
+    ///empty c'tor
+    Balrog() {
+        data.monsterName = "Balrog";
+        data.combatPower = 15;
+        data.loot = 100;
+        data.damage = 9001;
     }
-
-    unsigned int calculate(const string &property) const override {
-        if (property == "combatPower") return Monster::calculate(property) + 2;
-        return Monster::calculate(property);
-    }
+    ///after every event the compact power of balrog duplicates
+    void SpecialEffect() override;
 };
 
 class Pack : public Encounter {
