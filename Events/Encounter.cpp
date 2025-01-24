@@ -9,7 +9,7 @@ unsigned int Monster::calculate(const string &property) const {
     if (property == "combatPower") return data.combatPower;
     if (property == "loot") return data.loot;
     if (property == "damage") return data.damage;
-    return 0; // Default for unsupported property
+    return 0;
 }
 
 Pack::Pack(const vector<Encounter*> &members) : members(members) {
@@ -24,6 +24,17 @@ unsigned int Pack::calculate(const string &property) const {
         total += member->calculate(property);
     }
     return total;
+}
+
+std::string Pack::getDescription() const {
+    unsigned int totalPower = calculate("combatPower");
+    unsigned int totalLoot = calculate("loot");
+    unsigned int totalDamage = calculate("damage");
+
+    return "Pack of " + std::to_string(members.size()) + " members (power " +
+           std::to_string(totalPower) + ", loot " +
+           std::to_string(totalLoot) + ", damage " +
+           std::to_string(totalDamage) + ")";
 }
 
 void Encounter::applyEvent(Player &player) {

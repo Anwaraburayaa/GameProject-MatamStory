@@ -25,12 +25,13 @@ protected:
     };
 
     void applyEvent(Player &player) override;
+
     virtual bool isSpecial();
 
 public:
     Encounter() = default;
     virtual ~Encounter() = default;
-
+    virtual std::string getDescription() const = 0;
     virtual unsigned int calculate(const string &property) const = 0;
 
     unsigned int getCombatPower() const { return calculate("combatPower"); }
@@ -45,6 +46,12 @@ protected:
 public:
     Monster() = default;
     Monster(const string &monsterName, const unsigned int &combatPower, const unsigned int &loot, const unsigned int &damage);
+
+    std::string getDescription() const override {
+        return monsterName + " (power " + std::to_string(combatPower) +
+               ", loot " + std::to_string(loot) +
+               ", damage " + std::to_string(damage) + ")";
+    }
 
     unsigned int calculate(const string &property) const override;
 };
@@ -76,6 +83,7 @@ private:
 public:
     Pack(const vector<Encounter*> &members);
     unsigned int calculate(const string &property) const override;
+    std::string getDescription() const override;
 };
 
 #endif
