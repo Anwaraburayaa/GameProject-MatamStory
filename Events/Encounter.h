@@ -3,10 +3,14 @@
 ///and monsters classes if needed(depending on if they are changeable or not, we might create only for part of them not all
 ///the class encounter should inherit from event, also it should have a protected struct containing the data of encounter
 
+#pragma once
+
 #include "Event.h"
 #include <vector>
+#include <string>
 
 using std::vector;
+using std::string;
 
 #ifndef ENCOUNTER_H
 #define ENCOUNTER_H
@@ -25,7 +29,7 @@ protected:
 
 public:
     Encounter() = default;
-
+    virtual ~Encounter() = default;
 
     virtual unsigned int calculate(const string &property) const = 0;
 
@@ -36,27 +40,13 @@ public:
 
 class Monster : public Encounter {
 protected:
-    string monsterName;
-    unsigned int combatPower;
-    unsigned int loot;
-    unsigned int damage;
+    EncounterData data;
 
 public:
     Monster() = default;
-    Monster(const Monster &monster) = default;
+    Monster(const string &monsterName, const unsigned int &combatPower, const unsigned int &loot, const unsigned int &damage);
 
-    Monster(const string &monsterName,
-            const unsigned int &combatPower,
-            const unsigned int &loot,
-            const unsigned int &damage)
-        : monsterName(monsterName), combatPower(combatPower), loot(loot), damage(damage) {}
-
-    unsigned int calculate(const string &property) const override {
-        if (property == "combatPower") return combatPower;
-        if (property == "loot") return loot;
-        if (property == "damage") return damage;
-        return 0;
-    }
+    unsigned int calculate(const string &property) const override;
 };
 
 class Snail : public Monster {
@@ -84,15 +74,8 @@ private:
     vector<Encounter*> members;
 
 public:
-    Pack(const vector<Encounter*> &members) : members(members) {}
-
-    unsigned int calculate(const string &property) const override {
-        unsigned int total = 0;
-        for (const auto& member : members) {
-            total += member->calculate(property);
-        }
-        return total;
-    }
+    Pack(const vector<Encounter*> &members);
+    unsigned int calculate(const string &property) const override;
 };
 
 #endif
