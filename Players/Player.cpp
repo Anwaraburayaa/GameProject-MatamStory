@@ -1,38 +1,36 @@
-//
-// Created by anwar on 1/19/2025.
-//
+
 #include "Player.h"
 
 string Player::getName() const {
-    return data.name;
+    return playerData.name;
 }
 
 
 unsigned int Player::getCoins() const {
-    return data.coins;
+    return playerData.coins;
 }
 
 int Player::getForce() const {
-    return data.force;
+    return playerData.force;
 }
 
 int Player::getLevel() const {
-    return data.level;
+    return playerData.level;
 }
 
 int Player::getHealthPoints() const {
-    return data.currentHP;
+    return playerData.currentHP;
 }
 
 void Player::raisLevel() {
-    if (data.level < PlayerData::MaxLevel) {
-        data.level += 1;
+    if (playerData.level < PlayerData::MaxLevel) {
+        playerData.level += 1;
         caculateCompactPower();
     }
 }
 
 void Player::PlayerKnockOut() {
-    this->data.isKnockedOut = true;
+    this->playerData.isKnockedOut = true;
 }
 
 string Player::getDescription() const {
@@ -49,29 +47,29 @@ Player &Player::operator=(const Player &other) {
     if (this == &other) {
         return *this;
     }
-    data = other.data;
+    playerData = other.playerData;
     job = other.job;
     character = other.character;
     return *this;
 }
 
 bool Player::operator<(const Player &other) const {
-    if (data.level < other.getLevel()) {
+    if (playerData.level < other.getLevel()) {
         return true;
     }
-    if (data.level > other.getLevel()) {
+    if (playerData.level > other.getLevel()) {
         return false;
     }
-    if (data.coins < other.getCoins())
+    if (playerData.coins < other.getCoins())
         return true;
-    if (data.coins > other.getCoins())
+    if (playerData.coins > other.getCoins())
         return false;
 
-    return data.name > other.getName();
+    return playerData.name > other.getName();
 }
 
 void Player::gainLoot(const unsigned int loot) {
-    data.coins += loot;
+    playerData.coins += loot;
 }
 
 bool Player::applyEvent(const Encounter &encounter) {
@@ -95,9 +93,9 @@ void Player::PlayerData::drinkPotion() {
 }
 
 void Player::claculateDamage(const unsigned int &damage) {
-    int currentHPTotal = data.currentHP;
+    int currentHPTotal = playerData.currentHP;
     if (currentHPTotal <= damage) {
-        data.currentHP =0;
+        playerData.currentHP =0;
         PlayerKnockOut();
     }
     job->calculateDamage(*this, damage);

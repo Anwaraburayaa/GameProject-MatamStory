@@ -27,7 +27,7 @@ private:
         void drinkPotion();
     };
 
-    PlayerData data;
+    PlayerData playerData;
     std::shared_ptr<Job> job;
     std::shared_ptr<Character> character;
 
@@ -54,19 +54,19 @@ public:
 
     Player(const string &name, const std::shared_ptr<Job> &job,
            const std::shared_ptr<Character> &character) {
-        this->data.name = name;
+        this->playerData.name = name;
         this->job = job;
         this->character = character;
-        data.coins = job->getStartCoins();
-        data.force = job->getStartForce();
-        data.level = job->getStartLevel();
-        data.currentHP = job->getMaxHP();
+        playerData.coins = job->getStartCoins();
+        playerData.force = job->getStartForce();
+        playerData.level = job->getStartLevel();
+        playerData.currentHP = job->getMaxHP();
         job->caculateCompactPower(*this);
     }
 
     ///getters for the PlayerData
-    PlayerData &getPlayerData() { return data; }
-    const PlayerData &getPlayerData() const { return data; }
+    PlayerData &getPlayerData() { return playerData; }
+    const PlayerData &getPlayerData() const { return playerData; }
 
 
     ///in case if losing to an encounter we need this function to take the damage
