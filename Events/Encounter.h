@@ -26,7 +26,7 @@ protected:
 
     void applyEvent(Player &player) override;
 
-    EncounterData data;
+    EncounterData encounterData;
 
 public:
     Encounter() = default;
@@ -36,11 +36,11 @@ public:
 
     ///adding getters for encounter data
     EncounterData getEncounterData() const {
-        return data;
+        return encounterData;
     }
 
     EncounterData getEncounterData() {
-        return data;
+        return encounterData;
     }
 
     unsigned int getCombatPower() const;
@@ -54,10 +54,10 @@ public:
     Monster(const Monster &other) = default;
     Monster(const string &monsterName, const unsigned int &combatPower, const unsigned int &loot,
             const unsigned int &damage) {
-        data.monsterName = monsterName;
-        data.combatPower = combatPower;
-        data.loot = loot;
-        data.damage = damage;
+        encounterData.monsterName = monsterName;
+        encounterData.combatPower = combatPower;
+        encounterData.loot = loot;
+        encounterData.damage = damage;
     }
     static Monster Snail() {
         return {"Snail", 5, 2, 10};
@@ -74,10 +74,10 @@ class Balrog : public Monster {
 public:
     ///empty c'tor
     Balrog() {
-        data.monsterName = "Balrog";
-        data.combatPower = 15;
-        data.loot = 100;
-        data.damage = 9001;
+        encounterData.monsterName = "Balrog";
+        encounterData.combatPower = 15;
+        encounterData.loot = 100;
+        encounterData.damage = 9001;
     }
     ///after every event the compact power of balrog duplicates
     void SpecialEffect() override;
@@ -92,15 +92,15 @@ public:
 
     explicit Pack(vector<std::unique_ptr<Encounter>> &encounters) {
         this->encounters = std::move(encounters);
-        data.monsterName = "Pack";
-        data.combatPower = 0;
-        data.loot = 0;
-        data.damage = 0;
+        encounterData.monsterName = "Pack";
+        encounterData.combatPower = 0;
+        encounterData.loot = 0;
+        encounterData.damage = 0;
 
         for (std::unique_ptr<Encounter> &encounter: this->encounters) {
-           data.combatPower += encounter->getCombatPower();
-            data.loot += encounter->getLoot();
-           data.damage += encounter->getDamage();
+           encounterData.combatPower += encounter->getCombatPower();
+            encounterData.loot += encounter->getLoot();
+           encounterData.damage += encounter->getDamage();
         }
     }
     void sync();
