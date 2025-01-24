@@ -100,7 +100,16 @@ void Player::claculateDamage(const unsigned int &damage) {
     }
     job->calculateDamage(*this, damage);
 }
-
+std::ostream &operator<<(std::ostream &out, const Player::PlayerData &playerData) {
+  out << "Name: " + playerData.name << std::endl;
+  out << "Level: " << playerData.level << std::endl;
+  out << "HP: " << playerData.currentHP << std::endl;
+  out << "Force: " << playerData.force << std::endl;
+  out << "Combat Power: " << playerData.combatPower << std::endl;
+  out << "Coins: " << playerData.coins << std::endl;
+  out << "Is KO'ed: " << playerData.isKnockedOut;
+  return out;
+ }
 
 
 

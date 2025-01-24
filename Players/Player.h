@@ -4,6 +4,7 @@
 #include <memory>
 #include "Character.h"
 #include "Job.h"
+#include <iostream>
 #include "Events/Encounter.h"
 #include <cassert>
 using std::string;
@@ -134,5 +135,6 @@ public:
     ///operators overload for player :
     bool operator<(const Player &other) const;
     Player &operator=(const Player &other);
+    friend std::ostream &operator<<(std::ostream &out, const PlayerData &playerData);
 
 };
