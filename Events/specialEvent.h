@@ -7,25 +7,18 @@
 class SpecialEvent : public Event {
 public:
     SpecialEvent() = default;
-    virtual ~SpecialEvent() = default;
-    virtual void applyEvent(Player& player) = 0;
-    virtual std::string getDescription() const = 0;
 };
 
-class SolarEclips : public SpecialEvent {
+class SolarEclipse : public SpecialEvent {
 public:
-    void applyEvent(Player& player) override;
-    std::string getDescription() const override {
-        return "SolarEclipse";
-    }
+    void applyEvent(Player &player) override;
+    std::string getDescription() const override;
 };
 
-class PotionsMerchant : public SpecialEvent {
+class PotionMerchant : public SpecialEvent {
 public:
-    void applyEvent(Player& player) override;
-    std::string getDescription() const override {
-        return "PotionsMerchant";
-    }
+    void applyEvent(Player &player) override;
+    std::string getDescription() const override;
 };
 
 
