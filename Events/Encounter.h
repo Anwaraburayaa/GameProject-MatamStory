@@ -26,7 +26,7 @@ protected:
 
     void applyEvent(Player &player) override;
 
-    virtual bool isSpecial();
+    bool isSpecial();
     EncounterData data;
 
 

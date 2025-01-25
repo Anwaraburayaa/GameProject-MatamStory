@@ -1,4 +1,6 @@
 #include "Encounter.h"
+#include "specialEvent.h"
+
 
 Monster::Monster(const string &monsterName, const unsigned int &combatPower, const unsigned int &loot, const unsigned int &damage) {
     data = {monsterName, combatPower, loot, damage};
@@ -52,7 +54,7 @@ void Encounter::applyEvent(Player &player) {
     if (playerCombatPower > monsterCombatPower) {
         player.raisLevel();
         player.gainLoot(getLoot());
-        if (player.getJob()->isCloseRange()) {
+        if (player.getJob()->getJobName() == "Warrior") {
             player.claculateDamage(10);
         }
     } else {
@@ -62,8 +64,6 @@ void Encounter::applyEvent(Player &player) {
 
 
 bool Encounter::isSpecial() {
-
-    SpecialEvent* specialEvent = dynamic_cast<SpecialEvent*>(currentEvent);
-
-    return specialEvent != nullptr;
+    return dynamic_cast<SpecialEvent*>(this) != nullptr;
 }
+
