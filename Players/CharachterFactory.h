@@ -2,8 +2,7 @@
 // Created by anwar on 1/19/2025.
 //
 
-#ifndef CHARACHTERFACTORY_H
-#define CHARACHTERFACTORY_H
+
 
 #pragma once
 
@@ -18,16 +17,14 @@
 
 class CharachterFactory {
 
-    std::map<std::string, std::shared_ptr<Character>> mapCharacters =
+    std::map<std::string, std::shared_ptr<Character>> CharactersMap =
            {{RESPONSIBLE, std::make_shared<Responsiple>()},
             {RISKTAKING,  std::make_shared<RiskTaking>()},
            };
 
 public:
-    std::shared_ptr<Character> CreateCharachter(const std::string &characterName) const;
+    std::shared_ptr<Character> charachterCreator(const std::string &characterName) const;
 
 };
 
 
-
-#endif //CHARACHTERFACTORY_H

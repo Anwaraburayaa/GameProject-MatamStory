@@ -6,12 +6,8 @@
 #include <string>
 #include <memory>
 #include "Job.h"
-#include "Player.h"
-
+//#include "Player.h"
 using std::string;
-#ifndef CHARACTER_H
-#define CHARACTER_H
-
 class Player;
 //class Job;
 class Character {
@@ -37,4 +33,4 @@ class RiskTaking : public Character {
 
 
 
-#endif //CHARACTER_H
+

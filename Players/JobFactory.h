@@ -1,5 +1,4 @@
-#ifndef JOBFACTORY_H
-#define JOBFACTORY_H
+
 #pragma once
 
 #include "Job.h"
@@ -20,8 +19,6 @@ private:
         {ARCHER, std::make_shared<Archer>()},
     };
     public:
-    std::shared_ptr<Job> createJob(const std::string& jobName) const;
+    //todo change the names!
+    std::shared_ptr<Job> jobCreator(const std::string& jobName) const;
 };
-
-
-#endif //JOBFACTORY_H

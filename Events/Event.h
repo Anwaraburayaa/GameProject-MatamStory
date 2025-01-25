@@ -3,13 +3,13 @@
 #include <string>
 using std::string;
 
-#include "../Players/Player.h"
+//#include "../Players/Player.h"
 class Player;
 class Event {
     protected:
      std::string result;
 public:
-   virtual  void applyEvent(Player& player)=0;
+    virtual void applyEvent(Player &player) = 0;
     /**
      * Gets the description of the event
      *

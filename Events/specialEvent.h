@@ -1,8 +1,12 @@
+
+#pragma once
 #ifndef SPECIALEVENT_H
 #define SPECIALEVENT_H
 
 #include <string>
 #include "Event.h"
+
+
 
 class SpecialEvent : public Event {
 public:

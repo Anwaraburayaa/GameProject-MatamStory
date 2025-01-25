@@ -8,12 +8,13 @@
 #include "Event.h"
 #include <vector>
 #include <string>
+#include <memory>
+
 
 using std::vector;
 using std::string;
 
-#ifndef ENCOUNTER_H
-#define ENCOUNTER_H
+
 
 class Encounter : public Event {
 protected:
@@ -24,11 +25,12 @@ protected:
         unsigned int damage;
     };
 
-    void applyEvent(Player &player) override;
+
 
     EncounterData encounterData;
 
 public:
+    void applyEvent(Player &player) override;
     Encounter() = default;
     ///this function is made to be used at the end of the applyEvent for barlog esspicially
     virtual void makeSpecialEffect() {}
@@ -111,4 +113,4 @@ public:
 
 };
 
-#endif
+

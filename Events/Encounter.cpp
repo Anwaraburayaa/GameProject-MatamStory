@@ -1,6 +1,6 @@
 #include "Encounter.h"
 #include "Utilities.h"
-#include "Player.h"
+
 
 unsigned int Encounter::getCombatPower() const {
     return encounterData.combatPower;
@@ -15,7 +15,6 @@ unsigned int Encounter::getDamage() const {
 }
 
 void Encounter::applyEvent(Player &player) {
-    ///todo understand this and fix it
     ///if player won
     ///using player applyEvent here
     if (player.applyEvent(*this)) {

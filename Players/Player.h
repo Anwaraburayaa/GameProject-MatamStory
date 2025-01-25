@@ -3,12 +3,12 @@
 #include <string>
 #include <memory>
 #include "Character.h"
-#include "Job.h"
+//#include "Job.h"
 #include <iostream>
-#include "Events/Encounter.h"
+//#include "Events/Encounter.h"
 #include <cassert>
 using std::string;
-class Character;
+//class Character;
 class Encounter;
 
 
@@ -35,7 +35,7 @@ private:
     ///to update the compact power after raising the level
     void caculateCompactPower();
 
-    bool applyEvent(const Encounter &encounter);
+
 
     ///method to use during the SolarEclipse-Event
     int solarEclipseEvent();
@@ -51,6 +51,7 @@ private:
     friend class PotionMerchant;
 
 public:
+ bool applyEvent(const Encounter &encounter);
     Player() = default;
 
     Player(const string &name, const std::shared_ptr<Job> &job,
@@ -123,7 +124,7 @@ public:
 
 
     ///function to check if the player is knocked out
-    void PlayerKnockOut();
+    bool PlayerKnockOut();
 
     ///function to enable the player to gain loot:
     void gainLoot(const unsigned int loot);

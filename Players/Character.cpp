@@ -1,5 +1,6 @@
 
 #include "Character.h"
+#include "Player.h"
 ///helper function to prevent code duplication
 void checkIfHPisMax(Player &player, const std::shared_ptr<Job> &job) {
     if (player.getPlayerData().currentHP > job->getMaxHP()) {

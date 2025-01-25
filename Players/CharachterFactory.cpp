@@ -5,9 +5,9 @@
 #include "CharachterFactory.h"
 
 
-std::shared_ptr<Character> CharachterFactory::CreateCharachter(const std::string &characterName) const {
-    auto it = mapCharacters.find(characterName);
-    if (it != mapCharacters.end())
+std::shared_ptr<Character> CharachterFactory::charachterCreator(const std::string &characterName) const {
+    auto it = CharactersMap.find(characterName);
+    if (it != CharactersMap.end())
         return it->second;
     else
         return nullptr;
