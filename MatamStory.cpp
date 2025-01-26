@@ -1,7 +1,53 @@
 
 #include "MatamStory.h"
 
-#include "Utilities.h"
+#include <memory>
+
+#define SNAIL "Snail"
+#define SLIME "Slime"
+#define BALROG "Balrog"
+#define PACK "Pack"
+#define SOLARECLIPSE "SolarEclipse"
+#define POTIONSMERCHANT "PotionsMerchant"
+#define WARRIOR "Warrior"
+#define ARCHER "Archer"
+#define MAGICIAN "Magician"
+#define RESPONSIBLE "Responsible"
+#define RISKTAKING "RiskTaking"
+///helper fuctions for encounter
+
+bool legalName(const string &name) {
+    for (char letter: name) {
+        if ((letter >= 'a' && letter <= 'z') || (letter >= 'A' && letter <= 'Z'))
+            continue;
+        else
+            return true;
+    }
+    return false;
+}
+bool isInputNumber(const string &string) {
+    for (char letter: string) {
+        if (letter >= '0' && letter <= '9')
+            continue;
+        else
+            return false;
+    }
+    return true;
+}
+ int srtingToNum(const string &string) {
+    int num=0;
+    if(isInputNumber(string)){
+        for (char digit: string) {
+            num = num*10;
+            num +=digit-'0';
+        }
+        return num;
+
+    }
+    throw std::bad_cast();
+}
+
+
 
 MatamStory::MatamStory(std::istream& eventsStream, std::istream& playersStream) {
 
