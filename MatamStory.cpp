@@ -26,7 +26,7 @@ std::unique_ptr<Encounter> getSingleEncounter(const string &eventName);
 std::unique_ptr<Event> getSingleEvent(const string &eventName);
 
 ///checks if the name contains only letters
-bool legalName(const string &name) {
+bool notLegalName(const string &name) {
     for (char letter: name) {
         if ((letter >= 'a' && letter <= 'z') || (letter >= 'A' && letter <= 'Z'))
             continue;
@@ -132,6 +132,7 @@ std::unique_ptr<Encounter> getSingleEncounter(const string &eventName) {
     }
     return nullptr;
 }
+
 ///this function handle the case if the event is not pack
 std::unique_ptr<Event> getSingleEvent(const string &eventName) {
     std::unique_ptr<Event> newEvent = std::move(getSingleEncounter(eventName));
@@ -146,27 +147,51 @@ std::unique_ptr<Event> getSingleEvent(const string &eventName) {
 
 
 MatamStory::MatamStory(std::istream &eventsStream, std::istream &playersStream) {
-    // string eventName;
-    // string nextText;
-    // std::string line;
-    // eventsStream >> eventName;
-    // if (eventName == PACK) {
-    //     eventsStream >> nextText;
-    //     events.push_back(std::move(autherizePack(eventsStream, nextText)));
-    // } else {
-    //     events.push_back(std::move(getSingleEvent(eventName)));
-    // }
-    //
-    // if (events.size() < 2)
-    //     throw (std::runtime_error("Invalid Events File"));
+    /*====================Reading events======================*/
+    string eventName;
+    string theNextText;
+    while (!eventsStream.eof()) {
+        eventsStream >> eventName;
+        if (eventName == PACK) {
+            eventsStream >> theNextText;
+            events.push_back(std::move(collectPack(eventsStream, theNextText)));
+        } else {
+            events.push_back(std::move(getSingleEvent(eventName)));
+        }
+    }
+    if (events.size() < 2)
+        throw std::runtime_error("Invalid Events File");
 
 
-    /*===== TODO: Open and read events file =====*/
-
-    /*==========================================*/
-
-
-    /*===== TODO: Open and Read players file =====*/
+    /*===== creating charachters =====*/
+    CharachterFactory makeCharacter;
+    JobFactory makeJob;
+    while (!playersStream.eof()) {
+        string playerName;
+        string jobName;
+        string characterName;
+        if (!(playersStream >> playerName >> jobName >> characterName)) {
+            throw std::runtime_error("Invalid Events File");
+        } else {
+            std::shared_ptr<Character> character_ptr = makeCharacter.charachterCreator(characterName);
+            std::shared_ptr<Job> job_ptr = makeJob.jobCreator(jobName);
+            if (character_ptr == nullptr || job_ptr == nullptr) {
+                throw std::runtime_error("Invalid Events File");
+            } else if (notLegalName(playerName)) {
+                throw std::runtime_error("Invalid Events File");
+            } else if (playerName.length() < 3 || playerName.length() > 15) {
+                throw std::runtime_error("Invalid Events File");
+            }
+            Player player(playerName, job_ptr, character_ptr);
+            std::shared_ptr<Player> Player_ptr = std::make_shared<Player>(player);
+            playersInSortedOrder.push_back(Player_ptr);
+            playersInUnsortedOrder.push_back(Player_ptr);
+        }
+        makePlayersSorted();
+        if (this->playersInUnsortedOrder.size() > 6 || this->playersInUnsortedOrder.size() < 2) {
+            throw (std::runtime_error("Invalid Players File"));
+        }
+    }
 
     /*============================================*/
 

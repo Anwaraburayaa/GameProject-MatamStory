@@ -3,14 +3,34 @@
 
 #include <iostream>
 
+#pragma once
+
+#include <vector>
+#include <algorithm>
+
 #include "Players/Player.h"
 #include "Events/Event.h"
+#include "Utilities.h"
+#include "Events/Encounter.h"
+#include "Events/SpecialEvent.h"
+#include "Players/CharachterFactory.h"
+#include "Players/JobFactory.h"
 
+using std::vector;
 
-class MatamStory{
+class MatamStory {
 private:
-    unsigned int m_turnIndex;
+ unsigned int m_turnIndex;
+ vector<std::shared_ptr<Player>> playersInSortedOrder;
+ vector<std::shared_ptr<Player>> playersInUnsortedOrder;
+ vector<std::unique_ptr<Event>> events;
 
+ void makePlayersSorted() {
+  std::sort(playersInSortedOrder.begin(), playersInSortedOrder.end(),
+            [](const std::shared_ptr<Player> &a, const std::shared_ptr<Player> &b) {
+                return *b < *a;
+            });
+ }
     /**
      * Playes a single turn for a player
      *
@@ -46,10 +66,15 @@ public:
     */
     MatamStory(std::istream& eventsStream, std::istream& playersStream);
 
+
+
+
+
     /**
      * Plays the entire game
      *
      * @return - void
     */
     void play();
+    void clear();
 };
