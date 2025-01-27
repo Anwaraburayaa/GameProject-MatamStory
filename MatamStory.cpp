@@ -119,6 +119,7 @@ std::unique_ptr<Encounter> getPack(std::istream &eventsStream, int &monstersLeft
 
     return std::unique_ptr<Encounter>(new Pack(packVector));
 }
+
 std::unique_ptr<Encounter> getSingleEncounter(const string &eventName) {
     if (eventName == SNAIL) {
         return std::make_unique<Monster>(Monster::Snail());
@@ -131,6 +132,18 @@ std::unique_ptr<Encounter> getSingleEncounter(const string &eventName) {
     }
     return nullptr;
 }
+///this function handle the case if the event is not pack
+std::unique_ptr<Event> getSingleEvent(const string &eventName) {
+    std::unique_ptr<Event> newEvent = std::move(getSingleEncounter(eventName));
+    if (newEvent) {
+        return newEvent;
+    } else if (eventName == POTIONSMERCHANT) {
+        return std::unique_ptr<Event>(new PotionMerchant());
+    } else if (eventName == SOLARECLIPSE) {
+        return std::unique_ptr<Event>(new SolarEclipse());
+    } else throw std::runtime_error("Invalid Events File");
+}
+
 
 MatamStory::MatamStory(std::istream &eventsStream, std::istream &playersStream) {
     // string eventName;
