@@ -80,7 +80,19 @@ string extractWord(const string &str) {
 
 ///function to check if the pack is legal
 ///and then it put the monsters in a pack or throw an error
-
+std::unique_ptr<Encounter> collectPack(std::istream &eventsStream, const string &nextText) {
+    if (!isInputNumber(nextText)) {
+        throw std::runtime_error("Invalid Events File: nextText is not a number.");
+    }
+    int elementsInPack = srtingToNum(nextText);
+    if (elementsInPack < 2) {
+        throw std::runtime_error("Invalid Events File: Pack must contain at least 2 entities.");
+    }
+    std::unique_ptr<Encounter> newPack = std::move(getPack(eventsStream, elementsInPack));
+    if (elementsInPack != 0)
+        throw (std::runtime_error("Invalid Events File"));
+    return newPack;
+}
 
 std::unique_ptr<Encounter> getPack(std::istream &eventsStream, int &monstersLeft) {
     std::string word;
