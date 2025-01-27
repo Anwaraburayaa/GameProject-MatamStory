@@ -119,7 +119,18 @@ std::unique_ptr<Encounter> getPack(std::istream &eventsStream, int &monstersLeft
 
     return std::unique_ptr<Encounter>(new Pack(packVector));
 }
-
+std::unique_ptr<Encounter> getSingleEncounter(const string &eventName) {
+    if (eventName == SNAIL) {
+        return std::make_unique<Monster>(Monster::Snail());
+    }
+    if (eventName == SLIME) {
+        return std::make_unique<Monster>(Monster::Slime());
+    }
+    if (eventName == BALROG) {
+        return std::make_unique<Balrog>();
+    }
+    return nullptr;
+}
 
 MatamStory::MatamStory(std::istream &eventsStream, std::istream &playersStream) {
     // string eventName;
