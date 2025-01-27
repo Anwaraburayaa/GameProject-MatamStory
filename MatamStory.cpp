@@ -15,10 +15,11 @@ using namespace std;
 #define MAGICIAN "Magician"
 #define RESPONSIBLE "Responsible"
 #define RISKTAKING "RiskTaking"
+
 ///helper fuctions for encounter:
 std::unique_ptr<Encounter> collectPack(std::istream &eventsStream, const string &nextText);
 
-std::unique_ptr<Encounter> getPack(std::istream &eventsStream, int &remaining);
+std::unique_ptr<Encounter> getPack(std::istream &eventsStream, int &monstersLeft);
 
 std::unique_ptr<Encounter> getSingleEncounter(const string &eventName);
 
@@ -77,37 +78,51 @@ string extractWord(const string &str) {
     return word;
 }
 
-// ///function to check if the pack is legal
-// ///and then it put the monsters in a pack or throw an error
-// std::unique_ptr<Encounter> collectPack(std::istream &eventsStream, const string &nextText) {
-//     if (!isInputNumber(nextText)) {
-//         throw std::runtime_error("Invalid Events File: nextText is not a number.");
-//     }
-//     int elementsInPack = srtingToNum(nextText);
-//     if (elementsInPack < 2) {
-//         throw std::runtime_error("Invalid Events File: Pack must contain at least 2 entities.");
-//     }
-//     std::unique_ptr<Encounter> newPack = std::move(getPack(eventsStream, elementsInPack));
-//     if (elementsInPack != 0)
-//         throw (std::runtime_error("Invalid Events File"));
-//     return newPack;
-// }
-//
-//
-// MatamStory::MatamStory(std::istream &eventsStream, std::istream &playersStream) {
-//     string eventName;
-//     string nextText;
-//     std::string line;
-//     eventsStream >> eventName;
-//     if (eventName == PACK) {
-//         eventsStream >> nextText;
-//         events.push_back(std::move(autherizePack(eventsStream, nextText)));
-//     } else {
-//         events.push_back(std::move(getSingleEvent(eventName)));
-//     }
-//
-//     if (events.size() < 2)
-//         throw (std::runtime_error("Invalid Events File"));
+///function to check if the pack is legal
+///and then it put the monsters in a pack or throw an error
+
+
+std::unique_ptr<Encounter> getPack(std::istream &eventsStream, int &monstersLeft) {
+    std::string word;
+    std::vector<std::unique_ptr<Encounter> > packVector;
+
+    while (!eventsStream.eof() && monstersLeft > 0) {
+        eventsStream >> word;
+        --monstersLeft;
+        ///if there is a subpack
+        if (word == PACK) {
+            std::string nextText;
+            eventsStream >> nextText;
+            packVector.push_back(std::move(collectPack(eventsStream, nextText)));
+        } else {
+            ///entering single encounter to the pack
+            auto encounter = std::move(getSingleEncounter(word));
+            if (encounter) {
+                packVector.push_back(std::move(encounter));
+            } else {
+                throw std::runtime_error("Invalid Events File");
+            }
+        }
+    }
+
+    return std::unique_ptr<Encounter>(new Pack(packVector));
+}
+
+
+MatamStory::MatamStory(std::istream &eventsStream, std::istream &playersStream) {
+    // string eventName;
+    // string nextText;
+    // std::string line;
+    // eventsStream >> eventName;
+    // if (eventName == PACK) {
+    //     eventsStream >> nextText;
+    //     events.push_back(std::move(autherizePack(eventsStream, nextText)));
+    // } else {
+    //     events.push_back(std::move(getSingleEvent(eventName)));
+    // }
+    //
+    // if (events.size() < 2)
+    //     throw (std::runtime_error("Invalid Events File"));
 
 
     /*===== TODO: Open and read events file =====*/
@@ -121,57 +136,58 @@ string extractWord(const string &str) {
 
 
     this->m_turnIndex = 1;
+}
 
 
-    void MatamStory::playTurn(Player &player) {
-        /**
-         * Steps to implement (there may be more, depending on your design):
-         * 1. Get the next event from the events list
-         * 2. Print the turn details with "printTurnDetails"
-         * 3. Play the event
-         * 4. Print the turn outcome with "printTurnOutcome"
-        */
+void MatamStory::playTurn(Player &player) {
+    /**
+     * Steps to implement (there may be more, depending on your design):
+     * 1. Get the next event from the events list
+     * 2. Print the turn details with "printTurnDetails"
+     * 3. Play the event
+     * 4. Print the turn outcome with "printTurnOutcome"
+    */
 
-        m_turnIndex++;
+    m_turnIndex++;
+}
+
+void MatamStory::playRound() {
+    printRoundStart();
+
+    /*===== TODO: Play a turn for each player =====*/
+
+    /*=============================================*/
+
+    printRoundEnd();
+
+    printLeaderBoardMessage();
+
+    /*===== TODO: Print leaderboard entry for each player using "printLeaderBoardEntry" =====*/
+
+    /*=======================================================================================*/
+
+    printBarrier();
+}
+
+bool MatamStory::isGameOver() const {
+    /*===== TODO: Implement the game over condition =====*/
+    return false; // Replace this line
+    /*===================================================*/
+}
+
+void MatamStory::play() {
+    printStartMessage();
+    /*===== TODO: Print start message entry for each player using "printStartPlayerEntry" =====*/
+
+    /*=========================================================================================*/
+    printBarrier();
+
+    while (!isGameOver()) {
+        playRound();
     }
 
-    void MatamStory::playRound() {
-        printRoundStart();
+    printGameOver();
+    /*===== TODO: Print either a "winner" message or "no winner" message =====*/
 
-        /*===== TODO: Play a turn for each player =====*/
-
-        /*=============================================*/
-
-        printRoundEnd();
-
-        printLeaderBoardMessage();
-
-        /*===== TODO: Print leaderboard entry for each player using "printLeaderBoardEntry" =====*/
-
-        /*=======================================================================================*/
-
-        printBarrier();
-    }
-
-    bool MatamStory::isGameOver() const {
-        /*===== TODO: Implement the game over condition =====*/
-        return false; // Replace this line
-        /*===================================================*/
-    }
-
-    void MatamStory::play() {
-        printStartMessage();
-        /*===== TODO: Print start message entry for each player using "printStartPlayerEntry" =====*/
-
-        /*=========================================================================================*/
-        printBarrier();
-
-        while (!isGameOver()) {
-            playRound();
-        }
-
-        printGameOver();
-        /*===== TODO: Print either a "winner" message or "no winner" message =====*/
-
-        /*========================================================================*/
-    }
+    /*========================================================================*/
+}
