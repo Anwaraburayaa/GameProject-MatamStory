@@ -12,15 +12,15 @@ unsigned int Player::getCoins() const {
     return playerData.coins;
 }
 
-int Player::getForce() const {
+unsigned int Player::getForce() const {
     return playerData.force;
 }
 
-int Player::getLevel() const {
+unsigned int Player::getLevel() const {
     return playerData.level;
 }
 
-int Player::getHealthPoints() const {
+unsigned int Player::getHealthPoints() const {
     return playerData.currentHP;
 }
 

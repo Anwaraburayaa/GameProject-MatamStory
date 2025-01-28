@@ -93,7 +93,7 @@ public:
      *
      * @return - level of the player
     */
-    int getLevel() const;
+    unsigned int getLevel() const;
 
     ///function to get job
     std::shared_ptr<Job> getJob() const { return job; }
@@ -106,14 +106,14 @@ public:
      *
      * @return - force points of the player
     */
-    int getForce() const;
+    unsigned int getForce() const;
 
     /**
      * Gets the amount of health points the player currently has
      *
      * @return - health points of the player
     */
-    int getHealthPoints() const;
+   unsigned int getHealthPoints() const;
 
     /**
      * Gets the amount of coins the player has
