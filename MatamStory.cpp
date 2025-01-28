@@ -81,7 +81,7 @@ string extractWord(const string &str) {
 ///and then it put the monsters in a pack or throw an error
 std::unique_ptr<Encounter> collectPack(std::istream &eventsStream, const string &nextText) {
     if (!isInputNumber(nextText)) {
-        throw std::runtime_error("Invalid Events File: nextText is not a number.");
+        throw std::runtime_error("Invalid Events File");
     }
     int elementsInPack = srtingToNum(nextText);
     if (elementsInPack < 2) {
