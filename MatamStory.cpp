@@ -1,5 +1,4 @@
 #include "MatamStory.h"
-
 #include <memory>
 using namespace std;
 #include <string>
@@ -200,24 +199,33 @@ MatamStory::MatamStory(std::istream &eventsStream, std::istream &playersStream) 
 }
 
 
-void MatamStory::playTurn(Player &player) {
-    /**
-     * Steps to implement (there may be more, depending on your design):
-     * 1. Get the next event from the events list
-     * 2. Print the turn details with "printTurnDetails"
-     * 3. Play the event
-     * 4. Print the turn outcome with "printTurnOutcome"
-    */
+oid MatamStory::playTurn(Player& player) {
 
+    const std::shared_ptr<Event>& currentEvent = events[m_turnIndex % events.size()];
+
+    printTurnDetails(m_turnIndex, player, *currentEvent);
+
+    currentEvent->applyEvent(player);
+
+    std::string outcome = currentEvent->getDescription();
+
+    // Output the outcome message
+    printTurnOutcome(outcome);
     m_turnIndex++;
 }
 
+
 void MatamStory::playRound() {
+
     printRoundStart();
 
     /*===== TODO: Play a turn for each player =====*/
 
     /*=============================================*/
+      for (unsigned int i = 0; i < players.size(); ++i) {
+        // Play a turn for the player
+        playTurn(players[i]);
+    }
 
     printRoundEnd();
 
@@ -226,15 +234,29 @@ void MatamStory::playRound() {
     /*===== TODO: Print leaderboard entry for each player using "printLeaderBoardEntry" =====*/
 
     /*=======================================================================================*/
-
+      for (unsigned int i = 0; i < players.size(); ++i) {
+        // Print the player's entry on the leaderboard with their index
+        printLeaderBoardEntry(i, players[i]);
+    }
     printBarrier();
 }
 
 bool MatamStory::isGameOver() const {
     /*===== TODO: Implement the game over condition =====*/
-    return false; // Replace this line
-    /*===================================================*/
+    ///check if there is a winner
+        if (getWinner() != nullptr) {
+        return true;
+    }
+    ////check if all players knocked out
+    for (const Player& player : players) {
+        if (!player.PlayerKnockOut()) {
+            return false;
+        }
+    }
+    return true;
+     /*===================================================*/
 }
+   
 
 void MatamStory::play() {
     printStartMessage();
@@ -249,6 +271,28 @@ void MatamStory::play() {
 
     printGameOver();
     /*===== TODO: Print either a "winner" message or "no winner" message =====*/
-
+      printGameOver();
+    const Player* winner = getWinner();
+    if (winner) {
+        printWinner(*winner);
+    } else {
+        printNoWinners();
+    }
     /*========================================================================*/
 }
+
+
+
+////////////////////////helper function///////////////////////////
+const Player* MatamStory::getWinner() const {
+    const Player* winner = nullptr;///this means that there is no winner
+    /////check winnning condition
+    for (const Player& player : players) {
+        if (player.getLevel() == 10) {
+            return &player; 
+        }
+    }
+
+    return nullptr; 
+}
+//////////////////////////////////////////////////////////////////
