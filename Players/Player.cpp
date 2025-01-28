@@ -95,7 +95,7 @@ void Player::PlayerData::drinkPotion() {
 }
 
 void Player::claculateDamage(const unsigned int &damage) {
-    int currentHPTotal = playerData.currentHP;
+    unsigned int currentHPTotal = playerData.currentHP;
     if (currentHPTotal <= damage) {
         playerData.currentHP =0;
         PlayerKnockOut();

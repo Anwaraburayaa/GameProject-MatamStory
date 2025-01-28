@@ -87,7 +87,8 @@ std::unique_ptr<Encounter> collectPack(std::istream &eventsStream, const string 
     if (elementsInPack < 2) {
         throw std::runtime_error("Invalid Events File: Pack must contain at least 2 entities.");
     }
-    std::unique_ptr<Encounter> newPack = std::move(getPack(eventsStream, elementsInPack));
+    std::unique_ptr<Encounter> newPack = getPack(eventsStream, elementsInPack);
+
     if (elementsInPack != 0)
         throw (std::runtime_error("Invalid Events File"));
     return newPack;
@@ -107,7 +108,8 @@ std::unique_ptr<Encounter> getPack(std::istream &eventsStream, int &monstersLeft
             packVector.push_back(std::move(collectPack(eventsStream, nextText)));
         } else {
             ///entering single encounter to the pack
-            auto encounter = std::move(getSingleEncounter(word));
+            std::unique_ptr<Encounter> encounter = std::move(getSingleEncounter(word));
+
             if (encounter) {
                 packVector.push_back(std::move(encounter));
             } else {
@@ -158,11 +160,12 @@ MatamStory::MatamStory(std::istream &eventsStream, std::istream &playersStream) 
             events.push_back(std::move(getSingleEvent(eventName)));
         }
     }
-    if (events.size() < 2)
+    if (events.size() < 2) {
         throw std::runtime_error("Invalid Events File");
+    }
 
 
-    /*===== creating charachters =====*/
+    /*===== creating characters =====*/
     CharachterFactory makeCharacter;
     JobFactory makeJob;
     while (!playersStream.eof()) {
@@ -175,9 +178,9 @@ MatamStory::MatamStory(std::istream &eventsStream, std::istream &playersStream) 
             std::shared_ptr<Character> character_ptr = makeCharacter.charachterCreator(characterName);
             std::shared_ptr<Job> job_ptr = makeJob.jobCreator(jobName);
             if (character_ptr == nullptr || job_ptr == nullptr) {
-                throw std::runtime_error("Invalid Events File");
+                throw (std::runtime_error("Invalid Events File"));
             } else if (notLegalName(playerName)) {
-                throw std::runtime_error("Invalid Events File");
+                throw (std::runtime_error("Invalid Events File"));
             } else if (playerName.length() < 3 || playerName.length() > 15) {
                 throw std::runtime_error("Invalid Events File");
             }
@@ -213,7 +216,7 @@ void MatamStory::playRound() {
 
     // Iterate over players in unsorted order (as in the second implementation)
     for (const std::shared_ptr<Player>& player : playersInUnsortedOrder) {
-        if (!player->getPlayerData().isKnockedOut) {
+        if (!(player->PlayerKnockOut())) {
             // Play a turn for the player
             playTurn(*player);
         }
@@ -236,20 +239,19 @@ void MatamStory::playRound() {
 }
 
 bool MatamStory::isGameOver() const {
-    /*===== Check if there is a winner =====*/
-    if (getWinner() != nullptr) {
-        return true;
+    int player_idx = 1;
+    for (const std::shared_ptr<Player>& player : playersInSortedOrder) {
+        if(player->getPlayerData().level>=10)
+            return true;
     }
-
-    /*===== Check if all players are knocked out =====*/
-    for (const auto& player : playersInSortedOrder) {
-        if (!player->PlayerKnockOut()) {
+    for (const std::shared_ptr<Player>& player : playersInSortedOrder) {
+        if (!player->getPlayerData().isKnockedOut) {
             return false;
         }
     }
-
     return true;
 }
+
 
 void MatamStory::play() {
     printStartMessage();
@@ -269,12 +271,13 @@ void MatamStory::play() {
 
     printGameOver();
 
-    std::shared_ptr< const Player> winner = getWinner();
-    if (winner) {
-        printWinner(*winner);
-    } else {
-        printNoWinners();
+    for (const std::shared_ptr<Player> &player: playersInSortedOrder) {
+        if (player->getPlayerData().level == 10) {
+            printWinner(*player);
+            return;
+        }
     }
+    printNoWinners();
 }
 
 
