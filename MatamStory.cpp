@@ -168,32 +168,33 @@ MatamStory::MatamStory(std::istream &eventsStream, std::istream &playersStream) 
     /*===== creating characters =====*/
     CharachterFactory makeCharacter;
     JobFactory makeJob;
-    while (!playersStream.eof()) {
+    while (!playersStream.eof()){
         string playerName;
-        string jobName;
-        string characterName;
-        if (!(playersStream >> playerName >> jobName >> characterName)) {
+    string jobName;
+    string characterName;
+    if (!(playersStream >> playerName >> jobName >> characterName)) {
+        throw std::runtime_error("Invalid Events File");
+    } else {
+        std::shared_ptr<Character> character_ptr = makeCharacter.charachterCreator(characterName);
+        std::shared_ptr<Job> job_ptr = makeJob.jobCreator(jobName);
+        if (character_ptr == nullptr || job_ptr == nullptr) {
+            throw (std::runtime_error("Invalid Events File"));
+        } else if (notLegalName(playerName)) {
+            throw (std::runtime_error("Invalid Events File"));
+        } else if (playerName.length() < 3 || playerName.length() > 15) {
             throw std::runtime_error("Invalid Events File");
-        } else {
-            std::shared_ptr<Character> character_ptr = makeCharacter.charachterCreator(characterName);
-            std::shared_ptr<Job> job_ptr = makeJob.jobCreator(jobName);
-            if (character_ptr == nullptr || job_ptr == nullptr) {
-                throw (std::runtime_error("Invalid Events File"));
-            } else if (notLegalName(playerName)) {
-                throw (std::runtime_error("Invalid Events File"));
-            } else if (playerName.length() < 3 || playerName.length() > 15) {
-                throw std::runtime_error("Invalid Events File");
-            }
-            Player player(playerName, job_ptr, character_ptr);
-            std::shared_ptr<Player> Player_ptr = std::make_shared<Player>(player);
-            playersInSortedOrder.push_back(Player_ptr);
-            playersInUnsortedOrder.push_back(Player_ptr);
         }
+        Player player(playerName, job_ptr, character_ptr);
+        std::shared_ptr<Player> Player_ptr = std::make_shared<Player>(player);
+        playersInSortedOrder.push_back(Player_ptr);
+        playersInUnsortedOrder.push_back(Player_ptr);
+    }
+}
         makePlayersSorted();
         if (this->playersInUnsortedOrder.size() > 6 || this->playersInUnsortedOrder.size() < 2) {
             throw (std::runtime_error("Invalid Players File"));
         }
-    }
+
 
     /*============================================*/
 
