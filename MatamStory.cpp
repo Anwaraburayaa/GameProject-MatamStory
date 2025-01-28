@@ -233,7 +233,7 @@ void MatamStory::playRound() {
     }
 
     printBarrier();
-}0
+}
 
 bool MatamStory::isGameOver() const {
     /*===== Check if there is a winner =====*/
@@ -285,7 +285,7 @@ std::shared_ptr<const Player> MatamStory::getWinner() const {
     std::shared_ptr<const Player> winner = nullptr;
 
     // Check the winning condition
-    for (const auto& player : playersInSortedOrder) {
+    for (const auto& player : playersInUnsortedOrder) {
         if (player->getLevel() == 10) {
             return player; // Return the shared pointer to the winning player
         }
