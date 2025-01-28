@@ -173,16 +173,16 @@ MatamStory::MatamStory(std::istream &eventsStream, std::istream &playersStream) 
     string jobName;
     string characterName;
     if (!(playersStream >> playerName >> jobName >> characterName)) {
-        throw std::runtime_error("Invalid Events File");
+        throw std::runtime_error("Invalid Players File");
     } else {
         std::shared_ptr<Character> character_ptr = makeCharacter.charachterCreator(characterName);
         std::shared_ptr<Job> job_ptr = makeJob.jobCreator(jobName);
         if (character_ptr == nullptr || job_ptr == nullptr) {
-            throw (std::runtime_error("Invalid Events File"));
+            throw (std::runtime_error("Invalid Players File"));
         } else if (notLegalName(playerName)) {
             throw (std::runtime_error("Invalid Events File"));
         } else if (playerName.length() < 3 || playerName.length() > 15) {
-            throw std::runtime_error("Invalid Events File");
+            throw std::runtime_error("Invalid Players File");
         }
         Player player(playerName, job_ptr, character_ptr);
         std::shared_ptr<Player> Player_ptr = std::make_shared<Player>(player);
@@ -203,41 +203,51 @@ MatamStory::MatamStory(std::istream &eventsStream, std::istream &playersStream) 
 }
 
 
-void MatamStory::playTurn(Player& player) {
+void MatamStory::playTurn(Player &player) {
+    // Fetch the current event
+    auto &event = *events[(m_turnIndex - 1) % events.size()];
 
-    printTurnDetails(m_turnIndex, player, *events[(m_turnIndex - 1) % events.size()]);
-    events[(m_turnIndex - 1) % events.size()]->applyEvent(player);
-    printTurnOutcome(events[(m_turnIndex - 1) % events.size()]->getResult());
-    m_turnIndex++;
+    // Print turn details
+    printTurnDetails(m_turnIndex, player, event);
+
+    // Apply the event to the player
+    event.applyEvent(player);
+
+    // Print the outcome of the turn
+    printTurnOutcome(event.getResult());
+
+    // Increment turn index
+    ++m_turnIndex;
 }
+
 
 
 void MatamStory::playRound() {
     printRoundStart();
 
-    // Iterate over players in unsorted order (as in the second implementation)
-    for (const std::shared_ptr<Player>& player : playersInUnsortedOrder) {
-        if (!(player->PlayerKnockOut())) {
-            // Play a turn for the player
+    // Iterate over players in the order of turns
+    for (const auto &player : playersInUnsortedOrder) {
+        if (!player->PlayerKnockOut()) {
             playTurn(*player);
         }
     }
 
-    // Sort players at the end of the round
+    // Update the leaderboard by sorting players
     makePlayersSorted();
 
+    // Print round end summary
     printRoundEnd();
 
+    // Print leaderboard
     printLeaderBoardMessage();
-
-    int player_idx = 1;
-    for (const std::shared_ptr<Player>& player : playersInSortedOrder) {
-        printLeaderBoardEntry(player_idx, *player);
-        player_idx++;
+    int rank = 1;
+    for (const auto &player : playersInSortedOrder) {
+        printLeaderBoardEntry(rank++, *player);
     }
 
     printBarrier();
 }
+
 
 bool MatamStory::isGameOver() const {
     for (const std::shared_ptr<Player>& player : playersInSortedOrder) {
