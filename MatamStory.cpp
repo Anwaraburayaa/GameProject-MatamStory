@@ -199,70 +199,68 @@ MatamStory::MatamStory(std::istream &eventsStream, std::istream &playersStream) 
 }
 
 
-oid MatamStory::playTurn(Player& player) {
+void MatamStory::playTurn(Player& player) {
 
-    const std::shared_ptr<Event>& currentEvent = events[m_turnIndex % events.size()];
-
-    printTurnDetails(m_turnIndex, player, *currentEvent);
-
-    currentEvent->applyEvent(player);
-
-    std::string outcome = currentEvent->getDescription();
-
-    // Output the outcome message
-    printTurnOutcome(outcome);
+    printTurnDetails(m_turnIndex, player, *events[(m_turnIndex - 1) % events.size()]);
+    events[(m_turnIndex - 1) % events.size()]->applyEvent(player);
+    printTurnOutcome(events[(m_turnIndex - 1) % events.size()]->getResult());
     m_turnIndex++;
 }
 
 
 void MatamStory::playRound() {
-
     printRoundStart();
 
-    /*===== TODO: Play a turn for each player =====*/
-
-    /*=============================================*/
-      for (unsigned int i = 0; i < players.size(); ++i) {
-        // Play a turn for the player
-        playTurn(players[i]);
+    // Iterate over players in unsorted order (as in the second implementation)
+    for (const std::shared_ptr<Player>& player : playersInUnsortedOrder) {
+        if (!player->getPlayerData().isKnockedOut) {
+            // Play a turn for the player
+            playTurn(*player);
+        }
     }
+
+    // Sort players at the end of the round
+    makePlayersSorted();
 
     printRoundEnd();
 
     printLeaderBoardMessage();
 
-    /*===== TODO: Print leaderboard entry for each player using "printLeaderBoardEntry" =====*/
-
-    /*=======================================================================================*/
-      for (unsigned int i = 0; i < players.size(); ++i) {
-        // Print the player's entry on the leaderboard with their index
-        printLeaderBoardEntry(i, players[i]);
+    int player_idx = 1;
+    for (const std::shared_ptr<Player>& player : playersInSortedOrder) {
+        printLeaderBoardEntry(player_idx, *player);
+        player_idx++;
     }
+
     printBarrier();
-}
+}0
 
 bool MatamStory::isGameOver() const {
-    /*===== TODO: Implement the game over condition =====*/
-    ///check if there is a winner
-        if (getWinner() != nullptr) {
+    /*===== Check if there is a winner =====*/
+    if (getWinner() != nullptr) {
         return true;
     }
-    ////check if all players knocked out
-    for (const Player& player : players) {
-        if (!player.PlayerKnockOut()) {
+
+    /*===== Check if all players are knocked out =====*/
+    for (const auto& player : playersInSortedOrder) {
+        if (!player->PlayerKnockOut()) {
             return false;
         }
     }
+
     return true;
-     /*===================================================*/
 }
-   
 
 void MatamStory::play() {
     printStartMessage();
-    /*===== TODO: Print start message entry for each player using "printStartPlayerEntry" =====*/
 
     /*=========================================================================================*/
+
+    int player_idx = 1;
+    for (const std::shared_ptr<Player>& player : playersInSortedOrder) {
+        printStartPlayerEntry(player_idx, *player);
+        player_idx++;
+    }
     printBarrier();
 
     while (!isGameOver()) {
@@ -270,29 +268,29 @@ void MatamStory::play() {
     }
 
     printGameOver();
-    /*===== TODO: Print either a "winner" message or "no winner" message =====*/
-      printGameOver();
-    const Player* winner = getWinner();
+
+    std::shared_ptr< const Player> winner = getWinner();
     if (winner) {
         printWinner(*winner);
     } else {
         printNoWinners();
     }
-    /*========================================================================*/
 }
 
 
 
 ////////////////////////helper function///////////////////////////
-const Player* MatamStory::getWinner() const {
-    const Player* winner = nullptr;///this means that there is no winner
-    /////check winnning condition
-    for (const Player& player : players) {
-        if (player.getLevel() == 10) {
-            return &player; 
+std::shared_ptr<const Player> MatamStory::getWinner() const {
+    // Initially, assume there's no winner
+    std::shared_ptr<const Player> winner = nullptr;
+
+    // Check the winning condition
+    for (const auto& player : playersInSortedOrder) {
+        if (player->getLevel() == 10) {
+            return player; // Return the shared pointer to the winning player
         }
     }
 
-    return nullptr; 
+    return nullptr; // Return nullptr if no player has won
 }
 //////////////////////////////////////////////////////////////////

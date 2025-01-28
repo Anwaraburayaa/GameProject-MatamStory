@@ -76,5 +76,8 @@ public:
      * @return - void
     */
     void play();
-    void clear();
+
+ std::shared_ptr<const Player> getWinner() const;
+
+ void clear();
 };
