@@ -108,7 +108,7 @@ std::unique_ptr<Encounter> getPack(std::istream &eventsStream, int &monstersLeft
             packVector.push_back(std::move(collectPack(eventsStream, nextText)));
         } else {
             ///entering single encounter to the pack
-            std::unique_ptr<Encounter> encounter = std::move(getSingleEncounter(word));
+            std::unique_ptr<Encounter> encounter = getSingleEncounter(word);
 
             if (encounter) {
                 packVector.push_back(std::move(encounter));
@@ -239,7 +239,6 @@ void MatamStory::playRound() {
 }
 
 bool MatamStory::isGameOver() const {
-    int player_idx = 1;
     for (const std::shared_ptr<Player>& player : playersInSortedOrder) {
         if(player->getPlayerData().level>=10)
             return true;
