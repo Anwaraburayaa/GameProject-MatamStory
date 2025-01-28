@@ -34,8 +34,22 @@ std::string Monster::getDescription() const {
            ", damage " + std::to_string(encounterData.damage) + ")";
 }
 
+unsigned int Pack::getEncounterSize() const {
+    unsigned int totalMonsters = 0;
+    for (const auto &encounter: encounters) {
+        if (auto subPack = dynamic_cast<const Pack *>(encounter.get())) {
+            totalMonsters += subPack->getEncounterSize();
+        } else {
+            totalMonsters += encounter->getEncounterData().enounterNum;
+        }
+    }
+
+    return totalMonsters;
+}
+
+
 std::string Pack::getDescription() const {
-    return "Pack of " + std::to_string(encounters.size()) + " members (power " +
+    return "Pack of " + std::to_string(getEncounterSize()) + " members (power " +
            std::to_string(encounterData.combatPower) + ", loot " +
            std::to_string(encounterData.loot) + ", damage " +
            std::to_string(encounterData.damage) + ")";

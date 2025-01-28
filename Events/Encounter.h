@@ -23,8 +23,11 @@ protected:
         unsigned int combatPower;
         unsigned int loot;
         unsigned int damage;
+       const unsigned int enounterNum=1;
     };
-
+virtual unsigned int getEncounterSize() const {
+    return 1;
+}
 
 
     EncounterData encounterData;
@@ -105,6 +108,7 @@ public:
            encounterData.damage += encounter->getDamage();
         }
     }
+    unsigned int getEncounterSize() const override;
     void updateStatus();
 
     void makeSpecialEffect() override;
