@@ -1,0 +1,1390 @@
+* commit be18273df045aca98afe6cef0cb9e4bc7bcf6d20
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Wed Jan 29 16:45:29 2025 +0200
+| 
+|     remove comments
+| 
+|  Players/JobFactory.h | 1 -
+|  1 file changed, 1 deletion(-)
+| 
+* commit 7f33eff16fa8b5e9c66bce7cd404f399faa7068e
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Wed Jan 29 16:10:15 2025 +0200
+| 
+|     change the name of  applyEvent() in player class to handleEvent()
+| 
+|  Events/Encounter.cpp |  2 +-
+|  Events/Encounter.h   | 11 ++++-------
+|  Players/Player.cpp   |  2 +-
+|  Players/Player.h     |  2 +-
+|  4 files changed, 7 insertions(+), 10 deletions(-)
+|   
+*   commit 7b319a6d4c3d4df36f45e4c6571ab61d85c7bbbf
+|\  Merge: 24ab2b3 063ed6f
+| | Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| | Date:   Wed Jan 29 15:47:04 2025 +0200
+| | 
+| |     Merge remote-tracking branch 'origin/main'
+| |     
+| |     # Conflicts:
+| |     #       MatamStory.cpp
+| | 
+| * commit 063ed6fddad73e2b3b88dee02b8b1133d4e4bcc1
+| | Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| | Date:   Wed Jan 29 15:44:54 2025 +0200
+| | 
+| |     fix playRound();
+| | 
+| |  MatamStory.cpp | 23 ++++++-----------------
+| |  1 file changed, 6 insertions(+), 17 deletions(-)
+| | 
+| * commit 4e8b9667d13c5f554ff335e6af079815e9c8fcd8
+| | Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| | Date:   Wed Jan 29 15:43:31 2025 +0200
+| | 
+| |     fix playTurn() function
+| | 
+| |  MatamStory.cpp | 14 ++++++++++----
+| |  1 file changed, 10 insertions(+), 4 deletions(-)
+| | 
+| * commit 7056299a3643f6337d5697980ba2791bc557eccd
+| | Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| | Date:   Wed Jan 29 15:40:53 2025 +0200
+| | 
+| |     fix matamStory()
+| | 
+| |  MatamStory.cpp | 39 +++++++++++++++++++++++++++------------
+| |  1 file changed, 27 insertions(+), 12 deletions(-)
+| | 
+| * commit 817fc6265900211211c6818ca4d360016f04b0ac
+| | Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| | Date:   Wed Jan 29 15:39:04 2025 +0200
+| | 
+| |     fix getPack() & collectPack() functions
+| | 
+| |  MatamStory.cpp | 21 +++++++++------------
+| |  1 file changed, 9 insertions(+), 12 deletions(-)
+| | 
+| * commit c51cdd5ed4ef1f415d6a1024bcd13c8ade41ffed
+| | Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| | Date:   Wed Jan 29 15:35:11 2025 +0200
+| | 
+| |     delete unused functions
+| | 
+| |  MatamStory.cpp | 19 +------------------
+| |  1 file changed, 1 insertion(+), 18 deletions(-)
+| | 
+| * commit 79fb0730269a585872c207f039982b4735c6050c
+| | Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| | Date:   Wed Jan 29 15:12:04 2025 +0200
+| | 
+| |     remove comments
+| | 
+| |  Events/Encounter.h | 4 ----
+| |  1 file changed, 4 deletions(-)
+| | 
+| * commit d74437dd714f3e90a80aaa10b9af35d32f388f08
+| | Author: maisamzoubi <maisam.zoubi@campus.technion.ac.il>
+| | Date:   Tue Jan 28 04:06:55 2025 +0200
+| | 
+| |     added algorithm to remove the knocked out player
+| | 
+| |  MatamStory.cpp | 39 ++++++++++++++++++++++++++-------------
+| |  1 file changed, 26 insertions(+), 13 deletions(-)
+| | 
+* | commit 24ab2b36e987c7e3d8fae5bf42d2f96bd0c659b1
+| | Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| | Date:   Wed Jan 29 15:46:43 2025 +0200
+| | 
+| |     fix play() &isGameOver() functions
+| | 
+| |  MatamStory.cpp | 143 +++++++++++++++++++++--------------------------------
+| |  1 file changed, 57 insertions(+), 86 deletions(-)
+| | 
+* | commit 1bec14f74c74c77f7ecdd2d48001dac5df77c7c9
+| | Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| | Date:   Wed Jan 29 15:31:54 2025 +0200
+| | 
+| |     orginiz the file & change ver name
+| | 
+| |  MatamStory.h | 11 +++++------
+| |  1 file changed, 5 insertions(+), 6 deletions(-)
+| | 
+* | commit 88034b665929d1ccab5831ed818f569d69f16a43
+| | Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| | Date:   Wed Jan 29 15:30:12 2025 +0200
+| | 
+| |     fix claculateDamage() function
+| | 
+| |  Players/Player.cpp | 32 ++++++++++++++++++--------------
+| |  1 file changed, 18 insertions(+), 14 deletions(-)
+| | 
+* | commit 8714b29b1c7e6acc402f2654bd9f2bc952f9c7c2
+| | Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| | Date:   Wed Jan 29 15:28:02 2025 +0200
+| | 
+| |     add  PlayerKnockOut() &  isKnockedOut() functions
+| | 
+| |  Players/Player.h | 11 +++++++----
+| |  1 file changed, 7 insertions(+), 4 deletions(-)
+| | 
+* | commit bd1538732b88b21b2bed03a8fa4aa4a703108c71
+| | Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| | Date:   Wed Jan 29 15:25:36 2025 +0200
+| | 
+| |     organize the file
+| | 
+| |  Players/Job.h | 6 +-----
+| |  1 file changed, 1 insertion(+), 5 deletions(-)
+| | 
+* | commit 78e02b29c161f5156cf29703692af60b5af3ac35
+| | Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| | Date:   Wed Jan 29 15:21:25 2025 +0200
+| | 
+| |     fix Job::calculateDamage() method
+| | 
+| |  Players/Job.cpp | 7 ++++---
+| |  1 file changed, 4 insertions(+), 3 deletions(-)
+| | 
+* | commit bf41460679a31cb47af5bd8392b0a3022aa4430c
+| | Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| | Date:   Wed Jan 29 15:19:31 2025 +0200
+| | 
+| |     fix Responsible::potionMerchantEvent() method
+| | 
+| |  Players/Character.cpp | 19 +++++++++----------
+| |  1 file changed, 9 insertions(+), 10 deletions(-)
+| | 
+* | commit acd1e25bb4df50b977ff2f0ab42536492f56f646
+| | Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| | Date:   Wed Jan 29 15:17:40 2025 +0200
+| | 
+| |     fix typo in the word "responsible"
+| | 
+| |  Players/Character.h | 8 ++------
+| |  1 file changed, 2 insertions(+), 6 deletions(-)
+| | 
+* | commit f8303ac2063633eef7c4256ca3f05573c54a44e8
+| | Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| | Date:   Wed Jan 29 15:16:04 2025 +0200
+| | 
+| |     fix typo in the word "responsible"
+| | 
+| |  Players/CharachterFactory.h | 2 +-
+| |  1 file changed, 1 insertion(+), 1 deletion(-)
+| | 
+* | commit 2b732c1ef4d308508755195d197b1e9e8100c336
+| | Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| | Date:   Tue Jan 28 19:29:22 2025 +0200
+| | 
+| |     fix error massage
+| | 
+| |  MatamStory.cpp | 2 +-
+| |  1 file changed, 1 insertion(+), 1 deletion(-)
+| | 
+* | commit 262e29243556106ab115422afb7ebfb9b4f39a2b
+| | Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| | Date:   Tue Jan 28 19:24:13 2025 +0200
+| | 
+| |     fix playturn and playround
+| | 
+| |  MatamStory.cpp | 46 ++++++++++++++++++++++++++++------------------
+| |  1 file changed, 28 insertions(+), 18 deletions(-)
+| | 
+* | commit 7b4c33db22522d0927905dd7f5d61607d705bd8f
+| | Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| | Date:   Tue Jan 28 19:08:28 2025 +0200
+| | 
+| |     fix matamStory fun
+| | 
+| |  MatamStory.cpp | 39 ++++++++++++++++++++-------------------
+| |  1 file changed, 20 insertions(+), 19 deletions(-)
+| | 
+* | commit 0fa97e1c8ec49a5ea82ceb28b0a9439f7bd64079
+| | Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| | Date:   Tue Jan 28 18:46:23 2025 +0200
+| | 
+| |     remove std::move from getPack()
+| | 
+| |  MatamStory.cpp | 3 +--
+| |  1 file changed, 1 insertion(+), 2 deletions(-)
+| | 
+* | commit 74fa2f11ebcd31461ee43dc8ef5cffa50f0d3cd3
+| | Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| | Date:   Tue Jan 28 18:42:19 2025 +0200
+| | 
+| |     add errors throwing
+| | 
+| |  MatamStory.cpp     | 43 +++++++++++++++++++++++--------------------
+| |  Players/Player.cpp |  2 +-
+| |  2 files changed, 24 insertions(+), 21 deletions(-)
+| | 
+* | commit 271fb2f57e10db6eea23e7cd284351f384abb6a8
+|/  Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+|   Date:   Tue Jan 28 18:12:15 2025 +0200
+|   
+|       fix functions type from int to unsigned int
+|   
+|    Players/Player.cpp | 6 +++---
+|    Players/Player.h   | 6 +++---
+|    2 files changed, 6 insertions(+), 6 deletions(-)
+| 
+* commit 783c063ffaff4369afb1c783022efe756ebf27d7
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Tue Jan 28 03:26:40 2025 +0200
+| 
+|     fix getWinner()
+| 
+|  MatamStory.cpp | 4 ++--
+|  1 file changed, 2 insertions(+), 2 deletions(-)
+| 
+* commit 0e1ee9b324b6ba6598d65b94fc40765f81493877
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Tue Jan 28 03:25:23 2025 +0200
+| 
+|     fix shared pointers all over the code
+| 
+|  MatamStory.cpp | 88 +++++++++++++++++++++++++++-----------------------------
+|  MatamStory.h   |  5 +++-
+|  2 files changed, 47 insertions(+), 46 deletions(-)
+|   
+*   commit 9eb00131d6e172e433b8f7fe311d76171feb0b58
+|\  Merge: 8f3fee4 f7fe9bb
+| | Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| | Date:   Tue Jan 28 02:23:30 2025 +0200
+| | 
+| |     Merge remote-tracking branch 'origin/main'
+| | 
+| * commit f7fe9bb7bc916278161c11941e6410471c32c8d5
+| | Author: maisamzoubi <maisam.zoubi@campus.technion.ac.il>
+| | Date:   Tue Jan 28 02:16:21 2025 +0200
+| | 
+| |     added play round/ tuen isGameOver imlementation
+| | 
+| |  MatamStory.cpp | 70 ++++++++++++++++++++++++++++++++++++++++++++----------
+| |  1 file changed, 57 insertions(+), 13 deletions(-)
+| | 
+* | commit 8f3fee427ee88ec098bab7214ea48aafc031f63a
+|/  Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+|   Date:   Tue Jan 28 02:22:49 2025 +0200
+|   
+|       add method getEncounterSize()
+|   
+|    Events/Encounter.cpp | 16 +++++++++++++++-
+|    Events/Encounter.h   |  6 +++++-
+|    2 files changed, 20 insertions(+), 2 deletions(-)
+| 
+* commit 93f1e57ebdfae28280eb1a904f2eb3dce950c454
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Tue Jan 28 01:01:02 2025 +0200
+| 
+|     add MatamStory implementation
+| 
+|  MatamStory.cpp | 69 ++++++++++++++++++++++++++++++++++++++------------------
+|  MatamStory.h   | 29 ++++++++++++++++++++++--
+|  2 files changed, 74 insertions(+), 24 deletions(-)
+| 
+* commit d2ea46734c0296d01914d18906efb97f4b0f8116
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Tue Jan 28 00:07:44 2025 +0200
+| 
+|     add getSingleEvent implementation
+| 
+|  MatamStory.cpp | 13 +++++++++++++
+|  1 file changed, 13 insertions(+)
+| 
+* commit 7a362b5e9171361c20e235a060ba7c39291961ac
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Tue Jan 28 00:01:31 2025 +0200
+| 
+|     add getSingleEncounter implementation
+| 
+|  MatamStory.cpp | 13 ++++++++++++-
+|  1 file changed, 12 insertions(+), 1 deletion(-)
+| 
+* commit d3aea7f66b172dd180deab78cf07f082352c4d59
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Mon Jan 27 23:57:25 2025 +0200
+| 
+|     add collectPack implementation
+| 
+|  MatamStory.cpp | 14 +++++++++++++-
+|  1 file changed, 13 insertions(+), 1 deletion(-)
+| 
+* commit 8b220170c006933de54bf2c5b036b3d71c56750f
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Mon Jan 27 23:57:07 2025 +0200
+| 
+|     add getPack implementation
+| 
+|  MatamStory.cpp | 154 ++++++++++++++++++++++++++++++-------------------------
+|  1 file changed, 85 insertions(+), 69 deletions(-)
+| 
+* commit 190e15933fa348805eb2e9493d37e0ed8c7abd70
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Mon Jan 27 22:04:21 2025 +0200
+| 
+|     add helper functions declarations to handle events input
+| 
+|  MatamStory.cpp | 159 +++++++++++++++++++++++++++++++++++++------------------
+|  1 file changed, 108 insertions(+), 51 deletions(-)
+| 
+* commit 08932d0a323a715cbdc0dc16f83c810b726a5e4b
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Sun Jan 26 22:07:12 2025 +0200
+| 
+|     add helper functions to help reading the file
+| 
+|  MatamStory.cpp | 48 +++++++++++++++++++++++++++++++++++++++++++++++-
+|  1 file changed, 47 insertions(+), 1 deletion(-)
+|   
+*   commit 71aefaeaded401012a87b3cef645edb6038f00e0
+|\  Merge: 8512df9 c0ec1a7
+| | Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| | Date:   Sat Jan 25 18:19:16 2025 +0200
+| | 
+| |     Merge remote-tracking branch 'origin/main'
+| |     
+| |     # Conflicts:
+| |     #       Events/Encounter.cpp
+| |     #       Events/Encounter.h
+| | 
+| * commit c0ec1a70d43f3fe8d010a344ad60eef2e9927118
+| | Author: maisamzoubi <maisam.zoubi@campus.technion.ac.il>
+| | Date:   Sat Jan 25 15:54:18 2025 +0200
+| | 
+| |     corrected errors in encounter
+| | 
+| |  Events/Encounter.cpp | 10 +++++-----
+| |  Events/Encounter.h   |  2 +-
+| |  2 files changed, 6 insertions(+), 6 deletions(-)
+| | 
+* | commit 8512df9fb219ff2615217065e308ecc75feb19c2
+| | Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| | Date:   Sat Jan 25 18:06:31 2025 +0200
+| | 
+| |     Organize files and fix circular dependency between classes
+| | 
+| |  Events/Encounter.cpp          |  3 +--
+| |  Events/Encounter.h            | 10 ++++++----
+| |  Events/Event.h                |  4 ++--
+| |  Events/specialEvent.cpp       | 22 ++++++++++++----------
+| |  Events/specialEvent.h         |  4 ++++
+| |  Players/CharachterFactory.cpp |  6 +++---
+| |  Players/CharachterFactory.h   |  9 +++------
+| |  Players/Character.cpp         |  1 +
+| |  Players/Character.h           |  8 ++------
+| |  Players/JobFactory.cpp        |  2 +-
+| |  Players/JobFactory.h          |  9 +++------
+| |  Players/Player.h              | 11 ++++++-----
+| |  12 files changed, 44 insertions(+), 45 deletions(-)
+| | 
+* | commit 56e864bbc9ddc20b5bec94947bcd23e7d4e0df8c
+| | Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| | Date:   Fri Jan 24 23:37:26 2025 +0200
+| | 
+| |     add solarEclipseEvent() & potionMerchantEvent() implementation
+| | 
+| |  Players/Player.cpp | 22 ++++++++++++++++++----
+| |  1 file changed, 18 insertions(+), 4 deletions(-)
+| | 
+* | commit 464ff7602d6e4145f9a5402d9afc879e5d4a5024
+| | Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| | Date:   Fri Jan 24 21:18:28 2025 +0200
+| | 
+| |     add operator << for playerData
+| | 
+| |  Players/Player.cpp | 11 ++++++++++-
+| |  Players/Player.h   |  2 ++
+| |  2 files changed, 12 insertions(+), 1 deletion(-)
+| | 
+* | commit 4f3c9871c4b5cf69f83e2632f9eeda0efb12ccc5
+| | Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| | Date:   Fri Jan 24 21:03:36 2025 +0200
+| | 
+| |     add applyEvent() implementation
+| | 
+| |  Events/specialEvent.cpp | 9 ++++++++-
+| |  1 file changed, 8 insertions(+), 1 deletion(-)
+| | 
+* | commit b1d4be39f882251a25ec3941205904dec9ca0f3b
+| | Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| | Date:   Fri Jan 24 20:37:37 2025 +0200
+| | 
+| |     add getDescription() implementation
+| | 
+| |  Events/specialEvent.cpp | 7 +++++++
+| |  1 file changed, 7 insertions(+)
+| | 
+* | commit 264f26beb67d6bf8f4d43903751c265b48d646e1
+| | Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| | Date:   Fri Jan 24 20:35:19 2025 +0200
+| | 
+| |     delete wrong implementation
+| | 
+| |  Events/specialEvent.cpp | 34 +---------------------------------
+| |  1 file changed, 1 insertion(+), 33 deletions(-)
+| | 
+* | commit 3d40444edde158a983aba8e754d84bb7d4a30ab0
+| | Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| | Date:   Fri Jan 24 20:32:52 2025 +0200
+| | 
+| |     delete unused functions
+| | 
+| |  Events/specialEvent.h | 19 ++++++-------------
+| |  1 file changed, 6 insertions(+), 13 deletions(-)
+| | 
+* | commit 9b632c0d61f8ca39df93c5c7f4604afa23b49ae9
+| | Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| | Date:   Fri Jan 24 20:28:34 2025 +0200
+| | 
+| |     add updateStatus implementation for Pack class
+| | 
+| |  Events/Encounter.cpp | 28 +++++++++++++++++++++-------
+| |  1 file changed, 21 insertions(+), 7 deletions(-)
+| | 
+* | commit 9def28fc50a760f1061ab0cf16317eafb067ed1f
+| | Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| | Date:   Fri Jan 24 20:11:13 2025 +0200
+| | 
+| |     add makeSpecialEvent implementation for Balrog &Pack classes
+| | 
+| |  Events/Encounter.cpp | 13 ++++++++++++-
+| |  Events/Encounter.h   |  8 ++++----
+| |  2 files changed, 16 insertions(+), 5 deletions(-)
+| | 
+* | commit 0e4749c40e8662521c44da06f0553948c2ce400e
+| | Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| | Date:   Fri Jan 24 20:03:02 2025 +0200
+| | 
+| |     add getters implementation
+| | 
+| |  Events/Encounter.cpp | 12 ++++++++++++
+| |  1 file changed, 12 insertions(+)
+| | 
+* | commit b3d2075e614cc35f8ce58dafd5eba7dd04cf1bb1
+| | Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| | Date:   Fri Jan 24 20:01:22 2025 +0200
+| | 
+| |     add Pack class getDescription implementation
+| | 
+| |  Events/Encounter.cpp | 7 +++++++
+| |  1 file changed, 7 insertions(+)
+| | 
+* | commit c07e9d25b37ea47b43c6f82f33e8f6b1d7ca0abd
+| | Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| | Date:   Fri Jan 24 19:57:02 2025 +0200
+| | 
+| |     add Monster class getDescription implementation
+| | 
+| |  Events/Encounter.cpp | 11 +++++++++--
+| |  1 file changed, 9 insertions(+), 2 deletions(-)
+| | 
+* | commit 69eaf7690bfb2d3c043cd69060d018d362ef8442
+| | Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| | Date:   Fri Jan 24 19:56:14 2025 +0200
+| | 
+| |     change ver name from data to encounterData
+| | 
+| |  Events/Encounter.h | 36 ++++++++++++++++++------------------
+| |  1 file changed, 18 insertions(+), 18 deletions(-)
+| | 
+* | commit bf950413ad41090c78ecc304fc95f80bcf288845
+| | Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| | Date:   Fri Jan 24 19:47:54 2025 +0200
+| | 
+| |     change ver name from data to playerData
+| | 
+| |  Players/Player.cpp | 38 ++++++++++++++++++--------------------
+| |  Players/Player.h   | 16 ++++++++--------
+| |  2 files changed, 26 insertions(+), 28 deletions(-)
+| | 
+* | commit 3721c581a4bf55da17f9e99295a21715fb22f619
+| | Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| | Date:   Fri Jan 24 19:44:45 2025 +0200
+| | 
+| |     add applyEvent implementation
+| | 
+| |  Events/Encounter.cpp | 15 +++++++++++++++
+| |  1 file changed, 15 insertions(+)
+| | 
+* | commit db734cd205fb04d2d5f258287c24f9694f2fcdcd
+| | Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| | Date:   Fri Jan 24 19:26:22 2025 +0200
+| | 
+| |     delete wrong implementations
+| | 
+| |  Events/Encounter.cpp | 67 ------------------------------------------------
+| |  1 file changed, 67 deletions(-)
+| | 
+* | commit 948e0d0553a6532ca2314e764cdd524e7b47727b
+| | Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| | Date:   Fri Jan 24 19:11:16 2025 +0200
+| | 
+| |     add methods for Pack class
+| | 
+| |  Events/Encounter.h | 9 ++++++++-
+| |  1 file changed, 8 insertions(+), 1 deletion(-)
+| | 
+* | commit c150484ab57629cf3d4a0988ca75b1d468969c0b
+| | Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| | Date:   Fri Jan 24 19:06:39 2025 +0200
+| | 
+| |     add c'tor for Pack class
+| | 
+| |  Events/Encounter.h | 22 ++++++++++++++++------
+| |  1 file changed, 16 insertions(+), 6 deletions(-)
+| | 
+* | commit 540d0db9ebfdaa73fffafef043a7630a4001003e
+| | Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| | Date:   Fri Jan 24 19:03:09 2025 +0200
+| | 
+| |     add empty ctor for balrog class and delete unused functions
+| | 
+| |  Events/Encounter.h | 14 ++++++++------
+| |  1 file changed, 8 insertions(+), 6 deletions(-)
+| | 
+* | commit 5fcc2e6b220b042378534df2f798244652839f5e
+| | Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| | Date:   Fri Jan 24 18:57:44 2025 +0200
+| | 
+| |     remove classes for slime and snail and make it as static functions
+| | 
+| |  Events/Encounter.h | 25 ++++++++-----------------
+| |  1 file changed, 8 insertions(+), 17 deletions(-)
+| | 
+* | commit e39852b7d7001c38342237ab65a059be560076eb
+| | Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| | Date:   Fri Jan 24 18:37:34 2025 +0200
+| | 
+| |     add c'tor implementation
+| | 
+| |  Events/Encounter.h | 7 ++++++-
+| |  1 file changed, 6 insertions(+), 1 deletion(-)
+| | 
+* | commit 66284609c93ecdeedc3c119031dc7bfb11916ba7
+|/  Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+|   Date:   Fri Jan 24 18:36:36 2025 +0200
+|   
+|       delete unused functions and remove implementation from the header file
+|   
+|    Events/Encounter.h | 46 +++++++++++++++++++++++-----------------------
+|    Events/Event.h     |  8 +++++---
+|    2 files changed, 28 insertions(+), 26 deletions(-)
+| 
+* commit bd9293bb4188e33b37f6b88e23224468fbeaafe8
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Fri Jan 24 12:44:14 2025 +0200
+| 
+|     add getEncounterData() function and fix the code accordingly
+| 
+|  Events/Encounter.h | 18 ++++++++++++++----
+|  1 file changed, 14 insertions(+), 4 deletions(-)
+| 
+* commit b4b4c3fcf3454e20bb2f4227443a89d0c59e0a14
+| Author: maisamzoubi <maisam.zoubi@campus.technion.ac.il>
+| Date:   Fri Jan 24 03:47:06 2025 +0200
+| 
+|     corrected error
+| 
+|  Events/Encounter.cpp | 1 -
+|  1 file changed, 1 deletion(-)
+| 
+* commit 1e342ab4c91798517564858b0becb7324a9d02e2
+| Author: maisamzoubi <maisam.zoubi@campus.technion.ac.il>
+| Date:   Fri Jan 24 03:45:26 2025 +0200
+| 
+|     added get description for each event
+| 
+|  Events/Encounter.cpp | 13 ++++++++++++-
+|  Events/Encounter.h   | 10 +++++++++-
+|  2 files changed, 21 insertions(+), 2 deletions(-)
+| 
+* commit d48d1be78205a6b9a00fab9c333cb14d3418024e
+| Author: maisamzoubi <maisam.zoubi@campus.technion.ac.il>
+| Date:   Fri Jan 24 03:24:23 2025 +0200
+| 
+|     added specialevent implementation ,edited the header accordingly
+| 
+|  Events/specialEvent.cpp | 42 ++++++++++++++++++++++++++++++++++++++----
+|  Events/specialEvent.h   | 17 ++++++++++++-----
+|  2 files changed, 50 insertions(+), 9 deletions(-)
+| 
+* commit 0bb461e23c504125be8369fbd81c7c8e50cb55cf
+| Author: maisamzoubi <maisam.zoubi@campus.technion.ac.il>
+| Date:   Fri Jan 24 02:58:30 2025 +0200
+| 
+|     added -is special event- case modification in encounter
+| 
+|  Events/Encounter.cpp | 20 +++++++++++++++-----
+|  Events/Encounter.h   |  2 +-
+|  2 files changed, 16 insertions(+), 6 deletions(-)
+| 
+* commit 85ec5fae015103bb82b8ba61d2a73f8e24724425
+| Author: maisamzoubi <maisam.zoubi@campus.technion.ac.il>
+| Date:   Fri Jan 24 02:35:45 2025 +0200
+| 
+|     added encounter implemenation , edited the header
+| 
+|  Events/Encounter.cpp | 52 ++++++++++++++++++++++++++++++++++++++++++++++----
+|  Events/Encounter.h   | 39 +++++++++++--------------------------
+|  2 files changed, 59 insertions(+), 32 deletions(-)
+| 
+* commit 1f7a4f98d60d07e0f6aee190dae4e7f22156c86f
+| Author: maisamzoubi <maisam.zoubi@campus.technion.ac.il>
+| Date:   Fri Jan 24 01:03:15 2025 +0200
+| 
+|     edited encounter header
+| 
+|  Events/Encounter.h | 103 +++++++++++++++++++++++++++++++++++----------------
+|  1 file changed, 71 insertions(+), 32 deletions(-)
+| 
+* commit a368b7c906d6ec0c098e97b1226e0ec09315afdc
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Thu Jan 23 23:56:19 2025 +0200
+| 
+|     remove comments
+| 
+|  Players/Character.cpp | 14 +++-----------
+|  Players/Character.h   |  6 ++++--
+|  2 files changed, 7 insertions(+), 13 deletions(-)
+| 
+* commit 62bcba5b23572b969542724960671a18f6e3051e
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Thu Jan 23 23:55:26 2025 +0200
+| 
+|     fix calculateCompactPower function
+| 
+|  Players/Job.cpp |  7 +------
+|  Players/Job.h   | 20 ++++++++++----------
+|  2 files changed, 11 insertions(+), 16 deletions(-)
+| 
+* commit 9e5196cb0acf8deefe265e20867dacf8e3e379bd
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Thu Jan 23 23:47:34 2025 +0200
+| 
+|     fix calculateDamage function
+| 
+|  Players/Player.cpp | 7 ++++---
+|  Players/Player.h   | 2 +-
+|  2 files changed, 5 insertions(+), 4 deletions(-)
+| 
+* commit 5c36376979a32c4fd892948649de0f2ea9d4cf98
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Thu Jan 23 23:37:42 2025 +0200
+| 
+|     fix raisLevel function
+| 
+|  Players/Player.cpp | 6 +++---
+|  1 file changed, 3 insertions(+), 3 deletions(-)
+| 
+* commit 99f89e3738310b3cf1f8d97e0d7a4c69396cba69
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Thu Jan 23 23:03:45 2025 +0200
+| 
+|     fix pointers
+| 
+|  Players/JobFactory.h | 4 ++--
+|  1 file changed, 2 insertions(+), 2 deletions(-)
+| 
+* commit 1545adea0471980474453a832e52393faaa75add
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Thu Jan 23 22:18:58 2025 +0200
+| 
+|      organize the file
+| 
+|  Players/Player.h | 80 ++++++++++++++++++++++++++----------------------------
+|  1 file changed, 39 insertions(+), 41 deletions(-)
+| 
+* commit cd2b552085a8f29352989825f1f8c83cd7f1bac4
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Thu Jan 23 22:07:16 2025 +0200
+| 
+|     fix applyEvent function
+| 
+|  Players/Player.cpp | 24 +++++++++++-------------
+|  1 file changed, 11 insertions(+), 13 deletions(-)
+| 
+* commit c7964fd01ad4c7c7b5cb2856ad278a9d2e8d0f91
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Thu Jan 23 21:58:11 2025 +0200
+| 
+|     add calculateDamage implementation
+| 
+|  Players/Job.cpp    |  5 +++--
+|  Players/Job.h      | 12 ++++++++----
+|  Players/Player.cpp |  8 ++++++++
+|  3 files changed, 19 insertions(+), 6 deletions(-)
+| 
+* commit 76257bf540ea28015c4b9daaa22d264228b3c695
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Thu Jan 23 21:24:46 2025 +0200
+| 
+|     add calculateCompactPower implementation
+| 
+|  Players/Player.cpp | 5 +++--
+|  1 file changed, 3 insertions(+), 2 deletions(-)
+| 
+* commit 17327e84ae4e30d718010ef54df390ca29d55e1c
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Thu Jan 23 21:20:21 2025 +0200
+| 
+|     change function name from takedamage to claculateDamage to be consistent
+| 
+|  Players/Player.cpp |  4 ++--
+|  Players/Player.h   | 13 +++++++++----
+|  2 files changed, 11 insertions(+), 6 deletions(-)
+| 
+* commit 8bb17d0c338c953cf30ebe9a1b0352c21da4ca2c
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Thu Jan 23 19:17:50 2025 +0200
+| 
+|      fix applyEvent function
+| 
+|  Players/Player.cpp | 4 ++--
+|  Players/Player.h   | 2 +-
+|  2 files changed, 3 insertions(+), 3 deletions(-)
+| 
+* commit 69b6137e2d15e2f1d3f34e6c0c90d6d34b1dfbb5
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Thu Jan 23 18:55:23 2025 +0200
+| 
+|      add potionMerchantEvent for RiskTaking implementation
+| 
+|  Players/Character.cpp | 20 ++++++++++++++++----
+|  1 file changed, 16 insertions(+), 4 deletions(-)
+| 
+* commit 358a5f37d69ff4e5462810076144397808d0194b
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Thu Jan 23 18:38:36 2025 +0200
+| 
+|     add helper function to check if the healthpoints got to the max
+| 
+|  Players/Character.cpp | 12 +++++++++---
+|  1 file changed, 9 insertions(+), 3 deletions(-)
+| 
+* commit 1742c9d7e0c3fe9ab154c6eecc4ab57e5aa7f304
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Thu Jan 23 18:26:37 2025 +0200
+| 
+|     add getCharchterName for RiskTaking  implementation
+| 
+|  Players/Character.cpp | 4 ++++
+|  1 file changed, 4 insertions(+)
+| 
+* commit afb54e921299d76521f309a4b25aef1e3afe967b
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Thu Jan 23 18:25:12 2025 +0200
+| 
+|     add potionMerchantEvent for Responsible implementation
+| 
+|  Players/Character.cpp | 15 +++++++++++++++
+|  1 file changed, 15 insertions(+)
+| 
+* commit 378c193b93c0ed6ed9d9c965480bb26ba4c4696d
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Thu Jan 23 18:22:15 2025 +0200
+| 
+|     add drink potion function implementation
+| 
+|  Players/Player.cpp | 11 ++++++++++-
+|  1 file changed, 10 insertions(+), 1 deletion(-)
+| 
+* commit b31a0e498e2d31dc8ddfaa4a36302e4a347404b8
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Thu Jan 23 18:21:27 2025 +0200
+| 
+|     add drink potion function
+| 
+|  Players/Player.h | 3 ++-
+|  1 file changed, 2 insertions(+), 1 deletion(-)
+| 
+* commit bb247fe8c43b42a59f0ca6fcfc2455d3fa07b14c
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Thu Jan 23 18:19:29 2025 +0200
+| 
+|     add drink potion function
+| 
+|  Players/Player.h | 6 +++++-
+|  1 file changed, 5 insertions(+), 1 deletion(-)
+| 
+* commit fa6403f9f9973159853e4b87687c77d646810d53
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Thu Jan 23 18:05:10 2025 +0200
+| 
+|     add Responsiple getCharacterName implementation
+| 
+|  Players/Character.cpp | 4 ++++
+|  1 file changed, 4 insertions(+)
+| 
+* commit 0a0a40b1abb909531b0d85a9540d1c9dbfeaaa40
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Wed Jan 22 22:50:56 2025 +0200
+| 
+|     add CharachterFactory implementation
+| 
+|  Players/CharachterFactory.cpp | 9 +++++++++
+|  Players/CharachterFactory.h   | 2 +-
+|  2 files changed, 10 insertions(+), 1 deletion(-)
+| 
+* commit 73317471cf057c9c627354bd12c137e06a9497b8
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Wed Jan 22 22:45:13 2025 +0200
+| 
+|     add potionMerchantEvent method
+| 
+|  Players/Character.h | 2 ++
+|  1 file changed, 2 insertions(+)
+| 
+* commit 4f6667e50bd244b35667572aff2d4d0129809aaf
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Wed Jan 22 22:44:21 2025 +0200
+| 
+|     add potionMerchantEvent method
+| 
+|  Players/Character.h | 2 ++
+|  1 file changed, 2 insertions(+)
+| 
+* commit 6544a313429a2c371a70407ccf6656f218aa8c13
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Wed Jan 22 22:42:11 2025 +0200
+| 
+|     add factory implementation
+| 
+|  Players/JobFactory.cpp | 7 +++++++
+|  1 file changed, 7 insertions(+)
+| 
+* commit be5a51f50724c6d830cd161ac1ef7fc493c0073a
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Wed Jan 22 22:32:14 2025 +0200
+| 
+|     add fight implementation for Warrior
+| 
+|  Players/Job.cpp | 3 +++
+|  1 file changed, 3 insertions(+)
+| 
+* commit 79fdb42b58b81259793965e7e1f37caae42518c5
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Wed Jan 22 22:29:49 2025 +0200
+| 
+|     add caculateCompactPower implementation for Warrior
+| 
+|  Players/Job.cpp | 7 +++++++
+|  1 file changed, 7 insertions(+)
+| 
+* commit ed2c4524c260745c524ffa0854d3b116aab92355
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Wed Jan 22 22:28:17 2025 +0200
+| 
+|     add solarEclipseEvent implementation
+| 
+|  Players/Player.cpp | 17 +++++++++++++++++
+|  1 file changed, 17 insertions(+)
+| 
+* commit a5ccf61fc03fd83de93e1bac13e71e648be311cf
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Wed Jan 22 22:27:05 2025 +0200
+| 
+|     add getJobName implementation
+| 
+|  Players/Job.cpp | 11 +++++++++++
+|  1 file changed, 11 insertions(+)
+| 
+* commit be3f98c3c9ac776f6cee0d4b1ad491594e776433
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Wed Jan 22 22:25:06 2025 +0200
+| 
+|     add solarEclipseEvent implementation
+| 
+|  Players/Job.cpp | 10 +++++++++-
+|  1 file changed, 9 insertions(+), 1 deletion(-)
+| 
+* commit 0d7256b07c02bdd66a0c0bd0208217a07d5d609b
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Wed Jan 22 22:23:29 2025 +0200
+| 
+|     add caculateCompactPower implementation
+| 
+|  Players/Job.cpp | 8 +++-----
+|  1 file changed, 3 insertions(+), 5 deletions(-)
+| 
+* commit fe439046498e15e7eeb379f76459f09e73c33e2e
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Wed Jan 22 22:13:35 2025 +0200
+| 
+|     add take damege implementation
+| 
+|  Players/Job.cpp | 13 +++++++++++++
+|  1 file changed, 13 insertions(+)
+| 
+* commit b7d3c8459f8706a9b23879ab72d62b6d30e09b48
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Wed Jan 22 22:11:26 2025 +0200
+| 
+|     add functions to header
+| 
+|  Players/Job.h | 21 ++++++++++++++++++---
+|  1 file changed, 18 insertions(+), 3 deletions(-)
+| 
+* commit f987dcc0a4ed21e62700e0a5c78f22ae6fa7c369
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Wed Jan 22 21:37:07 2025 +0200
+| 
+|     add takedamege methode
+| 
+|  Players/Player.h | 2 ++
+|  1 file changed, 2 insertions(+)
+| 
+* commit cdd5e182f8f1de8bdae186fb1d83c8f30519a39b
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Wed Jan 22 21:16:43 2025 +0200
+| 
+|     add methods and classes as friends
+| 
+|  Players/Player.h | 17 ++++++++++++++++-
+|  1 file changed, 16 insertions(+), 1 deletion(-)
+| 
+* commit 6c2ab3a936e52095670a47a26fc9fee30a5b48e3
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Mon Jan 20 19:13:17 2025 +0200
+| 
+|     edit  gainLoot type
+| 
+|  Players/Player.h | 14 +++++++-------
+|  1 file changed, 7 insertions(+), 7 deletions(-)
+| 
+* commit 0215ae107cec680785aa791a0a14230fa428b16f
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Mon Jan 20 19:12:45 2025 +0200
+| 
+|     add  gainLoot implementation
+| 
+|  Players/Player.cpp | 4 ++++
+|  1 file changed, 4 insertions(+)
+| 
+* commit 7188e420bcdd833c8be73b7378ab51a20fcad6a8
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Mon Jan 20 19:08:27 2025 +0200
+| 
+|     add  operator < implementation
+| 
+|  Players/Player.cpp | 14 ++++++++++++++
+|  1 file changed, 14 insertions(+)
+| 
+* commit ed65f9fda51064497236a93c35129a323ad378a6
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Mon Jan 20 19:02:32 2025 +0200
+| 
+|     add  operator =  and operator < declerations
+| 
+|  Players/Player.h | 5 +++++
+|  1 file changed, 5 insertions(+)
+| 
+* commit 4487f093e110a0b95c239ce90369dffc841526f2
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Mon Jan 20 19:02:07 2025 +0200
+| 
+|     add  operator = implementation
+| 
+|  Players/Player.cpp | 18 +++++++++++++++++-
+|  1 file changed, 17 insertions(+), 1 deletion(-)
+| 
+* commit 0f468126960eecffc221ba45da29b76a5759cb15
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Mon Jan 20 18:54:51 2025 +0200
+| 
+|     add getDescription implementation
+| 
+|  Players/Player.cpp | 21 ++++++++++++++++-----
+|  1 file changed, 16 insertions(+), 5 deletions(-)
+| 
+* commit 4ae4b4f3847a857ebb83822d0646fe7c4a2236dc
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Mon Jan 20 18:45:03 2025 +0200
+| 
+|     add isPlayerKnockedOut implementation
+| 
+|  Players/Player.h | 5 +++--
+|  1 file changed, 3 insertions(+), 2 deletions(-)
+| 
+* commit f294026420577119a3a319cc53202472091d7d8c
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Mon Jan 20 18:42:39 2025 +0200
+| 
+|     add raisLevel implementation
+| 
+|  Players/Player.cpp | 7 +++++++
+|  1 file changed, 7 insertions(+)
+| 
+* commit faf952e1c31f66a3734c7d147240f19521b11bc8
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Sun Jan 19 22:59:26 2025 +0200
+| 
+|     add classes declaration
+| 
+|  Events/Encounter.h | 9 ++++++++-
+|  1 file changed, 8 insertions(+), 1 deletion(-)
+| 
+* commit 23e3fbe4306e548872bde3fee22330b9fbb8908e
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Sun Jan 19 22:55:16 2025 +0200
+| 
+|     add monster class and c'tors
+| 
+|  Events/Encounter.h | 11 +++++++++++
+|  1 file changed, 11 insertions(+)
+| 
+* commit f9f1c961b1a1cea30db1a8a21d9478745136cd86
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Sun Jan 19 22:52:11 2025 +0200
+| 
+|     add is magical function declaration
+| 
+|  Events/Encounter.h | 5 +++++
+|  1 file changed, 5 insertions(+)
+| 
+* commit 7171abcb483ccfce0dc87e18a791a4164d7823af
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Sun Jan 19 22:46:09 2025 +0200
+| 
+|     add getters &playEvent function declaration to the header
+| 
+|  Events/Encounter.h | 4 ++++
+|  1 file changed, 4 insertions(+)
+| 
+* commit 93780084317a7f4d5743a5810ddc55d1541e8129
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Sun Jan 19 22:38:46 2025 +0200
+| 
+|     complete the c'tor implementation
+| 
+|  Players/Job.h    | 2 +-
+|  Players/Player.h | 4 +++-
+|  2 files changed, 4 insertions(+), 2 deletions(-)
+| 
+* commit 9eae36bb122f795b87c3727391cbbb428c1b091d
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Sun Jan 19 22:29:18 2025 +0200
+| 
+|     changed function name from setCompactPower to caculateCompactPower
+| 
+|  Players/Job.h    | 7 ++++++-
+|  Players/Player.h | 8 +++-----
+|  2 files changed, 9 insertions(+), 6 deletions(-)
+| 
+* commit 2239f744747796e88792a65ae556f704eb71f5d4
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Sun Jan 19 21:46:51 2025 +0200
+| 
+|     add getters for the player data (const and non const)
+| 
+|  Players/Player.h | 7 +++++--
+|  1 file changed, 5 insertions(+), 2 deletions(-)
+| 
+* commit 0a2b60a2ecdc712665a37132c5d70645f9b6fb6a
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Sun Jan 19 21:33:21 2025 +0200
+| 
+|     add c'tor implementation& add declaration for set compact power function
+| 
+|  Players/Player.h | 94 ++++++++++++++++++++++++++++++------------------------
+|  1 file changed, 53 insertions(+), 41 deletions(-)
+| 
+* commit 2b8ed75f68189b50a49581e7efe75eaf1bedfe5b
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Sun Jan 19 21:11:53 2025 +0200
+| 
+|     add getHealthPoints() implementation
+| 
+|  Players/Player.cpp | 4 ++++
+|  1 file changed, 4 insertions(+)
+| 
+* commit b5e530a22647e2f5be70cc07af16eaf6a426a91c
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Sun Jan 19 21:10:48 2025 +0200
+| 
+|     add getForce & getLevel implementation
+| 
+|  Players/Player.cpp | 11 ++++++++++-
+|  1 file changed, 10 insertions(+), 1 deletion(-)
+| 
+* commit 520be5d0d9a6d9452c9a8066e65f8d8c734e300f
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Sun Jan 19 21:06:10 2025 +0200
+| 
+|     add getName & getCoins implementation
+| 
+|  Players/Player.cpp | 8 +++++++-
+|  1 file changed, 7 insertions(+), 1 deletion(-)
+| 
+* commit 7b6f270c4576988ae8290ab62052c3e675b4289f
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Sun Jan 19 21:04:26 2025 +0200
+| 
+|     add parameter data
+| 
+|  Players/Player.h | 3 +++
+|  1 file changed, 3 insertions(+)
+| 
+* commit b91ee542431e9aa053f86fc2556f59b80fb3ccc2
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Sun Jan 19 20:59:05 2025 +0200
+| 
+|     add Player.cpp file
+| 
+|  Players/Player.cpp | 4 ++++
+|  1 file changed, 4 insertions(+)
+| 
+* commit 3483a3b2860e7849962a9a55f58321e1fb48466a
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Sun Jan 19 15:39:55 2025 +0200
+| 
+|     add the map of pointers to the character factory
+| 
+|  Players/CharachterFactory.h | 11 ++++++++++-
+|  1 file changed, 10 insertions(+), 1 deletion(-)
+| 
+* commit 2008b0f1fa89803f1cb3cff73aff7f25da494396
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Sun Jan 19 15:31:04 2025 +0200
+| 
+|     add character factory class (same concept as the job factory)
+| 
+|  Players/CharachterFactory.cpp |  5 +++++
+|  Players/CharachterFactory.h   | 24 ++++++++++++++++++++++++
+|  2 files changed, 29 insertions(+)
+| 
+* commit dd38cfe01b75b75684ff0aa6840d21d7e49436e9
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Sun Jan 19 15:26:59 2025 +0200
+| 
+|     organizing the code
+| 
+|  Events/specialEvent.h | 4 ----
+|  1 file changed, 4 deletions(-)
+| 
+* commit b5795ff0c5733b1f6b0ec4260267f94da3861237
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Sun Jan 19 15:25:54 2025 +0200
+| 
+|     delete unused c'tors
+| 
+|  Events/specialEvent.h | 8 ++++----
+|  1 file changed, 4 insertions(+), 4 deletions(-)
+| 
+* commit 3b29e2affef1d6bfa4a1bfa802c8fd65a0487ff3
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Sun Jan 19 15:22:57 2025 +0200
+| 
+|     added the function applyEvent to Event.h &changed getDescription() to virtual
+| 
+|  Events/Event.h | 11 +++++++++--
+|  1 file changed, 9 insertions(+), 2 deletions(-)
+| 
+* commit ef552e5a03b9f346d1437b2cee451e0c2831bf47
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Sun Jan 19 15:14:45 2025 +0200
+| 
+|     replace the function get eventInfo by the function getDescription
+| 
+|  Events/specialEvent.h | 4 ++--
+|  1 file changed, 2 insertions(+), 2 deletions(-)
+| 
+* commit 5cca5041be689ed1dabe13c5efe387d93d63e584
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Sun Jan 19 15:12:47 2025 +0200
+| 
+|     Edit special event class to match the design
+| 
+|  Events/specialEvent.h | 16 +++-------------
+|  1 file changed, 3 insertions(+), 13 deletions(-)
+| 
+* commit 4153d6007dfdcc4aadb1cfb923cefdb3d0670d4f
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Sat Jan 18 21:14:44 2025 +0200
+| 
+|     add encounterData struct
+| 
+|  Events/Encounter.h | 29 +++++++++++++++++++++--------
+|  1 file changed, 21 insertions(+), 8 deletions(-)
+| 
+* commit a180999112fb6fd653e4621308e02d9b3c9c15a4
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Sat Jan 18 21:04:33 2025 +0200
+| 
+|     add comment to explain how to complete the code
+| 
+|  Events/Encounter.h | 3 +++
+|  1 file changed, 3 insertions(+)
+| 
+* commit 30ef00276c22c93fb9df66bc7f971dc8266409c1
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Sat Jan 18 21:00:13 2025 +0200
+| 
+|     add encounter class
+| 
+|  Events/Encounter.cpp |  5 +++++
+|  Events/Encounter.h   | 16 ++++++++++++++++
+|  2 files changed, 21 insertions(+)
+|   
+*   commit 8e76c9ab9ea62b28c56ac31a42f3756237f5b036
+|\  Merge: ba9fb39 fc026f7
+| | Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| | Date:   Sat Jan 18 20:57:19 2025 +0200
+| | 
+| |     Merge remote-tracking branch 'origin/main'
+| | 
+| * commit fc026f7698e9899677082d799b9b0957a0827b39
+| | Author: maisamzoubi <maisam.zoubi@campus.technion.ac.il>
+| | Date:   Sat Jan 18 01:47:32 2025 +0200
+| | 
+| |     added specialEvent class
+| | 
+| |  Events/specialEvent.cpp |  5 +++++
+| |  Events/specialEvent.h   | 39 +++++++++++++++++++++++++++++++++++++++
+| |  2 files changed, 44 insertions(+)
+| | 
+* | commit ba9fb393ef25df5c10141a76c6efd91411ca973e
+|/  Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+|   Date:   Sat Jan 18 20:57:01 2025 +0200
+|   
+|       update function name to be more readable
+|   
+|    Players/Player.h | 23 ++++++++++++++++-------
+|    1 file changed, 16 insertions(+), 7 deletions(-)
+| 
+* commit 91a42e049d852552aec5722fc0b7ccb2b869d077
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Sat Jan 18 01:13:35 2025 +0200
+| 
+|     add private struct to Player.h
+| 
+|  Players/Job.h | 41 ++++++++++++++++++++++++-----------------
+|  1 file changed, 24 insertions(+), 17 deletions(-)
+| 
+* commit 721e267eb834830a1e5c967406aed0921484b406
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Sat Jan 18 01:08:30 2025 +0200
+| 
+|     add private fields to Player.h
+| 
+|  Players/Player.h | 17 ++++++++++++++++-
+|  1 file changed, 16 insertions(+), 1 deletion(-)
+| 
+* commit c1141e67913b6e0e8a5b54491a93095a84a98eab
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Sat Jan 18 00:39:04 2025 +0200
+| 
+|     add jobfactory class: made a map of pointers in the factory
+| 
+|  Players/JobFactory.cpp |  5 +++++
+|  Players/JobFactory.h   | 27 +++++++++++++++++++++++++++
+|  2 files changed, 32 insertions(+)
+| 
+* commit 8c829adaeee245a2f6e77cd83dc0e62dfbf67f7c
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Sat Jan 18 00:26:10 2025 +0200
+| 
+|     add responsible and risk taking classes amd override getCharacterName() in them
+| 
+|  Players/Character.h | 9 +++++++++
+|  1 file changed, 9 insertions(+)
+| 
+* commit 8fe7390596c2bb9380d777de6ec4e0eeaa7f0748
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Sat Jan 18 00:23:44 2025 +0200
+| 
+|     add character class and the virtual function getCharacterName() in it
+| 
+|  Players/Character.cpp |  5 +++++
+|  Players/Character.h   | 25 +++++++++++++++++++++++++
+|  2 files changed, 30 insertions(+)
+| 
+* commit 8aec8911be8d17be9c3c6f7be3f4fd95797f1d4c
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Sat Jan 18 00:17:59 2025 +0200
+| 
+|     add getjobname function and overrided in each of the three classes
+| 
+|  Players/Job.h | 22 +++++++++++++++++++---
+|  1 file changed, 19 insertions(+), 3 deletions(-)
+| 
+* commit 8961f0bbbcd794d10d369e6d2b1dc90fa33afacd
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Sat Jan 18 00:08:53 2025 +0200
+| 
+|     added archer default ctor and add warrior and magecian class
+| 
+|  Players/Job.h | 9 +++++++--
+|  1 file changed, 7 insertions(+), 2 deletions(-)
+| 
+* commit 5dbd771e9e9f39086a79f0144bd77bbe61a13607
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Fri Jan 17 22:47:51 2025 +0200
+| 
+|     added function declarations to Player.h
+| 
+|  Players/Player.h | 12 ++++++++++++
+|  1 file changed, 12 insertions(+)
+| 
+* commit bff1e4f4d22b8f5c324a598b15ed7fa32b5d6d2f
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Fri Jan 17 00:02:47 2025 +0200
+| 
+|     add getStartCoins() to archer class
+| 
+|  Players/Job.h | 3 +++
+|  1 file changed, 3 insertions(+)
+| 
+* commit 85d2b70ee087ecb694e1b561fd0ad1967e72bbd7
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Fri Jan 17 00:00:30 2025 +0200
+| 
+|     add archer class
+| 
+|  Players/Job.h | 17 +++++++++++++++++
+|  1 file changed, 17 insertions(+)
+| 
+* commit bb5f3b4c22b394aa14c2dccc67d24942112119f1
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Thu Jan 16 23:59:10 2025 +0200
+| 
+|     added virtual functions returning default val
+| 
+|  Players/Player.h | 2 ++
+|  1 file changed, 2 insertions(+)
+| 
+* commit 5e34dda23b9ed6045412eee6a7ad5f49abb31cf2
+| Author: Anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+| Date:   Thu Jan 16 23:53:45 2025 +0200
+| 
+|     added job class
+| 
+|  Players/Job.cpp |  5 +++++
+|  Players/Job.h   | 21 +++++++++++++++++++++
+|  2 files changed, 26 insertions(+)
+| 
+* commit 1c1ea7f5fb85a1f22825bc2f4078b0cf8b0eecc7
+  Author: anwaraburayaa <anwaraburaya@campus.technion.ac.il>
+  Date:   Tue Jan 14 22:16:16 2025 +0200
+  
+      add hw files
+  
+   Events/Event.h       |  14 +++++
+   MatamStory.cpp       |  74 +++++++++++++++++++++++++
+   MatamStory.h         |  55 +++++++++++++++++++
+   Players/Player.h     |  51 +++++++++++++++++
+   README.md            |   7 +++
+   Utilities.cpp        | 117 +++++++++++++++++++++++++++++++++++++++
+   Utilities.h          | 146 +++++++++++++++++++++++++++++++++++++++++++++++++
+   main.cpp             |  40 ++++++++++++++
+   tests/test1.events   |   5 ++
+   tests/test1.expected |  96 ++++++++++++++++++++++++++++++++
+   tests/test1.players  |   3 +
+   tests/test2.events   |   4 ++
+   tests/test2.expected |   1 +
+   tests/test2.players  |   3 +
+   tests/test3.events   |   5 ++
+   tests/test3.expected |   1 +
+   tests/test3.players  |   2 +
+   17 files changed, 624 insertions(+)
