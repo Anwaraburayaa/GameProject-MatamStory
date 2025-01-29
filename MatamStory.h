@@ -74,5 +74,5 @@ public:
 
  std::shared_ptr<const Player> getWinner() const;
 
- void clear();
+
 };
