@@ -1,10 +1,6 @@
 #pragma once
 #include <string>
 
-//#include "Events/Encounter.h"
-//#include "Player.h"
-#ifndef JOB_H
-#define JOB_H
 using std::string;
 ///need methods for compactpower and special events also get job string for the factory
 
@@ -90,4 +86,4 @@ public:
 };
 
 
-#endif //JOB_H
+
