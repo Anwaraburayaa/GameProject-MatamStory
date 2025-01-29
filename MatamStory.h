@@ -8,7 +8,7 @@
 #include "Events/Event.h"
 #include "Utilities.h"
 #include "Events/Encounter.h"
-#include "specialEvent.h"
+#include "Events/SpecialEvent.h"
 #include "Players/CharachterFactory.h"
 #include "Players/JobFactory.h"
 
