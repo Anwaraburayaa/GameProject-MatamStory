@@ -1,10 +1,6 @@
 
 #pragma once
-
 #include <iostream>
-
-#pragma once
-
 #include <vector>
 #include <algorithm>
 
@@ -12,7 +8,7 @@
 #include "Events/Event.h"
 #include "Utilities.h"
 #include "Events/Encounter.h"
-#include "Events/SpecialEvent.h"
+#include "specialEvent.h"
 #include "Players/CharachterFactory.h"
 #include "Players/JobFactory.h"
 
