@@ -11,7 +11,6 @@ using std::vector;
 using std::string;
 
 
-
 class Encounter : public Event {
 protected:
     struct EncounterData {
@@ -19,7 +18,7 @@ protected:
         unsigned int combatPower;
         unsigned int loot;
         unsigned int damage;
-       const unsigned int enounterNum=1;
+      const unsigned int enounterNum=1;
     };
 virtual unsigned int getEncounterSize() const {
     return 1;
@@ -67,7 +66,6 @@ public:
         return {"Slime", 12, 5, 25};
     }
     std::string getDescription() const override;
-
 };
 
 
@@ -99,9 +97,9 @@ public:
         encounterData.damage = 0;
 
         for (std::unique_ptr<Encounter> &encounter: this->encounters) {
-           encounterData.combatPower += encounter->getCombatPower();
+            encounterData.combatPower += encounter->getCombatPower();
             encounterData.loot += encounter->getLoot();
-           encounterData.damage += encounter->getDamage();
+            encounterData.damage += encounter->getDamage();
         }
     }
     unsigned int getEncounterSize() const override;
@@ -110,7 +108,6 @@ public:
     void makeSpecialEffect() override;
 
     string getDescription() const override;
+    friend Encounter;
 
 };
-
-

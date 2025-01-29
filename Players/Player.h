@@ -48,7 +48,7 @@ private:
     friend class PotionMerchant;
 
 public:
- bool applyEvent(const Encounter &encounter);
+ bool handleEvent(const Encounter &encounter);
     Player() = default;
 
     Player(const string &name, const std::shared_ptr<Job> &job,

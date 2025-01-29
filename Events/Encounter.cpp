@@ -17,7 +17,7 @@ unsigned int Encounter::getDamage() const {
 void Encounter::applyEvent(Player &player) {
     ///if player won
     ///using player applyEvent here
-    if (player.applyEvent(*this)) {
+    if (player.handleEvent(*this)) {
         result = getEncounterWonMessage(player, encounterData.loot);
     }
     ///if the player lost

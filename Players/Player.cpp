@@ -79,7 +79,7 @@ void Player::gainLoot(const unsigned int loot) {
     playerData.coins += loot;
 }
 
-bool Player::applyEvent(const Encounter &encounter) {
+bool Player::handleEvent(const Encounter &encounter) {
     ///if wining
     if (this->getPlayerData().combatPower > encounter.getEncounterData().combatPower) {
         job->fight(*this, encounter);
