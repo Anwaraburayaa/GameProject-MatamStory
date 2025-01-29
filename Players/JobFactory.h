@@ -19,6 +19,5 @@ private:
         {ARCHER, std::make_shared<Archer>()},
     };
     public:
-    //todo change the names!
     std::shared_ptr<Job> jobCreator(const std::string& jobName) const;
 };
