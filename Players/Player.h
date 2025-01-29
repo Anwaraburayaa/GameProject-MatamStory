@@ -3,12 +3,9 @@
 #include <string>
 #include <memory>
 #include "Character.h"
-//#include "Job.h"
 #include <iostream>
-//#include "Events/Encounter.h"
 #include <cassert>
 using std::string;
-//class Character;
 class Encounter;
 
 
@@ -131,6 +128,12 @@ public:
 
     ///function to level up the player
     void raisLevel();
+
+    void setPlayerKnockOut();
+
+    bool PlayerKnockOut() const;
+
+    bool isKnockedOut() const;
 
 
     ///operators overload for player :
