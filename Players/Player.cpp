@@ -1,4 +1,3 @@
-
 #include "Player.h"
 #include "../Events/Encounter.h"
 class Job;
@@ -31,9 +30,15 @@ void Player::raisLevel() {
     }
 }
 
-bool Player::PlayerKnockOut() {
-   return this->playerData.isKnockedOut = true;
+void Player::setPlayerKnockOut() {
+    playerData.isKnockedOut = true;
 }
+
+bool Player::PlayerKnockOut() const {
+    return playerData.isKnockedOut;
+}
+
+
 
 string Player::getDescription() const {
     return getName() + ", " + this->getJob()->getJobName() + " with " + getCharacter()->getCharacterName()
@@ -94,13 +99,17 @@ void Player::PlayerData::drinkPotion() {
     this->currentHP += 10;
 }
 
+
 void Player::claculateDamage(const unsigned int &damage) {
-    unsigned int currentHPTotal = playerData.currentHP;
-    if (currentHPTotal <= damage) {
-        playerData.currentHP =0;
-        PlayerKnockOut();
+    if (playerData.currentHP <= damage) {
+        playerData.currentHP = 0;
+        playerData.isKnockedOut = true;
+        setPlayerKnockOut();
+    } else {
+        job->calculateDamage(*this, damage);
     }
-    job->calculateDamage(*this, damage);
+
+
 }
 std::ostream &operator<<(std::ostream &out, const Player::PlayerData &playerData) {
   out << "Name: " + playerData.name << std::endl;
@@ -123,8 +132,3 @@ int Player::solarEclipseEvent() {
 int Player::potionMerchantEvent() {
     return character->potionMerchantEvent(*this, job);
 }
-
-
-
-
-
