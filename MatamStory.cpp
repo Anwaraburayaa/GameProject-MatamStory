@@ -233,32 +233,21 @@ void MatamStory::playTurn(Player &player) {
 void MatamStory::playRound() {
     printRoundStart();
 
-    // Iterate over players in unsorted order (as in the second implementation)
-    for (const std::shared_ptr<Player>& player : playersInUnsortedOrder) {
-        if (!player->getPlayerData().isKnockedOut) {
-            // Play a turn for the player
+    for (const auto &player: unsortedPlayersVec) {
+        if (!(player->getPlayerData().isKnockedOut)) {
             playTurn(*player);
-        }else{
-            for (auto it = playersInUnsortedOrder.begin(); it != playersInUnsortedOrder.end(); ++it) {
-                 if (*it == player) {
-                        playersInUnsortedOrder.erase(it);
-                        return; 
         }
-        }
-    }
     }
 
-    // Sort players at the end of the round
-    makePlayersSorted();
+    sortPlayers();
 
     printRoundEnd();
 
     printLeaderBoardMessage();
 
-    int player_idx = 1;
-    for (const std::shared_ptr<Player>& player : playersInSortedOrder) {
-        printLeaderBoardEntry(player_idx, *player);
-        player_idx++;
+    int rank = 1;
+    for (const auto &player: sortedPlayersVec) {
+        printLeaderBoardEntry(rank++, *player);
     }
 
     printBarrier();
