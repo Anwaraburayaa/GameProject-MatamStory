@@ -1,7 +1,3 @@
-///in this file we will have a class monster
-///and we will have pack class
-///and monsters classes if needed(depending on if they are changeable or not, we might create only for part of them not all
-///the class encounter should inherit from event, also it should have a protected struct containing the data of encounter
 
 #pragma once
 
