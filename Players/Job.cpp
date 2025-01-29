@@ -2,9 +2,10 @@
 #include "Job.h"
 #include "Player.h"
 void Job::calculateDamage(Player &player, const unsigned int &damage) {
-    if(player.getPlayerData().currentHP <= damage) {
-        return;
-    }
+        if (player.getPlayerData().currentHP <= damage) {
+            player.getPlayerData().currentHP = 0;
+            return;
+        }
         player.getPlayerData().currentHP -= damage;
     }
 
