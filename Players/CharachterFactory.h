@@ -18,7 +18,7 @@
 class CharachterFactory {
 
     std::map<std::string, std::shared_ptr<Character>> CharactersMap =
-           {{RESPONSIBLE, std::make_shared<Responsiple>()},
+           {{RESPONSIBLE, std::make_shared<Responsible>()},
             {RISKTAKING,  std::make_shared<RiskTaking>()},
            };
 
