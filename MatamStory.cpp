@@ -215,11 +215,17 @@ MatamStory::MatamStory(std::istream &eventsStream, std::istream &playersStream) 
 
 
 
-void MatamStory::playTurn(Player& player) {
+void MatamStory::playTurn(Player &player) {
+    auto &currentEvent = *events[(m_turnIndex - 1) % events.size()];
 
-    printTurnDetails(m_turnIndex, player, *events[(m_turnIndex - 1) % events.size()]);
-    events[(m_turnIndex - 1) % events.size()]->applyEvent(player);
-    printTurnOutcome(events[(m_turnIndex - 1) % events.size()]->getResult());
+
+    printTurnDetails(m_turnIndex, player, currentEvent);
+
+    currentEvent.applyEvent(player);
+
+    printTurnOutcome(currentEvent.getResult());
+
+
     m_turnIndex++;
 }
 
