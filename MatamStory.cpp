@@ -24,7 +24,7 @@ std::unique_ptr<Encounter> getSingleEncounter(const string &eventName);
 
 std::unique_ptr<Event> getSingleEvent(const string &eventName);
 
-std::shared_ptr<const Player> getWinner();
+
 
 ///checks if the name contains only letters
 bool notLegalName(const string &name) {
@@ -147,20 +147,6 @@ std::unique_ptr<Event> getSingleEvent(const string &eventName) {
 }
 
 
-/////////////////////added get winner function //////////////
-std::shared_ptr<const Player> getWinner(const std::vector<std::shared_ptr<Player>>& players) {
-    std::shared_ptr<const Player> winner = nullptr;
-
-    // Check the winning condition
-    for (const auto& player : players) {
-        if (player->getLevel() == 10) {
-            return player; // Return the shared pointer to the winning player
-        }
-    }
-
-    return nullptr; // Return nullptr if no player has won
-}
-/////////////////////////////////
 
 
 MatamStory::MatamStory(std::istream &eventsStream, std::istream &playersStream) {
@@ -304,6 +290,3 @@ void MatamStory::play() {
 
 
 
-////////////////////////helper function///////////////////////////
-
-//////////////////////////////////////////////////////////////////
