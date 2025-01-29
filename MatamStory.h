@@ -21,12 +21,11 @@ using std::vector;
 class MatamStory {
 private:
  unsigned int m_turnIndex;
- vector<std::shared_ptr<Player>> playersInSortedOrder;
- vector<std::shared_ptr<Player>> playersInUnsortedOrder;
+ vector<std::shared_ptr<Player>> sortedPlayersVec;
+ vector<std::shared_ptr<Player>> unsortedPlayersVec;
  vector<std::unique_ptr<Event>> events;
-
- void makePlayersSorted() {
-  std::sort(playersInSortedOrder.begin(), playersInSortedOrder.end(),
+ void sortPlayers() {
+  std::sort(sortedPlayersVec.begin(), sortedPlayersVec.end(),
             [](const std::shared_ptr<Player> &a, const std::shared_ptr<Player> &b) {
                 return *b < *a;
             });
