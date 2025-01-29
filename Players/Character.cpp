@@ -1,4 +1,3 @@
-
 #include "Character.h"
 #include "Player.h"
 ///helper function to prevent code duplication
@@ -8,19 +7,19 @@ void checkIfHPisMax(Player &player, const std::shared_ptr<Job> &job) {
     } else return;
 }
 
-string Responsiple::getCharacterName() const {
-    return "Responsiple";
+string Responsible::getCharacterName() const {
+    return "Responsible";
 }
 
 
-int Responsiple::potionMerchantEvent(Player &player, const std::shared_ptr<Job> &job) {
+int Responsible::potionMerchantEvent(Player &player, const std::shared_ptr<Job> &job) {
     int counter = 0;
-    while (player.getPlayerData().currentHP < job->getMaxHP()) {
-        if (player.getPlayerData().coins >= 5) {
-            player.getPlayerData().drinkPotion();
-            checkIfHPisMax(player, job);
-        }
+    while (player.getPlayerData().currentHP < job->getMaxHP() && player.getPlayerData().coins >= 5) {
+        player.getPlayerData().drinkPotion();
         counter++;
+        if (player.getPlayerData().currentHP == job->getMaxHP()) {
+            break;
+        }
     }
     return counter;
 }
