@@ -79,19 +79,17 @@ string extractWord(const string &str) {
     return word;
 }
 
-///function to check if the pack is legal
-///and then it put the monsters in a pack or throw an error
 std::unique_ptr<Encounter> collectPack(std::istream &eventsStream, const string &nextText) {
     if (!isInputNumber(nextText)) {
-        throw std::runtime_error("Invalid Events File: nextText is not a number.");
+        throw std::runtime_error("Invalid Events File");
     }
     int elementsInPack = srtingToNum(nextText);
     if (elementsInPack < 2) {
-        throw std::runtime_error("Invalid Events File: Pack must contain at least 2 entities.");
+        throw std::runtime_error("Invalid Events File");
     }
-    std::unique_ptr<Encounter> newPack = std::move(getPack(eventsStream, elementsInPack));
-    if (elementsInPack != 0)
-        throw (std::runtime_error("Invalid Events File"));
+    std::unique_ptr<Encounter> newPack = getPack(eventsStream, elementsInPack);
+    if (elementsInPack != 0) {
+        throw std::runtime_error("Invalid Events File");}
     return newPack;
 }
 
@@ -101,15 +99,14 @@ std::unique_ptr<Encounter> getPack(std::istream &eventsStream, int &monstersLeft
 
     while (!eventsStream.eof() && monstersLeft > 0) {
         eventsStream >> word;
-        --monstersLeft;
-        ///if there is a subpack
+        monstersLeft--;
+
         if (word == PACK) {
             std::string nextText;
             eventsStream >> nextText;
             packVector.push_back(std::move(collectPack(eventsStream, nextText)));
         } else {
-            ///entering single encounter to the pack
-            auto encounter = std::move(getSingleEncounter(word));
+            std::unique_ptr<Encounter> encounter = getSingleEncounter(word);
             if (encounter) {
                 packVector.push_back(std::move(encounter));
             } else {
@@ -118,7 +115,7 @@ std::unique_ptr<Encounter> getPack(std::istream &eventsStream, int &monstersLeft
         }
     }
 
-    return std::unique_ptr<Encounter>(new Pack(packVector));
+    return std::make_unique<Pack>(packVector);
 }
 
 std::unique_ptr<Encounter> getSingleEncounter(const string &eventName) {
