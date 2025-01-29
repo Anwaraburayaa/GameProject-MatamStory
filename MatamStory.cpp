@@ -85,12 +85,11 @@ std::unique_ptr<Encounter> collectPack(std::istream &eventsStream, const string 
     }
     int elementsInPack = srtingToNum(nextText);
     if (elementsInPack < 2) {
-        throw std::runtime_error("Invalid Events File: Pack must contain at least 2 entities.");
+        throw std::runtime_error("Invalid Events File");
     }
     std::unique_ptr<Encounter> newPack = getPack(eventsStream, elementsInPack);
-
-    if (elementsInPack != 0)
-        throw (std::runtime_error("Invalid Events File"));
+    if (elementsInPack != 0) {
+        throw std::runtime_error("Invalid Events File");}
     return newPack;
 }
 
@@ -100,16 +99,14 @@ std::unique_ptr<Encounter> getPack(std::istream &eventsStream, int &monstersLeft
 
     while (!eventsStream.eof() && monstersLeft > 0) {
         eventsStream >> word;
-        --monstersLeft;
-        ///if there is a subpack
+        monstersLeft--;
+
         if (word == PACK) {
             std::string nextText;
             eventsStream >> nextText;
             packVector.push_back(std::move(collectPack(eventsStream, nextText)));
         } else {
-            ///entering single encounter to the pack
             std::unique_ptr<Encounter> encounter = getSingleEncounter(word);
-
             if (encounter) {
                 packVector.push_back(std::move(encounter));
             } else {
@@ -118,17 +115,15 @@ std::unique_ptr<Encounter> getPack(std::istream &eventsStream, int &monstersLeft
         }
     }
 
-    return std::unique_ptr<Encounter>(new Pack(packVector));
+    return std::make_unique<Pack>(packVector);
 }
 
 std::unique_ptr<Encounter> getSingleEncounter(const string &eventName) {
     if (eventName == SNAIL) {
         return std::make_unique<Monster>(Monster::Snail());
-    }
-    if (eventName == SLIME) {
+    } else if (eventName == SLIME) {
         return std::make_unique<Monster>(Monster::Slime());
-    }
-    if (eventName == BALROG) {
+    } else if (eventName == BALROG) {
         return std::make_unique<Balrog>();
     }
     return nullptr;
@@ -168,33 +163,32 @@ MatamStory::MatamStory(std::istream &eventsStream, std::istream &playersStream) 
     /*===== creating characters =====*/
     CharachterFactory makeCharacter;
     JobFactory makeJob;
-    while (!playersStream.eof()){
+    while (!playersStream.eof()) {
         string playerName;
-    string jobName;
-    string characterName;
-    if (!(playersStream >> playerName >> jobName >> characterName)) {
-        throw std::runtime_error("Invalid Players File");
-    } else {
-        std::shared_ptr<Character> character_ptr = makeCharacter.charachterCreator(characterName);
-        std::shared_ptr<Job> job_ptr = makeJob.jobCreator(jobName);
-        if (character_ptr == nullptr || job_ptr == nullptr) {
-            throw (std::runtime_error("Invalid Players File"));
-        } else if (notLegalName(playerName)) {
-            throw (std::runtime_error("Invalid Events File"));
-        } else if (playerName.length() < 3 || playerName.length() > 15) {
+        string jobName;
+        string characterName;
+        if (!(playersStream >> playerName >> jobName >> characterName)) {
             throw std::runtime_error("Invalid Players File");
+        } else {
+            std::shared_ptr<Character> character_ptr = makeCharacter.charachterCreator(characterName);
+            std::shared_ptr<Job> job_ptr = makeJob.jobCreator(jobName);
+            if (character_ptr == nullptr || job_ptr == nullptr) {
+                throw (std::runtime_error("Invalid Players File"));
+            } else if (notLegalName(playerName)) {
+                throw (std::runtime_error("Invalid Players File"));
+            } else if (playerName.length() < 3 || playerName.length() > 15) {
+                throw std::runtime_error("Invalid Players File");
+            }
+            Player player(playerName, job_ptr, character_ptr);
+            std::shared_ptr<Player> Player_ptr = std::make_shared<Player>(player);
+            sortedPlayersVec.push_back(Player_ptr);
+            unsortedPlayersVec.push_back(Player_ptr);
         }
-        Player player(playerName, job_ptr, character_ptr);
-        std::shared_ptr<Player> Player_ptr = std::make_shared<Player>(player);
-        playersInSortedOrder.push_back(Player_ptr);
-        playersInUnsortedOrder.push_back(Player_ptr);
     }
-}
-        makePlayersSorted();
-        if (this->playersInUnsortedOrder.size() > 6 || this->playersInUnsortedOrder.size() < 2) {
-            throw (std::runtime_error("Invalid Players File"));
-        }
-
+    sortPlayers();
+    if (this->unsortedPlayersVec.size() > 6 || this->unsortedPlayersVec.size() < 2) {
+        throw (std::runtime_error("Invalid Players File"));
+    }
 
     /*============================================*/
 
@@ -204,44 +198,37 @@ MatamStory::MatamStory(std::istream &eventsStream, std::istream &playersStream) 
 
 
 void MatamStory::playTurn(Player &player) {
-    // Fetch the current event
-    auto &event = *events[(m_turnIndex - 1) % events.size()];
+    auto &currentEvent = *events[(m_turnIndex - 1) % events.size()];
 
-    // Print turn details
-    printTurnDetails(m_turnIndex, player, event);
 
-    // Apply the event to the player
-    event.applyEvent(player);
+    printTurnDetails(m_turnIndex, player, currentEvent);
 
-    // Print the outcome of the turn
-    printTurnOutcome(event.getResult());
+    currentEvent.applyEvent(player);
 
-    // Increment turn index
-    ++m_turnIndex;
+    printTurnOutcome(currentEvent.getResult());
+
+
+    m_turnIndex++;
 }
-
 
 
 void MatamStory::playRound() {
     printRoundStart();
 
-    // Iterate over players in the order of turns
-    for (const auto &player : playersInUnsortedOrder) {
-        if (!player->PlayerKnockOut()) {
+    for (const auto &player: unsortedPlayersVec) {
+        if (!(player->getPlayerData().isKnockedOut)) {
             playTurn(*player);
         }
     }
 
-    // Update the leaderboard by sorting players
-    makePlayersSorted();
+    sortPlayers();
 
-    // Print round end summary
     printRoundEnd();
 
-    // Print leaderboard
     printLeaderBoardMessage();
+
     int rank = 1;
-    for (const auto &player : playersInSortedOrder) {
+    for (const auto &player: sortedPlayersVec) {
         printLeaderBoardEntry(rank++, *player);
     }
 
@@ -250,28 +237,28 @@ void MatamStory::playRound() {
 
 
 bool MatamStory::isGameOver() const {
-    for (const std::shared_ptr<Player>& player : playersInSortedOrder) {
-        if(player->getPlayerData().level>=10)
+    for (const auto &player: sortedPlayersVec) {
+        if (player->getPlayerData().level >= 10) {
             return true;
+        }
     }
-    for (const std::shared_ptr<Player>& player : playersInSortedOrder) {
-        if (!player->getPlayerData().isKnockedOut) {
+
+    for (const auto &player: sortedPlayersVec) {
+        if (player->getPlayerData().currentHP > 0) {
             return false;
         }
     }
+
     return true;
 }
-
 
 void MatamStory::play() {
     printStartMessage();
 
-    /*=========================================================================================*/
-
-    int player_idx = 1;
-    for (const std::shared_ptr<Player>& player : playersInSortedOrder) {
-        printStartPlayerEntry(player_idx, *player);
-        player_idx++;
+    int i = 1;
+    for (const std::shared_ptr<Player> &player: unsortedPlayersVec) {
+        printStartPlayerEntry(i, *player);
+        i++;
     }
     printBarrier();
 
@@ -281,29 +268,13 @@ void MatamStory::play() {
 
     printGameOver();
 
-    for (const std::shared_ptr<Player> &player: playersInSortedOrder) {
+    for (const std::shared_ptr<Player> &player: sortedPlayersVec) {
         if (player->getPlayerData().level == 10) {
             printWinner(*player);
             return;
         }
     }
+
     printNoWinners();
+    return;
 }
-
-
-
-////////////////////////helper function///////////////////////////
-std::shared_ptr<const Player> MatamStory::getWinner() const {
-    // Initially, assume there's no winner
-    std::shared_ptr<const Player> winner = nullptr;
-
-    // Check the winning condition
-    for (const auto& player : playersInUnsortedOrder) {
-        if (player->getLevel() == 10) {
-            return player; // Return the shared pointer to the winning player
-        }
-    }
-
-    return nullptr; // Return nullptr if no player has won
-}
-//////////////////////////////////////////////////////////////////
