@@ -18,7 +18,7 @@ class Character {
     virtual string getCharacterName() const = 0;
 
 };
-class Responsiple : public Character {
+class Responsible : public Character {
     public:
     int potionMerchantEvent(Player &player,const std::shared_ptr<Job> &job) override;
     string getCharacterName() const override;
@@ -30,7 +30,3 @@ class RiskTaking : public Character {
     string getCharacterName() const override;
 
 };
-
-
-
-
