@@ -146,6 +146,19 @@ std::unique_ptr<Event> getSingleEvent(const string &eventName) {
 
 
 
+///this function handle the case if the event is not pack
+std::unique_ptr<Event> getSingleEvent(const string &eventName) {
+    std::unique_ptr<Event> newEvent = std::move(getSingleEncounter(eventName));
+    if (newEvent) {
+        return newEvent;
+    } else if (eventName == POTIONSMERCHANT) {
+        return std::unique_ptr<Event>(new PotionMerchant());
+    } else if (eventName == SOLARECLIPSE) {
+        return std::unique_ptr<Event>(new SolarEclipse());
+    } else throw std::runtime_error("Invalid Events File");
+}
+
+
 MatamStory::MatamStory(std::istream &eventsStream, std::istream &playersStream) {
     /*====================Reading events======================*/
     string eventName;
@@ -159,11 +172,12 @@ MatamStory::MatamStory(std::istream &eventsStream, std::istream &playersStream) 
             events.push_back(std::move(getSingleEvent(eventName)));
         }
     }
-    if (events.size() < 2)
+    if (events.size() < 2) {
         throw std::runtime_error("Invalid Events File");
+    }
 
 
-    /*===== creating charachters =====*/
+    /*===== creating characters =====*/
     CharachterFactory makeCharacter;
     JobFactory makeJob;
     while (!playersStream.eof()) {
@@ -171,26 +185,26 @@ MatamStory::MatamStory(std::istream &eventsStream, std::istream &playersStream) 
         string jobName;
         string characterName;
         if (!(playersStream >> playerName >> jobName >> characterName)) {
-            throw std::runtime_error("Invalid Events File");
+            throw std::runtime_error("Invalid Players File");
         } else {
             std::shared_ptr<Character> character_ptr = makeCharacter.charachterCreator(characterName);
             std::shared_ptr<Job> job_ptr = makeJob.jobCreator(jobName);
             if (character_ptr == nullptr || job_ptr == nullptr) {
-                throw std::runtime_error("Invalid Events File");
+                throw (std::runtime_error("Invalid Players File"));
             } else if (notLegalName(playerName)) {
-                throw std::runtime_error("Invalid Events File");
+                throw (std::runtime_error("Invalid Players File"));
             } else if (playerName.length() < 3 || playerName.length() > 15) {
-                throw std::runtime_error("Invalid Events File");
+                throw std::runtime_error("Invalid Players File");
             }
             Player player(playerName, job_ptr, character_ptr);
             std::shared_ptr<Player> Player_ptr = std::make_shared<Player>(player);
-            playersInSortedOrder.push_back(Player_ptr);
-            playersInUnsortedOrder.push_back(Player_ptr);
+            sortedPlayersVec.push_back(Player_ptr);
+            unsortedPlayersVec.push_back(Player_ptr);
         }
-        makePlayersSorted();
-        if (this->playersInUnsortedOrder.size() > 6 || this->playersInUnsortedOrder.size() < 2) {
-            throw (std::runtime_error("Invalid Players File"));
-        }
+    }
+    sortPlayers();
+    if (this->unsortedPlayersVec.size() > 6 || this->unsortedPlayersVec.size() < 2) {
+        throw (std::runtime_error("Invalid Players File"));
     }
 
     /*============================================*/
@@ -198,6 +212,7 @@ MatamStory::MatamStory(std::istream &eventsStream, std::istream &playersStream) 
 
     this->m_turnIndex = 1;
 }
+
 
 
 void MatamStory::playTurn(Player& player) {
