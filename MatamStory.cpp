@@ -120,9 +120,11 @@ std::unique_ptr<Encounter> getPack(std::istream &eventsStream, int &monstersLeft
 
 std::unique_ptr<Encounter> getSingleEncounter(const string &eventName) {
     if (eventName == SNAIL) {
-        return std::make_unique<Monster>(Monster::Snail());
-    } else if (eventName == SLIME) {
-        return std::make_unique<Monster>(Monster::Slime());
+        if (eventName == SNAIL) {
+            return std::make_unique<Snail>();
+        } else if (eventName == SLIME) {
+            return std::make_unique<Slime>();
+        }
     } else if (eventName == BALROG) {
         return std::make_unique<Balrog>();
     }
