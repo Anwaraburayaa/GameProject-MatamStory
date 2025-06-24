@@ -59,6 +59,7 @@ public:
         encounterData.loot = loot;
         encounterData.damage = damage;
     }
+    std::string getDescription() const override;
 };
 
 class Snail : public Monster {
