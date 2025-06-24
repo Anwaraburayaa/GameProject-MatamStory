@@ -59,14 +59,14 @@ public:
         encounterData.loot = loot;
         encounterData.damage = damage;
     }
-    static Monster Snail() {
-        return {"Snail", 5, 2, 10};
-    }
-    static Monster Slime() {
-        return {"Slime", 12, 5, 25};
-    }
-    std::string getDescription() const override;
 };
+
+class Snail : public Monster {
+public:
+    Snail() : Monster("Snail", 5, 2, 10) {}
+};
+
+
 
 
 class Balrog : public Monster {
