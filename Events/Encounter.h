@@ -66,7 +66,10 @@ public:
     Snail() : Monster("Snail", 5, 2, 10) {}
 };
 
-
+class Slime : public Monster {
+public:
+    Slime() : Monster("Slime", 12, 5, 25) {}
+};
 
 
 class Balrog : public Monster {
